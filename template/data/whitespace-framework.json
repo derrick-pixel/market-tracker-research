@@ -1,0 +1,409 @@
+{
+  "meta": {
+    "project_name": "Market Tracker 2026",
+    "brand_tokens": {
+      "primary": "#9B1B30",
+      "secondary": "#f7931e",
+      "accent": "#00d97f",
+      "neutral_dark": "#0a0a0a",
+      "neutral_light": "#e8e6e3",
+      "font_display": "IBM Plex Sans, sans-serif",
+      "font_body": "IBM Plex Mono, ui-monospace, monospace"
+    },
+    "research_date": "2026-05-02",
+    "sample_data": false
+  },
+  "strategy_canvas": {
+    "headline_thesis": "Market Tracker bridges three previously-unbridged things — branded academic methodology (Booth EMBA modules), AI-narrated rendering on live financials, and a SE-Asia distribution channel via Elitez Group — that no SG retail-research player owns end-to-end.",
+    "dimensions": [
+      { "key": "framework_provenance", "label": "Branded academic framework" },
+      { "key": "ai_narrative_grounding", "label": "AI narrative grounded in fundamentals" },
+      { "key": "ratio_depth",            "label": "Ratio + statement depth" },
+      { "key": "global_ticker_coverage", "label": "Global ticker coverage" },
+      { "key": "sea_distribution",       "label": "SE-Asia retail distribution" },
+      { "key": "self_serve_pdf_export",  "label": "PDF / shareable export" },
+      { "key": "free_tier_quality",      "label": "Free-tier quality" },
+      { "key": "team_collaboration",     "label": "Team / multi-seat collaboration" }
+    ],
+    "scores": {
+      "us": {
+        "framework_provenance": 5,
+        "ai_narrative_grounding": 4,
+        "ratio_depth": 3,
+        "global_ticker_coverage": 2,
+        "sea_distribution": 4,
+        "self_serve_pdf_export": 5,
+        "free_tier_quality": 4,
+        "team_collaboration": 2
+      },
+      "simply_wall_st": {
+        "framework_provenance": 2,
+        "ai_narrative_grounding": 4,
+        "ratio_depth": 3,
+        "global_ticker_coverage": 5,
+        "sea_distribution": 3,
+        "self_serve_pdf_export": 3,
+        "free_tier_quality": 4,
+        "team_collaboration": 2
+      },
+      "koyfin": {
+        "framework_provenance": 1,
+        "ai_narrative_grounding": 1,
+        "ratio_depth": 5,
+        "global_ticker_coverage": 5,
+        "sea_distribution": 3,
+        "self_serve_pdf_export": 3,
+        "free_tier_quality": 4,
+        "team_collaboration": 3
+      },
+      "stock_rover": {
+        "framework_provenance": 2,
+        "ai_narrative_grounding": 1,
+        "ratio_depth": 5,
+        "global_ticker_coverage": 2,
+        "sea_distribution": 1,
+        "self_serve_pdf_export": 3,
+        "free_tier_quality": 3,
+        "team_collaboration": 2
+      },
+      "damodaran_xls": {
+        "framework_provenance": 5,
+        "ai_narrative_grounding": 1,
+        "ratio_depth": 4,
+        "global_ticker_coverage": 5,
+        "sea_distribution": 1,
+        "self_serve_pdf_export": 1,
+        "free_tier_quality": 5,
+        "team_collaboration": 1
+      },
+      "yahoo_finance": {
+        "framework_provenance": 1,
+        "ai_narrative_grounding": 2,
+        "ratio_depth": 3,
+        "global_ticker_coverage": 5,
+        "sea_distribution": 5,
+        "self_serve_pdf_export": 2,
+        "free_tier_quality": 5,
+        "team_collaboration": 1
+      },
+      "tikr": {
+        "framework_provenance": 1,
+        "ai_narrative_grounding": 1,
+        "ratio_depth": 5,
+        "global_ticker_coverage": 5,
+        "sea_distribution": 3,
+        "self_serve_pdf_export": 3,
+        "free_tier_quality": 4,
+        "team_collaboration": 3
+      },
+      "perplexity_finance": {
+        "framework_provenance": 1,
+        "ai_narrative_grounding": 3,
+        "ratio_depth": 2,
+        "global_ticker_coverage": 4,
+        "sea_distribution": 4,
+        "self_serve_pdf_export": 1,
+        "free_tier_quality": 4,
+        "team_collaboration": 1
+      },
+      "moomoo": {
+        "framework_provenance": 1,
+        "ai_narrative_grounding": 3,
+        "ratio_depth": 3,
+        "global_ticker_coverage": 4,
+        "sea_distribution": 5,
+        "self_serve_pdf_export": 2,
+        "free_tier_quality": 5,
+        "team_collaboration": 1
+      },
+      "diy_excel": {
+        "framework_provenance": 4,
+        "ai_narrative_grounding": 2,
+        "ratio_depth": 5,
+        "global_ticker_coverage": 5,
+        "sea_distribution": 5,
+        "self_serve_pdf_export": 2,
+        "free_tier_quality": 5,
+        "team_collaboration": 1
+      }
+    }
+  },
+  "heatmap": {
+    "segments": [
+      { "id": "emba_practitioner", "name": "Booth/EMBA Practitioner", "descriptor": "EMBA / MBA candidate / alumni using CF/FS/OM/CS frameworks" },
+      { "id": "retail_prosumer",   "name": "SE-Asia Prosumer", "descriptor": "30-50 yr-old retail with > S$50k portfolio; reads earnings" },
+      { "id": "boutique_analyst",  "name": "Boutique Fund Analyst", "descriptor": "Junior-mid analyst at SG/HK family office or boutique fund" },
+      { "id": "elitez_channel",    "name": "Elitez SME CFO", "descriptor": "CFO / Finance Director inside Elitez Group SG SME client base" }
+    ],
+    "needs": [
+      { "id": "framework_rigour",  "name": "Framework rigour",        "short": "FRMWK" },
+      { "id": "narrative_quality", "name": "Narrative quality",       "short": "NARR" },
+      { "id": "ratio_depth",       "name": "Ratio + statement depth", "short": "DEPTH" },
+      { "id": "ticker_breadth",    "name": "Ticker breadth",          "short": "BREADTH" },
+      { "id": "shareable_pdf",     "name": "Shareable PDF / report",  "short": "PDF" },
+      { "id": "speed_to_insight",  "name": "Speed to first insight",  "short": "SPEED" }
+    ],
+    "cells": {
+      "emba_practitioner:framework_rigour": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "damodaran_xls", "name": "Damodaran XLS", "score": 5, "specialisation_for_cell": "Faculty-grade DCF / WACC / cost-of-equity templates; the academic gold-standard for valuation rigour" },
+          { "id": "stock_rover", "name": "Stock Rover", "score": 3, "specialisation_for_cell": "650+ ratio metrics; framework is implicit in the screener depth, not labelled" },
+          { "id": "diy_excel", "name": "DIY Excel + ChatGPT", "score": 4, "specialisation_for_cell": "Bring-your-own-framework using Damodaran XLS + ChatGPT; rigour fully owned by user, error-prone" }
+        ]
+      },
+      "emba_practitioner:narrative_quality": {
+        "our_score": 4,
+        "competitors": [
+          { "id": "simply_wall_st", "name": "Simply Wall St", "score": 4, "specialisation_for_cell": "Best-in-class consumer narrative; readable; framework-anchored to proprietary snowflake not academic" },
+          { "id": "perplexity_finance", "name": "Perplexity", "score": 3, "specialisation_for_cell": "Cited generative AI; readable but format unstructured for framework analysis" },
+          { "id": "diy_excel", "name": "DIY ChatGPT", "score": 3, "specialisation_for_cell": "Quality varies by prompt; no persistent format; framework alignment depends on user discipline" }
+        ]
+      },
+      "emba_practitioner:ratio_depth": {
+        "our_score": 3,
+        "competitors": [
+          { "id": "tikr", "name": "TIKR", "score": 5, "specialisation_for_cell": "S&P Capital IQ data depth at retail price; 20-yr financials covers Booth case-study horizon" },
+          { "id": "stock_rover", "name": "Stock Rover", "score": 5, "specialisation_for_cell": "650+ screener metrics; deepest ratio engine in retail-priced tools" },
+          { "id": "koyfin", "name": "Koyfin", "score": 5, "specialisation_for_cell": "200+ ratio templates; cross-asset; pro-grade chart density" }
+        ]
+      },
+      "emba_practitioner:ticker_breadth": {
+        "our_score": 2,
+        "competitors": [
+          { "id": "damodaran_xls", "name": "Damodaran XLS", "score": 5, "specialisation_for_cell": "Sector-betas + country-risk-premium tables apply globally; user supplies any ticker manually" },
+          { "id": "tikr", "name": "TIKR", "score": 5, "specialisation_for_cell": "100k+ tickers, global coverage including small-cap" },
+          { "id": "yahoo_finance", "name": "Yahoo Finance", "score": 5, "specialisation_for_cell": "Universal ticker coverage; the global default for any equity lookup" }
+        ]
+      },
+      "emba_practitioner:shareable_pdf": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "simply_wall_st", "name": "Simply Wall St", "score": 3, "specialisation_for_cell": "PDF export available but consumer-flavoured; not classroom-friendly" },
+          { "id": "morningstar", "name": "Morningstar Premium", "score": 4, "specialisation_for_cell": "Analyst-PDF heritage; trusted format for institutional readers" },
+          { "id": "damodaran_xls", "name": "Damodaran XLS", "score": 1, "specialisation_for_cell": "No native PDF; user exports XLS sheet manually" }
+        ]
+      },
+      "emba_practitioner:speed_to_insight": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "perplexity_finance", "name": "Perplexity", "score": 4, "specialisation_for_cell": "Conversational; under-30-second insight via natural language; depth shallow" },
+          { "id": "yahoo_finance", "name": "Yahoo Finance", "score": 4, "specialisation_for_cell": "Sub-second quote + financials; no analytic synthesis" },
+          { "id": "damodaran_xls", "name": "Damodaran XLS", "score": 1, "specialisation_for_cell": "Manual data entry per ticker; 30-90 minutes per name" }
+        ]
+      },
+      "retail_prosumer:framework_rigour": {
+        "our_score": 4,
+        "competitors": [
+          { "id": "simply_wall_st", "name": "Simply Wall St", "score": 4, "specialisation_for_cell": "Snowflake 5-axis is consistent + repeatable; framework is proprietary not academic" },
+          { "id": "morningstar", "name": "Morningstar", "score": 4, "specialisation_for_cell": "Star-rating + economic-moat framework anchored in Buffett-style heuristics" },
+          { "id": "moomoo", "name": "moomoo", "score": 2, "specialisation_for_cell": "Trader-flavoured AI summaries; framework is implicit in the broker's AI cards" }
+        ]
+      },
+      "retail_prosumer:narrative_quality": {
+        "our_score": 4,
+        "competitors": [
+          { "id": "simply_wall_st", "name": "Simply Wall St", "score": 5, "specialisation_for_cell": "Best-in-class consumer narrative + plain-English commentary; the SE-Asia retail benchmark" },
+          { "id": "tipranks", "name": "TipRanks", "score": 4, "specialisation_for_cell": "Aggregator + AI-summarised analyst ratings; persuasive narrative on Wall Street consensus" },
+          { "id": "seeking_alpha", "name": "Seeking Alpha", "score": 4, "specialisation_for_cell": "Author-led narrative with quant overlay; depth varies but reach is unmatched" }
+        ]
+      },
+      "retail_prosumer:ratio_depth": {
+        "our_score": 3,
+        "competitors": [
+          { "id": "tikr", "name": "TIKR", "score": 5, "specialisation_for_cell": "S&P Capital IQ depth at retail price; the SE-Asia prosumer's 'pro-grade' choice" },
+          { "id": "moomoo", "name": "moomoo", "score": 4, "specialisation_for_cell": "Free Level-2 quotes + bundled fundamentals inside a brokerage app; deep but trader-flavoured" }
+        ]
+      },
+      "retail_prosumer:ticker_breadth": {
+        "our_score": 2,
+        "competitors": [
+          { "id": "tikr", "name": "TIKR", "score": 5, "specialisation_for_cell": "100k+ tickers including SGX / HK / JP cross-listed names" },
+          { "id": "moomoo", "name": "moomoo", "score": 4, "specialisation_for_cell": "Multi-market broker app: SG, US, HK, AU; native to SE-Asia prosumer" },
+          { "id": "yahoo_finance", "name": "Yahoo Finance", "score": 5, "specialisation_for_cell": "Universal ticker coverage; the SE-Asia retail default open-tab" }
+        ]
+      },
+      "retail_prosumer:shareable_pdf": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "simply_wall_st", "name": "Simply Wall St", "score": 3, "specialisation_for_cell": "PDF export polished for consumer share; not fund-pitch grade" },
+          { "id": "moomoo", "name": "moomoo", "score": 2, "specialisation_for_cell": "Screenshot share inside the app; not a document" },
+          { "id": "tipranks", "name": "TipRanks", "score": 2, "specialisation_for_cell": "Broker-share embed; lighter PDF support" }
+        ]
+      },
+      "retail_prosumer:speed_to_insight": {
+        "our_score": 4,
+        "competitors": [
+          { "id": "moomoo", "name": "moomoo", "score": 5, "specialisation_for_cell": "Broker-bundled AI cards rendered inside the trade-flow; sub-second" },
+          { "id": "perplexity_finance", "name": "Perplexity", "score": 4, "specialisation_for_cell": "Conversational; quick generative answers; framework discipline absent" },
+          { "id": "simply_wall_st", "name": "Simply Wall St", "score": 4, "specialisation_for_cell": "Pre-rendered snowflakes load fast; full narrative is a paywalled extra step" }
+        ]
+      },
+      "boutique_analyst:framework_rigour": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "damodaran_xls", "name": "Damodaran XLS", "score": 5, "specialisation_for_cell": "Faculty-grade rigour; many boutique analysts already build models off these templates" },
+          { "id": "morningstar", "name": "Morningstar", "score": 4, "specialisation_for_cell": "Trusted moat-rating framework; PM-readable" },
+          { "id": "spgi_capital_iq", "name": "S&P Capital IQ", "score": 4, "specialisation_for_cell": "Deep ratio engine; framework is implicit in the workflow" }
+        ]
+      },
+      "boutique_analyst:narrative_quality": {
+        "our_score": 4,
+        "competitors": [
+          { "id": "alphasense", "name": "AlphaSense", "score": 5, "specialisation_for_cell": "Generative summarisation across 10-Ks + transcripts + broker research; institutional-grade narrative" },
+          { "id": "morningstar", "name": "Morningstar", "score": 4, "specialisation_for_cell": "Analyst PDF notes with house view; trusted by RIAs and family offices" },
+          { "id": "seeking_alpha", "name": "Seeking Alpha", "score": 3, "specialisation_for_cell": "Author articles; quality varies; useful for triangulation, not primary memo" }
+        ]
+      },
+      "boutique_analyst:ratio_depth": {
+        "our_score": 3,
+        "competitors": [
+          { "id": "spgi_capital_iq", "name": "S&P Capital IQ", "score": 5, "specialisation_for_cell": "IB-grade dataset; the boutique analyst's daily desk on a shared seat" },
+          { "id": "tikr", "name": "TIKR", "score": 5, "specialisation_for_cell": "Capital IQ depth at retail price; the boutique-fund cost-saver" },
+          { "id": "factset", "name": "FactSet", "score": 5, "specialisation_for_cell": "Workflow-integrated ratio engine; 50% cheaper than Bloomberg" }
+        ]
+      },
+      "boutique_analyst:ticker_breadth": {
+        "our_score": 2,
+        "competitors": [
+          { "id": "bloomberg_terminal", "name": "Bloomberg", "score": 5, "specialisation_for_cell": "Universal coverage; cross-asset; the institutional default" },
+          { "id": "spgi_capital_iq", "name": "Capital IQ", "score": 5, "specialisation_for_cell": "Global coverage incl. PE/VC + private companies" },
+          { "id": "tikr", "name": "TIKR", "score": 5, "specialisation_for_cell": "100k+ tickers globally" }
+        ]
+      },
+      "boutique_analyst:shareable_pdf": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "morningstar", "name": "Morningstar", "score": 4, "specialisation_for_cell": "Polished analyst-PDF heritage; PM-readable" },
+          { "id": "spgi_capital_iq", "name": "Capital IQ", "score": 4, "specialisation_for_cell": "Tearsheet exports + Excel integration; institutional standard" }
+        ]
+      },
+      "boutique_analyst:speed_to_insight": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "alphasense", "name": "AlphaSense", "score": 5, "specialisation_for_cell": "Generative search across 10-Ks + transcripts; institutional speed-to-insight benchmark" },
+          { "id": "perplexity_finance", "name": "Perplexity", "score": 3, "specialisation_for_cell": "Quick generative answers; not citation-grade for memos" },
+          { "id": "spgi_capital_iq", "name": "Capital IQ", "score": 3, "specialisation_for_cell": "Workflow-fast for power-users; learning-curve heavy" }
+        ]
+      },
+      "elitez_channel:framework_rigour": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "yahoo_finance", "name": "Yahoo Finance", "score": 1, "specialisation_for_cell": "No framework lens; raw quotes + statements only" },
+          { "id": "moomoo", "name": "moomoo", "score": 2, "specialisation_for_cell": "Broker-app AI cards; framework not exposed; suits trader more than CFO" },
+          { "id": "diy_excel", "name": "DIY Excel + ChatGPT", "score": 3, "specialisation_for_cell": "Most CFOs already do this for board packs; rigour depends on individual" }
+        ]
+      },
+      "elitez_channel:narrative_quality": {
+        "our_score": 4,
+        "competitors": [
+          { "id": "openai_chatgpt_finance", "name": "ChatGPT", "score": 3, "specialisation_for_cell": "CFO-friendly conversational analysis; hallucination risk on data" },
+          { "id": "seeking_alpha", "name": "Seeking Alpha", "score": 4, "specialisation_for_cell": "Familiar editorial format; CFO peer reads articles for triangulation" }
+        ]
+      },
+      "elitez_channel:ticker_breadth": {
+        "our_score": 2,
+        "competitors": [
+          { "id": "yahoo_finance", "name": "Yahoo Finance", "score": 5, "specialisation_for_cell": "Universal coverage; the CFO default open-tab" },
+          { "id": "moomoo", "name": "moomoo", "score": 4, "specialisation_for_cell": "Multi-market broker app native to SG SME CFO" }
+        ]
+      },
+      "elitez_channel:shareable_pdf": {
+        "our_score": 5,
+        "competitors": [
+          { "id": "diy_excel", "name": "DIY Excel + ChatGPT", "score": 3, "specialisation_for_cell": "Manual board-pack assembly; CFO already does this; slow and inconsistent" },
+          { "id": "morningstar", "name": "Morningstar", "score": 3, "specialisation_for_cell": "Analyst PDFs are board-packable; ticker scope skewed to large-cap" }
+        ]
+      },
+      "elitez_channel:speed_to_insight": {
+        "our_score": 4,
+        "competitors": [
+          { "id": "yahoo_finance", "name": "Yahoo Finance", "score": 4, "specialisation_for_cell": "Sub-second quote + statements; no analytic synthesis but very fast" },
+          { "id": "openai_chatgpt_finance", "name": "ChatGPT", "score": 3, "specialisation_for_cell": "Conversational fast-path; depends on prompt skill" }
+        ]
+      }
+    }
+  },
+  "attack_plans": [
+    {
+      "rank": 1,
+      "niche_name": "Booth EMBA Methodology Lens",
+      "icp": "Booth EMBA candidate / alumni using CF / FS / OM / CS frameworks for both classroom case-studies and personal-investment idea generation; benchmarks against Damodaran XLS + ChatGPT today",
+      "whitespace_segment_id": "emba_practitioner",
+      "tam_estimate_sgd": 6500000,
+      "tam_reasoning": "EMBA + active alumni ~250k globally; Booth-aligned cohort (Booth + adjacent programmes) ~80k; assume 10% conversion at SGD 39/mo Pro = SGD 3.7M ARR. EMBA-cohort site licences ~30 programmes adopting at SGD 4,500/yr = SGD 135k. Plus alumni Pro halo. Total addressable ~SGD 6.5M.",
+      "why_gap": "Damodaran XLS is rigorous but manual + Excel-only. ChatGPT is fluent but ungrounded in framework. Simply Wall St is fluent but proprietary framework, not academic. No SE-Asia retail tool surfaces a *brand-named* academic framework rendered live on any ticker.",
+      "why_we_win": "Market Tracker's four modules are explicit Booth-EMBA framework digitisation. Tooling + narrative + reproducibility + share-as-PDF in one app; persona doesn't trade off rigour for speed any more.",
+      "gtm": {
+        "channel": "EMBA classroom invites (Booth Singapore, NUS, SMU); alumni Slack/LinkedIn; SHRI / SMU EMBA mailing lists; Booth alumni hub guest posts",
+        "pitch": "Damodaran rigour, ChatGPT-fluency, run on any S&P 500 ticker in 30 seconds. Built around CF / FS / OM / CS modules, citation-grade. Free guest tier; Pro at S$29; cohort site licence S$4,500/yr.",
+        "pricing": "Pro consumer SGD 29/mo; EMBA-cohort site licence SGD 4,500/yr",
+        "content": "Booth methodology page; case-study templates; comparison vs Damodaran XLS; alumni hub partnership"
+      }
+    },
+    {
+      "rank": 2,
+      "niche_name": "Boutique Fund 'CFO of the Stock' Memo",
+      "icp": "Junior-mid analyst at SG/HK family office or boutique fund (3-15 staff, AUM S$50M-S$500M); shared Bloomberg + Capital IQ seat; PM expects framework rigour in memos",
+      "whitespace_segment_id": "boutique_analyst",
+      "tam_estimate_sgd": 5400000,
+      "tam_reasoning": "SG + HK boutique funds + family offices ~750 firms; assume 30% adopt Team tier (3 seats avg) at SGD 199/mo = SGD 5.4M annualised. Conservative because procurement friction is real for institutional buyers.",
+      "why_gap": "Bloomberg is too expensive per analyst; Capital IQ shared seats create queue waits; TIKR has data depth but no framework lens; AlphaSense is search not framework. No tool turns 6 hrs of CF + FS + OM + CS memo-compile into a 30-sec auto-generated PDF.",
+      "why_we_win": "Time-saving math: junior analyst at S$80/hr loaded x 4 hrs saved x 8 names/mo = S$2,560/mo opportunity-cost vs SGD 199/mo Team tier. Plus framework rigour is exactly what PM wants in memos. Plus the team can collaborate.",
+      "gtm": {
+        "channel": "Direct outreach to SG/HK boutique fund founder-PMs via SHRI / IMAS / HKVCA networks; LinkedIn warm intros via SG family-office analyst community",
+        "pitch": "Save your junior 30 hrs/mo of memo compile. SGD 199/mo for 3 seats. Booth-grade framework rigour, citable, PM-readable, exportable. Saves 8% of your analyst cost, full stop.",
+        "pricing": "Team tier SGD 199/mo (3 seats); per-seat add-on SGD 50/mo",
+        "content": "Boutique-fund case study; 6-hrs-to-30-sec memo time-saving deck; Booth memo template open-source"
+      }
+    },
+    {
+      "rank": 3,
+      "niche_name": "SE-Asia Prosumer 'Beyond the Broker App'",
+      "icp": "30-50 yr-old SG / MY / HK self-directed retail investor with S$50-500k portfolio; outgrew moomoo / Tiger AI cards; reads earnings; benchmarks Simply Wall St as the alt",
+      "whitespace_segment_id": "retail_prosumer",
+      "tam_estimate_sgd": 12000000,
+      "tam_reasoning": "SE-Asia prosumer pool ~1.1M; assume 4% reach + 25% conversion at SGD 25/mo Pro effective ARPU = SGD 3.3M annualised. Plus broker-partner co-distribution lift (moomoo / Tiger SG content-partner deals) potentially adding SGD 8M-10M cumulative TAM. Modeled at SGD 12M.",
+      "why_gap": "moomoo / Tiger broker AI cards are too shallow for conviction-building; Yahoo Finance has no framework lens; Bloomberg/FactSet are out of reach; Simply Wall St uses proprietary framework not academic. The lane between 'broker AI card' and 'pro-grade terminal' is wide open in SE-Asia at SGD 25-29/mo.",
+      "why_we_win": "Booth-academic provenance + AI-narrative grounded in financial statements + SE-Asia distribution via Elitez channel + bilingual narrative (English-first, Chinese roadmap). Three things no SE-Asia rival owns.",
+      "gtm": {
+        "channel": "SG retail investor Slack/Discord; broker-app content partnership (moomoo SG content team, Tiger SG education hub); SGX investor-education content; YouTube creator partnerships (SG finance creators 50k+ subs)",
+        "pitch": "When the broker-app summary card isn't enough but Bloomberg is out of reach. SGD 29/mo. Booth-EMBA framework on every name you watch.",
+        "pricing": "Free guest tier; Pro consumer SGD 29/mo",
+        "content": "Booth-vs-snowflake comparison content; 'after the broker app' explainer; SGX-listed-name framework gallery"
+      }
+    },
+    {
+      "rank": 4,
+      "niche_name": "Elitez SME CFO Cross-Sell",
+      "icp": "CFO / Finance Director at SG SME (50-300 headcount, S$10-100M revenue) inside the Elitez Group client base; warm relationship via Elitez Pulse; uses framework for personal portfolio + occasional board-pack capital-markets context",
+      "whitespace_segment_id": "elitez_channel",
+      "tam_estimate_sgd": 720000,
+      "tam_reasoning": "Elitez Pulse / EOR / Aviation client base ~2,000 SG SMEs; assume 1 finance leader per firm + 30% reach + 25% conversion at SGD 29/mo Pro personal = SGD 720k annualised. Volume-seeding tier, not GMV-engine.",
+      "why_gap": "CFOs default to Yahoo Finance + ChatGPT today; resist firm-paid tooling; treat research as personal interest. No tool today bundles framework rigour + 1-page board-pack-grade PDF + Elitez-trusted distribution.",
+      "why_we_win": "Warm Elitez Pulse channel zeroes CAC. CFO trusts the brand-stack and reads the PDF on the train. Volume-seeds the Pro tier and produces testimonial mass + EMBA referrals (SG SME CFOs often have an EMBA spouse / colleague).",
+      "gtm": {
+        "channel": "Elitez Pulse account-team cross-sell on monthly client-success review; Elitez SME CFO roundtables + lunches; SHRI HR-Finance joint events",
+        "pitch": "Your morning-coffee read on any S&P 500 stock, Booth-framework-rigorous, PDF-shareable. SGD 29/mo personal. Elitez clients get first 60 days free.",
+        "pricing": "Pro consumer SGD 29/mo (Elitez client 60-day free trial)",
+        "content": "SME CFO morning-read sample PDFs; Elitez Pulse co-marketed launch deck; 'board pack one-pager' framework template"
+      }
+    },
+    {
+      "rank": 5,
+      "niche_name": "DIY ChatGPT 'Grounded-AI' Conversion",
+      "icp": "Tech-savvy retail investor (ChatGPT Plus / Claude Pro user) who already pastes earnings transcripts into chat for narrative analysis; wants 'grounded ChatGPT' not 'another retail SaaS'",
+      "whitespace_segment_id": "retail_prosumer",
+      "tam_estimate_sgd": 1800000,
+      "tam_reasoning": "SE-Asia ChatGPT Plus / Claude Pro user base ~3M; ~5% use it for finance regularly; ~10% conversion to a paid framework-grounded tool at SGD 9-29/mo blended ARPU = SGD 1.8M annualised.",
+      "why_gap": "ChatGPT is fluent but hallucinates equity data without source-grounding; re-prompting for the same framework template is friction; no persistence between conversations on a ticker. Persona explicitly resists 'retail SaaS' framing — wants ChatGPT-augmenter not ChatGPT-replacer.",
+      "why_we_win": "Visible methodology lineage (model used: Claude Sonnet, retrieval scope: yfinance financial statements, prompt template public) builds the trust bridge from DIY-ChatGPT to grounded-framework. Free guest tier with rate limit converts at the 'I'd hit rate limit anyway with ChatGPT Plus' moment.",
+      "gtm": {
+        "channel": "ChatGPT GPT marketplace; Claude / Anthropic developer community; SE-Asia AI-curious retail subreddits + Hacker News",
+        "pitch": "ChatGPT-fluency + grounded financial statements + Booth-EMBA framework. The hallucination-free way to talk to an AI about a stock. Free guest. Pro SGD 29/mo.",
+        "pricing": "Free guest (rate-limited); Pro consumer SGD 29/mo",
+        "content": "Methodology + AI-guardrails page; comparison vs ChatGPT-with-no-data; open prompt template + retrieval-scope disclosure"
+      }
+    }
+  ]
+}

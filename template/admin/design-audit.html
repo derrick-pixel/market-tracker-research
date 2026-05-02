@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLASH PRESS // DESIGN AUDIT // VOL.01</title>
+  <meta name="description" content="Market Tracker 2026 design audit — risograph zine. Rival flyers ranked, polaroid review pile with hand-drawn 1-10 scores.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #d8d4cc;
+      --paper-2: #c8c4bc;
+      --ink: #1a1a1a;
+      --pink: #ff2d8a;
+      --cyan: #00c9d9;
+      --indigo: #352a82;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--paper); }
+    body { color: var(--ink); font-family: 'Space Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.55; min-height: 100vh; position: relative; overflow-x: hidden; }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; opacity: 0.18; z-index: 1000;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      mix-blend-mode: multiply;
+    }
+    a { color: var(--pink); text-decoration: underline; text-decoration-thickness: 2px; }
+    a:hover { color: var(--cyan); }
+
+    .frame { max-width: 1320px; margin: 0 auto; padding: 24px 28px 80px; position: relative; z-index: 2; }
+
+    .zine-nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 14px 0; border-bottom: 3px solid var(--ink); margin-bottom: 14px; }
+    .zine-nav .brand { font-family: 'Archivo Black', sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 12px; border: 3px solid var(--ink); background: var(--ink); color: var(--paper); text-decoration: none; margin-right: 8px; }
+    .zine-nav .brand em { font-style: normal; color: var(--pink); }
+    .zine-nav a.zlink { font-family: 'Archivo Black', sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; }
+    .zine-nav a.zlink:hover { color: var(--pink); }
+    .zine-nav a.zlink.active { background: var(--paper); color: var(--ink); text-shadow: 2px 0 var(--pink), -2px 0 var(--cyan); }
+    .zine-nav .spacer { flex: 1; }
+    .zine-nav .back { font-family: 'Space Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; border: 2px dashed var(--ink); padding: 6px 10px; }
+    .zine-nav .back:hover { color: var(--cyan); }
+    .issue-strip { display: flex; gap: 10px; flex-wrap: wrap; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+    .issue-strip span { border: 2px solid var(--ink); padding: 3px 9px; background: var(--paper); }
+
+    .hero { position: relative; padding: 32px 0 14px; border-bottom: 6px solid var(--ink); margin-bottom: 36px; }
+    .reg-mark { position: absolute; width: 18px; height: 18px; opacity: 0.65; }
+    .hero .kicker { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; }
+    .hero h1 { font-family: 'Archivo Black', sans-serif; font-size: clamp(64px, 12vw, 200px); line-height: 0.85; margin: 0 0 16px 0; letter-spacing: -0.04em; text-shadow: 4px 0 var(--pink), -4px 0 var(--cyan); text-transform: uppercase; }
+    .hero h2 { font-family: 'Archivo Black', sans-serif; font-size: clamp(28px, 4.5vw, 56px); line-height: 0.9; margin: 0 0 12px 0; letter-spacing: -0.02em; text-transform: uppercase; }
+    .hero .lede { max-width: 760px; font-size: 16px; line-height: 1.5; }
+
+    .stripe { height: 28px; margin: 36px 0 24px; background: repeating-linear-gradient(90deg, var(--pink) 0, var(--pink) 24px, var(--cyan) 24px, var(--cyan) 48px); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); position: relative; }
+    .stripe::after { content: attr(data-label); position: absolute; top: 50%; left: 24px; transform: translateY(-50%); background: var(--paper); border: 3px solid var(--ink); padding: 4px 14px; font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .sec { position: relative; margin-bottom: 24px; }
+    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+    .sec-head h3 { font-family: 'Archivo Black', sans-serif; font-size: 36px; line-height: 1; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink); }
+    .sec-head .meta { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo); border: 2px solid var(--ink); padding: 4px 10px; background: var(--paper); }
+
+    /* ---- Polaroid review pile ---- */
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 26px;
+    }
+    #gallery > div {
+      position: relative;
+      background: var(--paper);
+      border: 3px solid var(--ink);
+      padding: 14px 14px 56px;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
+    }
+    /* Polaroid rotations — review pile feel */
+    #gallery > div:nth-child(odd)        { transform: rotate(-1.4deg); }
+    #gallery > div:nth-child(even)       { transform: rotate(1.2deg);  }
+    #gallery > div:nth-child(3n)         { transform: rotate(-0.6deg); }
+    #gallery > div:nth-child(4n+1)       { transform: rotate(2deg);    }
+    #gallery > div:nth-child(5n+2)       { transform: rotate(-2deg);   }
+    /* Tape strip on top — stylistic flourish */
+    #gallery > div::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-3deg);
+      width: 70px; height: 18px;
+      background: rgba(0, 201, 217, 0.45);
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+    #gallery > div h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin: 4px 0 10px 0;
+      padding-right: 80px;
+      line-height: 1.05;
+      position: relative;
+      z-index: 1;
+    }
+    #gallery > div p {
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 0 0 8px 0;
+    }
+    #gallery > div p:nth-of-type(1) {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      word-break: break-all;
+      color: var(--indigo);
+      opacity: 0.85;
+    }
+    #gallery > div img {
+      width: 100%;
+      border: 2px solid var(--ink);
+      margin: 4px 0 12px;
+      filter: contrast(1.05) saturate(0.92);
+      display: block;
+    }
+
+    /* Hand-drawn score circle (top-right of polaroid) */
+    .score-circle {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 64px;
+      height: 64px;
+      transform: rotate(8deg);
+      z-index: 2;
+    }
+    .score-circle .ring {
+      position: absolute;
+      inset: 0;
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+      background: var(--paper);
+      box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 6px var(--pink);
+    }
+    .score-circle .ring::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px dashed var(--ink);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+    .score-circle .num {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 24px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .score-circle .num small { font-size: 10px; opacity: 0.7; margin-left: 2px; }
+    .score-circle.tier-top    .ring { box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 6px var(--cyan); }
+    .score-circle.tier-mid    .ring { box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 6px var(--pink); }
+    .score-circle.tier-bottom .ring { box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 6px var(--indigo); }
+
+    .zine-footer { margin-top: 40px; padding-top: 18px; border-top: 6px solid var(--ink); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    @media (max-width: 760px) {
+      .hero h1 { font-size: 56px; text-shadow: 3px 0 var(--pink), -3px 0 var(--cyan); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="frame">
+
+    <nav class="zine-nav" aria-label="Admin sections">
+      <a href="index.html" class="brand">Flash<em>·</em>26</a>
+      <a href="index.html" class="zlink">Roster</a>
+      <a href="insights.html" class="zlink">Market &amp; Pricing</a>
+      <a href="whitespace.html" class="zlink">Whitespace</a>
+      <a href="design-audit.html" class="zlink active">Design</a>
+      <a href="report.html" class="zlink">Print Edition</a>
+      <span class="spacer"></span>
+      <a href="../index.html" class="back">← Back to site</a>
+    </nav>
+
+    <div class="issue-strip">
+      <span>VOL.01</span><span>NO.1</span><span>SG ONLY</span><span>ELITEZ GROUP</span>
+    </div>
+
+    <section class="hero">
+      <svg class="reg-mark" style="top:8px;left:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
+      <svg class="reg-mark" style="top:8px;right:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
+      <div class="kicker">FLASH PRESS // AUDIT // 2026-05-02 // PRINT RUN: 100</div>
+      <h1>DESIGN</h1>
+      <h2>Rival flyers / who shows up to the gig.</h2>
+      <div class="lede">Every competitor's site is rated on five dimensions — visual hierarchy, content density, mobile, findability under three buyer intents, and editorial trust signals — and aggregated to a weighted 1–10 score. Sub-dimensions ≤ 6 carry a written reviewer note. Ordered best-on-top, like a stack of show flyers tossed on a table.</div>
+    </section>
+
+    <div class="stripe" data-label="01 · REVIEW PILE · COMPETITOR FLYERS"></div>
+    <section class="sec">
+      <div class="sec-head">
+        <h3>Ranked.</h3>
+        <span class="meta">Weighted 1–10 · highest first</span>
+      </div>
+      <div id="gallery"></div>
+    </section>
+
+    <footer class="zine-footer">
+      <span>FLASH PRESS · printed in two colours plus black · newsprint stock</span>
+      <span><a href="../index.html">Public site</a> // <a href="https://github.com/derrick-pixel/market-tracker-research">GitHub</a></span>
+    </footer>
+
+  </div>
+
+  <script type="module">
+    import { loadAppData, mountSampleBanner } from '../assets/js/app.js';
+    import { h, mount } from '../assets/js/dom.js';
+    const { competitors } = await loadAppData();
+    mountSampleBanner();
+    const sorted = [...competitors.competitors].sort((a, b) => (b.website_design_rating ?? 0) - (a.website_design_rating ?? 0));
+    const tierFor = n => n == null ? '' : n >= 8 ? 'tier-top' : n >= 5 ? 'tier-mid' : 'tier-bottom';
+    mount(document.getElementById('gallery'), ...sorted.map(c =>
+      h('div', {},
+        h('div', { class: `score-circle ${tierFor(c.website_design_rating)}` },
+          h('div', { class: 'ring' }),
+          h('div', { class: 'num' },
+            String(c.website_design_rating ?? '—'),
+            h('small', {}, '/10')
+          )
+        ),
+        h('h3', {}, c.name),
+        h('p', {}, c.url || ''),
+        c.website_screenshot_path
+          ? h('img', { src: `../${c.website_screenshot_path}`, alt: c.name })
+          : null,
+        h('p', {}, c.website_design_notes || 'No notes.')
+      )
+    ));
+  </script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+{
+  "meta": {
+    "project_name": "Market Tracker 2026",
+    "brand_tokens": {
+      "primary": "#9B1B30",
+      "secondary": "#f7931e",
+      "accent": "#00d97f",
+      "neutral_dark": "#0a0a0a",
+      "neutral_light": "#e8e6e3",
+      "font_display": "IBM Plex Sans, sans-serif",
+      "font_body": "IBM Plex Mono, ui-monospace, monospace"
+    },
+    "research_date": "2026-05-02",
+    "sample_data": false
+  },
+  "personas": [
+    {
+      "id": "emba_candidate",
+      "name": "Booth/EMBA Framework Practitioner",
+      "icp": "EMBA / MBA candidate or recent alumni at Chicago Booth, NUS, SMU, INSEAD, IMD, HKUST or similar; uses CF / FS / OM / CS frameworks for both classroom case-studies and personal-investment idea generation; 30-45 years old; S$200k+ portfolio",
+      "pains": [
+        "Damodaran XLS is excellent but slow — ten manual data-entries per ticker",
+        "ChatGPT narrative is fluent but ungrounded in framework + financial statements",
+        "Course-bundled spreadsheets stop updating after graduation",
+        "Wants reproducible, citable methodology to share with peers / classmates"
+      ],
+      "current_workaround": "Damodaran XLS for DCF + WACC, ChatGPT for narrative, Yahoo Finance for raw data, manual reconciliation in Excel each weekend",
+      "wtp_band_sgd": { "low_anchor": 19, "expected": 39, "upper_stretch": 79 },
+      "nba": {
+        "method": "tooling_stack",
+        "summary": "Current stack: ChatGPT Plus (S$27/mo) + occasional Koyfin Plus (S$67/mo) + Damodaran XLS time cost (~3 hrs/mo at S$60/hr loaded = S$180/mo). Total spend + time S$274/mo. Market Tracker replaces ChatGPT-for-finance + Koyfin starter use.",
+        "inputs": {
+          "tooling_lines": [
+            { "tool": "ChatGPT Plus (finance use)", "monthly_sgd": 27 },
+            { "tool": "Koyfin Plus (occasional)", "monthly_sgd": 67 },
+            { "tool": "Damodaran XLS time cost", "monthly_sgd": 180 }
+          ]
+        },
+        "monthly_sgd_equivalent": 39,
+        "confidence": 0.7
+      },
+      "whitespace_segment_ids": ["emba_practitioner"],
+      "implications": [
+        {
+          "headline": "Anchor MBA pricing on faculty-grade framework + reproducibility, not feature parity",
+          "body": "Persona pays for academic provenance and reproducibility, not for one-more-ratio. Pricing should anchor on Booth EMBA's perceived rigour — a S$39/mo tier that is 'methodology-cited' will out-convert a S$79 tier that is 'feature-equal to Koyfin'.",
+          "agent_targets": ["agent_4", "agent_8"]
+        }
+      ]
+    },
+    {
+      "id": "sea_prosumer",
+      "name": "SE-Asia Self-Directed Prosumer",
+      "icp": "30-50 yr-old SG/MY/HK self-directed retail investor with S$50-500k portfolio; reads earnings calls; runs DIY screens; outgrew the broker-app summary cards; primary brokerage is moomoo / Tiger / IBKR",
+      "pains": [
+        "Broker-app AI summary cards too shallow for actual conviction-building",
+        "Yahoo Finance / Investing.com don't surface valuation framework",
+        "Bloomberg / FactSet are out of reach financially",
+        "Want one place to read CF + FS + CS + OM lens on a name before sizing position"
+      ],
+      "current_workaround": "moomoo / Tiger broker-app AI cards + Yahoo financials + Seeking Alpha Premium for narrative; manual cross-check in personal Notion",
+      "wtp_band_sgd": { "low_anchor": 12, "expected": 25, "upper_stretch": 49 },
+      "nba": {
+        "method": "competitor_price",
+        "summary": "Direct comparable: Simply Wall St Premium SGD 22/mo (already paying close peer); moomoo/Tiger free fallback caps the upper tier. Market Tracker positions as 'Booth methodology vs Simply Wall St snowflake' at the same price band.",
+        "inputs": {
+          "competitor_id": "simply_wall_st",
+          "competitor_monthly_sgd": 22
+        },
+        "monthly_sgd_equivalent": 25,
+        "confidence": 0.75
+      },
+      "whitespace_segment_ids": ["retail_prosumer"],
+      "implications": [
+        {
+          "headline": "Competitive WTP ceiling is ~SGD 25/mo for SE-Asia prosumer",
+          "body": "Persona benchmarks against Simply Wall St SGD 22/mo. Pricing above SGD 30/mo for this segment requires materially differentiated framework or it loses on direct comparable. Use the Pro tier for this persona, not Team.",
+          "agent_targets": ["agent_4"]
+        }
+      ]
+    },
+    {
+      "id": "boutique_analyst",
+      "name": "Boutique Buy-Side / Family Office Analyst",
+      "icp": "Junior-mid analyst at a SG/HK family office or boutique fund (3-15 staff); annual fund AUM S$50M-S$500M; covers global equities; cannot justify a Bloomberg seat (~SGD 3.5k/mo) per analyst; uses Capital IQ/FactSet on a shared seat",
+      "pains": [
+        "Shared seat queue creates 30-90 min waits for routine ratio pulls",
+        "Junior model-builds drink time that should go to memo writing",
+        "PM expects 'Booth-style' framework rigour in memos — has to write the lens manually",
+        "M&A target screens hit out-of-scope tickers regularly"
+      ],
+      "current_workaround": "Bloomberg shared seat + Capital IQ Excel add-in + GuruFocus + occasional TIKR; takes ~6 hrs to compile a CF + FS + OM + CS one-pager per name",
+      "wtp_band_sgd": { "low_anchor": 39, "expected": 79, "upper_stretch": 199 },
+      "nba": {
+        "method": "wage",
+        "summary": "Junior-analyst loaded rate ~S$80/hr; saves 4 hrs per name analysis; runs 8 names per month = 32 hrs saved = S$2,560/mo opportunity-cost. Even Team tier at SGD 199/mo is < 8% of saved-time value.",
+        "inputs": {
+          "hourly_sgd": 80,
+          "hours_saved_per_month": 32
+        },
+        "monthly_sgd_equivalent": 199,
+        "confidence": 0.8
+      },
+      "whitespace_segment_ids": ["boutique_analyst"],
+      "implications": [
+        {
+          "headline": "Boutique-fund tier should be priced on time-saved, not feature count",
+          "body": "Persona is the highest-LTV segment by far. Team tier at SGD 199/mo (3 seats) is < 8% of opportunity-cost of saved analyst time — the bottleneck is procurement-friction not price. Lead with case-study time-saving in the pitch.",
+          "agent_targets": ["agent_4", "agent_8"]
+        }
+      ]
+    },
+    {
+      "id": "sg_cfo_cross_sell",
+      "name": "SG SME CFO (Elitez channel cross-sell)",
+      "icp": "CFO / Finance Director at SG SME (50-300 headcount, S$10-100M revenue) inside the Elitez Group client base; uses framework analysis for personal portfolio + occasional board-pack capital-markets context; not buying enterprise tools",
+      "pains": [
+        "Doesn't have time / inclination to learn TIKR / Koyfin chrome",
+        "Wants a 1-page Booth-style report to glance at over morning coffee",
+        "Resists firm-paid fintech tooling (treats it as personal expense)",
+        "Wants something more rigorous than ChatGPT but less effort than spreadsheets"
+      ],
+      "current_workaround": "Yahoo Finance + WhatsApp tips from peers + DBS Vickers research PDFs + occasional ChatGPT",
+      "wtp_band_sgd": { "low_anchor": 19, "expected": 29, "upper_stretch": 49 },
+      "nba": {
+        "method": "competitor_price",
+        "summary": "Personal-expense ceiling around S$30-50/mo. Persona benchmarks against the broker-research-bundle (free) + Seeking Alpha Premium SGD 32/mo. Market Tracker Pro at SGD 29/mo lands inside the 'I'd-pay-for-myself' band.",
+        "inputs": {
+          "competitor_id": "seeking_alpha",
+          "competitor_monthly_sgd": 32
+        },
+        "monthly_sgd_equivalent": 29,
+        "confidence": 0.6
+      },
+      "whitespace_segment_ids": ["retail_prosumer", "elitez_channel"],
+      "implications": [
+        {
+          "headline": "CFO cross-sell is volume-seeding via Elitez channel, not the GMV-engine",
+          "body": "Persona converts at SGD 29/mo personal — solid LTV but volume-seeding. Real revenue lift comes from leveraging this base for testimonials, EMBA referrals, and board-pack co-marketing with Elitez Pulse. Don't optimise this tier for ARPU; optimise for distribution + social proof.",
+          "agent_targets": ["agent_4"]
+        }
+      ]
+    },
+    {
+      "id": "diy_chatgpt_user",
+      "name": "DIY ChatGPT-for-Finance User",
+      "icp": "Tech-savvy retail investor (ChatGPT Plus / Claude Pro user) who already pastes earnings transcripts into chat for narrative analysis; cost-conscious; values flexibility over polish",
+      "pains": [
+        "AI hallucinates on equity data without source grounding",
+        "Re-prompting for the same framework template is friction",
+        "No persistence between conversations on a ticker",
+        "Wants 'finance-grounded ChatGPT' not 'another retail SaaS'"
+      ],
+      "current_workaround": "ChatGPT Plus or Claude Pro + manual data paste + Yahoo Finance / Macrotrends; periodically wonders if Perplexity Finance is enough",
+      "wtp_band_sgd": { "low_anchor": 0, "expected": 9, "upper_stretch": 19 },
+      "nba": {
+        "method": "wage",
+        "summary": "Persona spends ~6 hrs/mo on DIY-ChatGPT analysis; 2 hrs of that is re-prompting / data-paste friction = S$120/mo time cost at S$60/hr. But the persona resists paying for tools because 'I can do it free.' Market Tracker free tier is the sole entry point; converts only on persistent value.",
+        "inputs": {
+          "hourly_sgd": 60,
+          "hours_saved_per_month": 0
+        },
+        "monthly_sgd_equivalent": 0,
+        "confidence": 0.7
+      },
+      "whitespace_segment_ids": ["retail_prosumer"],
+      "implications": [
+        {
+          "headline": "DIY-ChatGPT user converts on framework-grounded AI, not price",
+          "body": "Persona is the 'will I get hallucinations' worry-driven buyer. Free guest tier with rate limit + visible methodology lineage (model used, retrieval scope) is the conversion lever. Marketing copy must explicitly contrast 'grounded in the financial statements' vs ChatGPT's free-form output.",
+          "agent_targets": ["agent_4", "agent_8"]
+        }
+      ]
+    }
+  ],
+  "pricing_models": [
+    {
+      "name": "Free guest tier (rate-limited, S&P 500 only)",
+      "rationale": "Current Streamlit app shape. Lowest-friction entry; converts ChatGPT-DIY worriers and cold prospects via the methodology page. Sets the floor on what the paid tier must beat.",
+      "score_by_persona": {
+        "Booth/EMBA Framework Practitioner": 4,
+        "SE-Asia Self-Directed Prosumer": 5,
+        "Boutique Buy-Side / Family Office Analyst": 2,
+        "SG SME CFO (Elitez channel cross-sell)": 5,
+        "DIY ChatGPT-for-Finance User": 5
+      }
+    },
+    {
+      "name": "Flat monthly Pro subscription (consumer SaaS norm)",
+      "rationale": "Familiar shape (Simply Wall St, TIKR, Stock Rover, Seeking Alpha). Easy to model LTV; works for prosumer + EMBA + CFO bands. Loses the Booth-pricing differentiator if priced as commodity.",
+      "score_by_persona": {
+        "Booth/EMBA Framework Practitioner": 5,
+        "SE-Asia Self-Directed Prosumer": 5,
+        "Boutique Buy-Side / Family Office Analyst": 3,
+        "SG SME CFO (Elitez channel cross-sell)": 4,
+        "DIY ChatGPT-for-Finance User": 3
+      }
+    },
+    {
+      "name": "Annual EMBA-cohort site licence",
+      "rationale": "School-paid bundle for an EMBA cohort (~50-150 students/yr per programme); lower per-seat price; high renewal stickiness; halo-marketing for retail. Aligns with how programmes already buy classroom XLS / case packs.",
+      "score_by_persona": {
+        "Booth/EMBA Framework Practitioner": 5,
+        "SE-Asia Self-Directed Prosumer": 1,
+        "Boutique Buy-Side / Family Office Analyst": 2,
+        "SG SME CFO (Elitez channel cross-sell)": 1,
+        "DIY ChatGPT-for-Finance User": 1
+      }
+    },
+    {
+      "name": "Team / firm tier (3-10 seats, boutique fund)",
+      "rationale": "Multi-seat tier for a family office or boutique fund. Locks in higher ARPU; shared screening + watchlists; limited-vs-Bloomberg positioning. Requires SSO + admin controls before launch.",
+      "score_by_persona": {
+        "Booth/EMBA Framework Practitioner": 2,
+        "SE-Asia Self-Directed Prosumer": 1,
+        "Boutique Buy-Side / Family Office Analyst": 5,
+        "SG SME CFO (Elitez channel cross-sell)": 2,
+        "DIY ChatGPT-for-Finance User": 1
+      }
+    },
+    {
+      "name": "Hybrid: free + Pro + Team + EMBA-cohort site licence",
+      "rationale": "Most defensible long-run shape. Free covers the brand + funnel; Pro covers the SE-Asia prosumer + CFO; Team covers boutique funds; EMBA-cohort is the halo-and-credibility lane.",
+      "score_by_persona": {
+        "Booth/EMBA Framework Practitioner": 5,
+        "SE-Asia Self-Directed Prosumer": 5,
+        "Boutique Buy-Side / Family Office Analyst": 5,
+        "SG SME CFO (Elitez channel cross-sell)": 4,
+        "DIY ChatGPT-for-Finance User": 4
+      }
+    }
+  ],
+  "elasticity_heuristics": [
+    {
+      "segment": "Booth/EMBA Framework Practitioner",
+      "elasticity_band": "low",
+      "evidence": "Persona has S$200k+ portfolio; pays for tooling + spends 3+ hrs/mo on DIY analysis. WTP at S$39/mo is sub-1% of portfolio; methodology trust is the binding constraint, not price."
+    },
+    {
+      "segment": "SE-Asia Self-Directed Prosumer",
+      "elasticity_band": "high",
+      "evidence": "Persona benchmarks tightly against Simply Wall St (S$22/mo); every S$5/mo beyond S$25 sheds materially more deals. Free tier (broker apps) pulls hard at the low end."
+    },
+    {
+      "segment": "Boutique Buy-Side / Family Office Analyst",
+      "elasticity_band": "low",
+      "evidence": "Time-saving math means even S$199/mo is < 8% of saved-analyst-cost. Procurement friction (legal review, vendor onboarding) is the binding constraint."
+    },
+    {
+      "segment": "SG SME CFO (Elitez channel cross-sell)",
+      "elasticity_band": "medium",
+      "evidence": "Personal-expense ceiling around S$30-50/mo. Above that, persona retreats to broker app + Yahoo. Below S$20 not credible as a 'real tool'."
+    },
+    {
+      "segment": "DIY ChatGPT-for-Finance User",
+      "elasticity_band": "high",
+      "evidence": "Persona resists paying for tools — 'I can do it free.' Free tier converts on framework-grounded value, not on price. Anything > S$0 needs a non-trivial methodology hook to convert."
+    }
+  ],
+  "recommended_tiers": [
+    {
+      "name": "Guest (free)",
+      "price_sgd": 0,
+      "target_persona": "DIY ChatGPT-for-Finance User",
+      "what_in": [
+        "S&P 500 ticker lookup",
+        "All four Booth modules (CF / FS / OM / CS)",
+        "AI narrative on each module",
+        "PDF export of the analysis",
+        "Methodology page + lineage citations"
+      ],
+      "what_excluded": [
+        "Login / portfolio save",
+        "Watchlists + alerts",
+        "Non-S&P 500 tickers (SGX, HK, JP, ASX)",
+        "Custom inputs (override risk-free rate, ERP, beta)",
+        "API access"
+      ],
+      "psychological_anchor": "Try the Booth-EMBA framework on any S&P 500 stock. No login. No credit card.",
+      "effective_price_after_psg": 0
+    },
+    {
+      "name": "Pro (consumer)",
+      "price_sgd": 29,
+      "target_persona": "SE-Asia Self-Directed Prosumer",
+      "what_in": [
+        "All Guest features",
+        "Full ticker scope: S&P 500 + SGX (STI) + HK + ASX",
+        "Watchlists + email alerts on framework score deltas",
+        "10-yr financial history",
+        "Custom inputs (risk-free rate / ERP / beta override)",
+        "PDF + DOCX export with branded cover",
+        "Saved analyses + revision history"
+      ],
+      "what_excluded": [
+        "Multi-seat sharing",
+        "API access",
+        "Sub-account permissions"
+      ],
+      "psychological_anchor": "S$29/mo. Less than your Spotify Family. The Booth methodology lens on every name you watch.",
+      "effective_price_after_psg": 29
+    },
+    {
+      "name": "Team (boutique fund)",
+      "price_sgd": 199,
+      "target_persona": "Boutique Buy-Side / Family Office Analyst",
+      "what_in": [
+        "All Pro features for 3 seats",
+        "Shared watchlists + collaborative comments",
+        "Memo-generation: one-page Booth-style PDF per ticker",
+        "API access (REST) for ratio + narrative pulls",
+        "SSO / admin controls",
+        "Quarterly written framework refresh from the Market Tracker team"
+      ],
+      "what_excluded": [
+        "Bloomberg-grade real-time tick data (out-of-scope)",
+        "M&A / PE deal-pipeline",
+        "Custom on-prem deployment"
+      ],
+      "psychological_anchor": "S$199/mo for 3 seats. Save 32 analyst-hours per month. Less than 8% of the time you'd otherwise pay junior analysts to compile.",
+      "effective_price_after_psg": 199
+    },
+    {
+      "name": "EMBA Cohort Site Licence",
+      "price_sgd": 4500,
+      "target_persona": "Booth/EMBA Framework Practitioner",
+      "what_in": [
+        "All Pro features for 1 cohort (50-150 students)",
+        "Faculty admin dashboard",
+        "Classroom case-study templates aligned to CF / FS / OM / CS modules",
+        "Co-branded methodology page",
+        "1 onboarding workshop with Market Tracker team",
+        "Annual renewal at -10% if cohort > 80% conversion"
+      ],
+      "what_excluded": [
+        "Open API access (separate addon)",
+        "Custom syllabus integrations beyond the four base modules",
+        "Live-class teaching"
+      ],
+      "psychological_anchor": "Less per-seat than the cohort's Excel licence. Methodology stays available to alumni for life on the Pro tier.",
+      "effective_price_after_psg": 4500
+    }
+  ],
+  "grants": [
+    {
+      "name": "PSG (Productivity Solutions Grant)",
+      "coverage_pct": 50,
+      "cap_sgd": 30000,
+      "eligibility": "SG-registered SME (under 200 staff or under S$100M turnover); pre-approved IMDA solution. Market Tracker not currently PSG-listed but the SaaS-side admin tooling could be listed in Year-2 for the Team tier.",
+      "applies_to_tiers": []
+    },
+    {
+      "name": "SkillsFuture Credit (Singapore)",
+      "coverage_pct": 100,
+      "cap_sgd": 4000,
+      "eligibility": "SG citizen / PR; reimbursable on accredited financial-literacy / valuation training. Pathway: bundle Pro tier with a SkillsFuture-accredited 'Booth methodology' workshop.",
+      "applies_to_tiers": ["Pro (consumer)"]
+    }
+  ]
+}

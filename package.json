@@ -1,0 +1,11 @@
+{
+  "name": "market-tracker-research",
+  "version": "0.1.0",
+  "description": "Competitor + market intelligence research site for Market Tracker (Elitez Asia) — Booth-EMBA equity analytics product.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test template/assets/js/**/_tests/*.test.mjs"
+  },
+  "license": "MIT"
+}

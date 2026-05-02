@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "project_name": "Market Tracker 2026",
+    "brand_tokens": {
+      "primary": "#9B1B30",
+      "secondary": "#f7931e",
+      "accent": "#00d97f",
+      "neutral_dark": "#0a0a0a",
+      "neutral_light": "#e8e6e3",
+      "font_display": "IBM Plex Sans, sans-serif",
+      "font_body": "IBM Plex Mono, ui-monospace, monospace"
+    },
+    "research_date": "2026-05-02",
+    "sample_data": false
+  },
+  "extracted_from": {
+    "type": "showcase_terminal_pit_floor",
+    "reference": "flashcart-research/template/admin/insights-terminal.html — Bloomberg/Reuters terminal aesthetic re-anchored to Market Tracker maroon-on-black brand",
+    "captured_at": "2026-05-02"
+  },
+  "tokens": {
+    "bg": "#0a0a0a",
+    "panel": "#111111",
+    "panel_2": "#161616",
+    "line": "#2a2a2a",
+    "line_soft": "#1a1a1a",
+    "ink": "#e8e6e3",
+    "dim": "#7a7770",
+    "amber": "#f7931e",
+    "green": "#00d97f",
+    "red": "#ff3b3b",
+    "cyan": "#0aafd9",
+    "maroon": "#9B1B30",
+    "primary": "#9B1B30",
+    "saas_bg": "#ffffff",
+    "saas_bg_soft": "#fafafa",
+    "saas_ink": "#0a0a0f",
+    "saas_ink_2": "#4a4a55",
+    "saas_ink_3": "#8a8a95",
+    "saas_line": "#ececf0",
+    "saas_primary": "#9B1B30",
+    "saas_grad": "linear-gradient(135deg, #9B1B30 0%, #c43a5a 50%, #f7931e 100%)",
+    "theme_mode": "terminal",
+    "font_head_terminal": "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+    "font_body_terminal": "'IBM Plex Mono', ui-monospace, Menlo, monospace",
+    "font_head_saas":     "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+    "font_body_saas":     "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+    "font_mono":          "'IBM Plex Mono', ui-monospace, monospace"
+  },
+  "font_imports": [
+    "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+  ],
+  "notes": "Pit-floor terminal aesthetic. Pitch black background, IBM Plex Mono dense type, maroon (#9B1B30 — Market Tracker brand from app.py) as the primary in display heads, amber (#f7931e) as the action / scoreboard accent, green/red as up/down quote movement. The Market Tracker public app is Streamlit-rendered with the same maroon — admin-research analytics use the dark terminal mode to feel like an institutional pit-floor instrument."
+}

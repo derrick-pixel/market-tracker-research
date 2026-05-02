@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Tracker — Booth-EMBA framework on every ticker</title>
+  <meta name="description" content="Market Tracker by Elitez Asia: AI-narrated equity analysis using four Chicago Booth EMBA frameworks (Corporate Finance, Financial Strategy, Operations Management, Competitive Strategy) — live on any S&amp;P 500 ticker. Live product at elitez-market.streamlit.app. Competitor and market intelligence in /admin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: #111111;
+      --line: #2a2a2a;
+      --line-soft: #1a1a1a;
+      --ink: #e8e6e3;
+      --dim: #7a7770;
+      --maroon: #9B1B30;
+      --amber: #f7931e;
+      --green: #00d97f;
+      --cyan: #0aafd9;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      min-height: 100vh;
+      background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { color: var(--amber); }
+    .status-bar {
+      background: #050505;
+      border-bottom: 1px solid var(--line);
+      padding: 6px 14px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      text-transform: uppercase;
+    }
+    .status-bar .pip { color: var(--maroon); }
+    .status-bar .live { color: var(--green); }
+    .frame { max-width: 1200px; margin: 0 auto; padding: 32px 24px 60px; }
+    nav.top {
+      display: flex; gap: 18px; flex-wrap: wrap;
+      font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 36px;
+    }
+    nav.top a { color: var(--dim); }
+    nav.top a:hover { color: var(--amber); }
+    nav.top a.primary { color: var(--amber); }
+    h1 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 56px; font-weight: 800; letter-spacing: -0.02em;
+      margin: 0 0 6px 0; color: var(--ink);
+    }
+    h1 .accent { color: var(--maroon); }
+    .tag {
+      color: var(--amber);
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .lede {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 22px; line-height: 1.5; color: var(--ink);
+      max-width: 760px; margin: 0 0 28px 0; font-weight: 400;
+    }
+    .cta {
+      display: inline-block; padding: 14px 22px; background: var(--maroon);
+      color: white; font-weight: 600; letter-spacing: 0.08em;
+      font-family: 'IBM Plex Sans', sans-serif;
+      text-transform: uppercase; font-size: 12px;
+    }
+    .cta:hover { background: var(--amber); color: #0a0a0a; }
+    .cta.ghost {
+      background: transparent; color: var(--ink); border: 1px solid var(--line);
+      margin-left: 10px;
+    }
+    .cta.ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+    .grid-2 {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px;
+      margin: 64px 0;
+    }
+    .card {
+      border: 1px solid var(--line); background: var(--panel);
+      padding: 22px;
+    }
+    .card h3 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--amber); font-size: 13px; letter-spacing: 0.08em;
+      text-transform: uppercase; margin: 0 0 12px 0; font-weight: 600;
+    }
+    .card p { margin: 0 0 8px 0; color: var(--ink); font-size: 14px; }
+    .card .modules {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px;
+      margin-top: 12px; font-size: 12px;
+    }
+    .card .modules .mod { color: var(--dim); }
+    .card .modules .mod b { display: block; color: var(--amber); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+
+    section.section { margin: 56px 0; }
+    section.section h2 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 28px; font-weight: 700; color: var(--ink);
+      margin: 0 0 8px 0; letter-spacing: -0.01em;
+    }
+    section.section h2 .accent { color: var(--maroon); }
+    section.section .sub {
+      color: var(--dim); font-size: 12px; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 22px;
+    }
+
+    ul.routes { list-style: none; padding: 0; margin: 0; }
+    ul.routes li {
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 22px; padding: 14px 0; border-bottom: 1px solid var(--line-soft);
+      align-items: baseline;
+    }
+    ul.routes li:last-child { border-bottom: none; }
+    ul.routes li .name {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600; color: var(--amber); font-size: 14px;
+    }
+    ul.routes li .desc { color: var(--ink); font-size: 13px; }
+
+    footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--dim); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    @media (max-width: 800px) {
+      h1 { font-size: 36px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      ul.routes li { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="status-bar">
+    <span><span class="pip">▮</span> MARKET TRACKER // RESEARCH SITE // 2026-05-02 // <span class="live">SESSION ACTIVE</span></span>
+    <span style="margin-left:auto;">PIT FLOOR · vol.01 · ELITEZ ASIA</span>
+  </div>
+
+  <div class="frame">
+    <nav class="top">
+      <a href="index.html" class="primary">Home</a>
+      <a href="admin/insights-terminal.html">Insights · Pit Floor</a>
+      <a href="admin/index.html">Overview</a>
+      <a href="admin/insights.html">Insights · Canonical</a>
+      <a href="admin/whitespace.html">Whitespace</a>
+      <a href="admin/report.html">Report</a>
+      <a href="admin/design-audit.html">Design audit</a>
+      <span style="margin-left:auto; color: var(--dim);">↗ <a href="https://elitez-market.streamlit.app/" target="_blank" rel="noopener">elitez-market.streamlit.app</a></span>
+    </nav>
+
+    <section>
+      <div class="tag">[ INSTRUMENT 01 / PRODUCT BRIEF ]</div>
+      <h1>Market Tracker <span class="accent">::</span> Booth-EMBA framework on every ticker.</h1>
+      <p class="lede">AI-narrated equity analysis on live S&amp;P 500 fundamentals — rendered through four Chicago Booth EMBA modules: Corporate Finance, Financial Strategy, Operations Management, Competitive Strategy. Built by Elitez Asia. This site is the competitor + market intelligence research backing the 2026 commercial roadmap.</p>
+      <p>
+        <a href="admin/insights-terminal.html" class="cta">View the pit-floor research →</a>
+        <a href="https://elitez-market.streamlit.app/" target="_blank" rel="noopener" class="cta ghost">Open the live product</a>
+      </p>
+    </section>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>▸ THE FOUR BOOTH MODULES</h3>
+        <p>Every ticker is run through the same four-module academic frame the EMBA cohort uses in classroom case studies — surfaced as a one-page Booth-grade analysis with PDF export.</p>
+        <div class="modules">
+          <div class="mod"><b>CF</b>Corporate Finance — CAPM &amp; Jensen's Alpha, valuation multiples, WACC, FCF, 3-stage DCF.</div>
+          <div class="mod"><b>FS</b>Financial Strategy — capital structure, implied credit rating, Altman Z, payout, pecking order.</div>
+          <div class="mod"><b>OM</b>Operations Management — supply-chain efficiency, throughput, process quality, demand variability.</div>
+          <div class="mod"><b>CS</b>Competitive Strategy — moat, disruption risk, market position.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>▸ MARKET INTELLIGENCE SUMMARY</h3>
+        <p><b style="color:var(--amber)">TAM</b> S$18.0B — global retail-investor research-tools spend.</p>
+        <p><b style="color:var(--amber)">SAM</b> S$220M — SE-Asia self-directed prosumers + EMBA framework-curious cohort.</p>
+        <p><b style="color:var(--amber)">SOM</b> S$6.8M (3-yr) — Elitez-channel-led capture inside the SAM.</p>
+        <p style="margin-top:14px; color: var(--dim); font-size: 12px;">Wedge: branded academic methodology + AI narrative grounded in the financial statements, distributed via Elitez Group's existing SG SME relationships.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2>Research <span class="accent">routes</span></h2>
+      <div class="sub">Five admin views drive off five typed JSON handoffs in <code style="color:var(--cyan)">/template/data</code>.</div>
+      <ul class="routes">
+        <li><span class="name">Insights · Pit Floor</span><span class="desc"><a href="admin/insights-terminal.html">admin/insights-terminal.html</a> — TAM/SAM/SOM as instrument quotes, persona instrument cards, tier order book, country readiness futures grid.</span></li>
+        <li><span class="name">Overview</span><span class="desc"><a href="admin/index.html">admin/index.html</a> — KPI strip, top-5 threats, market sizing funnel, ticker map.</span></li>
+        <li><span class="name">Insights · Canonical</span><span class="desc"><a href="admin/insights.html">admin/insights.html</a> — segment-level competitive observations and implications.</span></li>
+        <li><span class="name">Whitespace</span><span class="desc"><a href="admin/whitespace.html">admin/whitespace.html</a> — strategy canvas, segment × need heatmap, five ranked attack plans.</span></li>
+        <li><span class="name">Report</span><span class="desc"><a href="admin/report.html">admin/report.html</a> — board-grade printable synthesis.</span></li>
+        <li><span class="name">Design audit</span><span class="desc"><a href="admin/design-audit.html">admin/design-audit.html</a> — five-dimension rubric across the competitor field.</span></li>
+      </ul>
+    </section>
+
+    <footer>
+      Built on <a href="https://github.com/derrick-pixel/competitor-intel-template">competitor-intel-template</a> · MIT licence · Elitez Group · Pit-floor terminal volume 01.
+    </footer>
+  </div>
+</body>
+</html>

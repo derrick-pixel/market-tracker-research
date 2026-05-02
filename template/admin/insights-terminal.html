@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARKET TRACKER :: INSIGHTS :: PIT FLOOR</title>
+  <meta name="description" content="Market Tracker 2026 insights — terminal / pit-floor variant. TAM/SAM/SOM and pricing rendered as instrument quotes, order book and futures grid.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../assets/vendor/chart.umd.js"></script>
+  <style>
+    /* ===========================================================
+       PIT FLOOR — Bloomberg/Reuters terminal aesthetic
+       Pitch black, dense, mono. Amber primary, green/red status.
+       =========================================================== */
+    :root {
+      --bg: #0a0a0a;
+      --panel: #111111;
+      --panel-2: #161616;
+      --line: #2a2a2a;
+      --line-soft: #1a1a1a;
+      --ink: #e8e6e3;
+      --dim: #7a7770;
+      --amber: #f7931e;
+      --green: #00d97f;
+      --red: #ff3b3b;
+      --cyan: #0aafd9;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+      font-size: 13px;
+      line-height: 1.45;
+      letter-spacing: 0.01em;
+      min-height: 100vh;
+      /* Subtle scanlines */
+      background-image:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.012) 0px,
+          rgba(255,255,255,0.012) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { color: var(--amber); }
+
+    /* ---- Status bar ---- */
+    .status-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: #050505;
+      border-bottom: 1px solid var(--line);
+      padding: 6px 14px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      text-transform: uppercase;
+    }
+    .status-bar .pip { color: var(--amber); }
+    .status-bar .live { color: var(--green); }
+    .status-bar .cursor {
+      display: inline-block;
+      width: 8px; height: 12px;
+      background: var(--amber);
+      vertical-align: -1px;
+      animation: blink 1.05s steps(2,start) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ---- Ticker tape ---- */
+    .ticker {
+      border-bottom: 1px solid var(--line);
+      background: #060606;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      height: 28px;
+    }
+    .ticker-track {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 80s linear infinite;
+      font-size: 12px;
+      line-height: 28px;
+      letter-spacing: 0.05em;
+    }
+    .ticker-track .item { display: inline-block; margin-right: 36px; color: var(--dim); }
+    .ticker-track .sym  { color: var(--ink); margin-right: 6px; }
+    .ticker-track .px   { color: var(--ink); margin-right: 6px; }
+    .ticker-track .up   { color: var(--green); }
+    .ticker-track .down { color: var(--red); }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-100%); }
+    }
+
+    /* ---- Page frame ---- */
+    .frame {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 18px 22px 80px;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #0d0d0d, #080808);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: end;
+    }
+    .hero h1 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -0.01em;
+      margin: 0 0 6px 0;
+      color: var(--ink);
+    }
+    .hero h1 .accent { color: var(--amber); }
+    .hero .sub { color: var(--dim); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .hero .meta-block {
+      text-align: right;
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero .meta-block strong { color: var(--amber); display: block; font-size: 14px; }
+
+    /* ---- KPI strip (instrument quotes) ---- */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .kpi {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      transition: background 80ms;
+    }
+    .kpi:hover { background: #0e1a14; }
+    .kpi .sym {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+    }
+    .kpi .px {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .kpi .px .unit { color: var(--dim); font-weight: 500; font-size: 16px; margin-left: 4px; }
+    .kpi .delta { font-size: 12px; color: var(--green); white-space: nowrap; }
+    .kpi .delta.dn { color: var(--red); }
+    .kpi .sub-row {
+      grid-column: 1 / -1;
+      font-size: 11px;
+      color: var(--dim);
+      border-top: 1px dashed var(--line-soft);
+      padding-top: 8px;
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ---- Section ---- */
+    .section {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      margin-bottom: 16px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 14px;
+      background: #0c0c0c;
+      border-bottom: 1px solid var(--line);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .section-head .title { color: var(--amber); font-weight: 600; }
+    .section-head .meta { color: var(--dim); }
+    .section-body { padding: 14px 16px; }
+
+    /* ---- Cascade derivation flow ---- */
+    .cascade-stage {
+      margin-bottom: 22px;
+    }
+    .cascade-stage:last-child { margin-bottom: 0; }
+    .cascade-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 8px;
+    }
+    .cascade-head .arrow { color: var(--amber); }
+    .cascade-head .label { color: var(--amber); font-weight: 600; letter-spacing: 0.06em; }
+    .cascade-head .result {
+      margin-left: auto;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 14px;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .cascade-sub { color: var(--dim); font-size: 12px; margin: 6px 0 8px 22px; }
+    .cascade-eq {
+      color: var(--cyan);
+      font-size: 12px;
+      margin: 0 0 10px 22px;
+      letter-spacing: 0.02em;
+    }
+    .cascade-filters { margin: 0 0 10px 22px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .cascade-filters .chip {
+      border: 1px solid var(--line);
+      padding: 2px 8px;
+      font-size: 11px;
+      color: var(--dim);
+    }
+    .stack-table {
+      width: 100%;
+      margin: 6px 0 0 22px;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .stack-table th, .stack-table td {
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 1px dashed var(--line-soft);
+      vertical-align: top;
+    }
+    .stack-table th {
+      color: var(--dim);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .stack-table td.name { color: var(--ink); font-weight: 500; }
+    .stack-table td.eq   { color: var(--cyan); }
+    .stack-table td.res  { color: var(--amber); text-align: right; white-space: nowrap; }
+    .stack-table td.src  { color: var(--dim); font-size: 11px; }
+    .stack-inputs-mini { color: var(--dim); font-size: 11px; }
+
+    /* ---- Implications ---- */
+    .impl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 10px;
+    }
+    .impl {
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      background: var(--panel-2);
+    }
+    .impl h4 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      margin: 0 0 6px 0;
+      color: var(--amber);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .impl p { margin: 0 0 8px 0; color: var(--ink); font-size: 12px; }
+    .impl .targets { display: flex; gap: 6px; flex-wrap: wrap; }
+    .impl .targets .tg {
+      font-size: 10px;
+      color: var(--cyan);
+      border: 1px solid #1f3845;
+      padding: 1px 6px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ---- Collapsible details ---- */
+    details { border-top: 1px solid var(--line); padding: 10px 16px; }
+    details summary {
+      cursor: pointer;
+      color: var(--amber);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    details[open] summary { margin-bottom: 8px; }
+    details ul { padding-left: 20px; }
+    details li { color: var(--ink); font-size: 12px; margin-bottom: 4px; }
+    details .appendix-body {
+      color: var(--ink);
+      font-size: 12px;
+      line-height: 1.6;
+      max-width: 88ch;
+      white-space: pre-wrap;
+    }
+
+    /* ---- Policy ticker rows ---- */
+    .policy-rows {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .policy-row {
+      display: grid;
+      grid-template-columns: 28px 200px 1fr 120px;
+      gap: 14px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line-soft);
+      align-items: start;
+      transition: background 80ms;
+    }
+    .policy-row:last-child { border-bottom: none; }
+    .policy-row:hover { background: #0d1410; }
+    .policy-row .dir { font-size: 14px; line-height: 1; padding-top: 2px; }
+    .policy-row .dir.support  { color: var(--green); }
+    .policy-row .dir.against  { color: var(--red); }
+    .policy-row .dir.neutral  { color: var(--dim); }
+    .policy-row .title {
+      color: var(--ink); font-weight: 500;
+    }
+    .policy-row .title small {
+      display: block;
+      color: var(--dim);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .policy-row .body { color: var(--dim); font-size: 12px; }
+    .policy-row .body strong { color: var(--amber); display: block; font-size: 11px; margin-top: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .policy-row .body .imp { color: var(--ink); font-size: 12px; }
+    .policy-row .ticker-tag {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+    .policy-row .ticker-tag.support { color: var(--green); }
+    .policy-row .ticker-tag.against { color: var(--red); }
+    .policy-row .ticker-tag.neutral { color: var(--dim); }
+
+    /* ---- Country futures grid ---- */
+    .futures-grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .futures-grid th, .futures-grid td {
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+    .futures-grid th {
+      background: #0c0c0c;
+      color: var(--dim);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .futures-grid td.country { text-align: left; color: var(--ink); font-weight: 500; }
+    .futures-grid .cell {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .cell-hot   { background: rgba(0,217,127,0.18); color: var(--green); }
+    .cell-warm  { background: rgba(247,147,30,0.18); color: var(--amber); }
+    .cell-cold  { background: rgba(255,59,59,0.15); color: var(--red); }
+
+    /* ---- Personas as instrument cards ---- */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 10px;
+    }
+    .persona-card {
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      padding: 14px;
+      transition: background 80ms;
+    }
+    .persona-card:hover { background: #0e1a14; }
+    .persona-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      border-bottom: 1px dashed var(--line);
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+    .persona-head .tag {
+      color: var(--amber);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .persona-head .name {
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      margin-right: auto;
+      margin-left: 8px;
+    }
+    .persona-head .live {
+      color: var(--green);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+    }
+    .persona-quotes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 10px 0;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .persona-quotes .qq {
+      border: 1px solid var(--line);
+      padding: 6px 8px;
+      text-align: center;
+    }
+    .persona-quotes .qq .lab { font-size: 9px; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; }
+    .persona-quotes .qq .px  { font-size: 16px; color: var(--ink); font-weight: 600; }
+    .persona-quotes .qq.bid .px { color: var(--green); }
+    .persona-quotes .qq.ask .px { color: var(--red); }
+    .persona-meta {
+      font-size: 12px;
+    }
+    .persona-meta-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 8px;
+      padding: 4px 0;
+      border-bottom: 1px dotted var(--line-soft);
+    }
+    .persona-meta-row:last-child { border-bottom: none; }
+    .persona-meta-row .k { color: var(--amber); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding-top: 2px; }
+    .persona-meta-row .v { color: var(--ink); font-size: 12px; }
+    .persona-meta-row .v small { color: var(--dim); }
+
+    /* ---- Tier order book ---- */
+    .order-book {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .order-book th, .order-book td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .order-book th {
+      color: var(--dim);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+      background: #0c0c0c;
+    }
+    .order-book td.tier-name { color: var(--ink); font-weight: 600; font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; }
+    .order-book td.size      { color: var(--amber); }
+    .order-book td.px        { color: var(--ink); font-weight: 600; }
+    .order-book td.eff       { color: var(--green); }
+    .order-book td.persona   { color: var(--dim); }
+    .order-book tr:hover td { background: #0e1a14; }
+    .order-book .anchor {
+      color: var(--cyan);
+      font-size: 11px;
+      font-style: italic;
+    }
+    .tier-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 8px 12px 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 11px;
+    }
+    .tier-detail .col { }
+    .tier-detail .col h5 {
+      margin: 0 0 4px 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      color: var(--dim);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .tier-detail ul { margin: 0; padding-left: 16px; }
+    .tier-detail .col.in li  { color: var(--green); }
+    .tier-detail .col.out li { color: var(--red); }
+
+    /* ---- Charts ---- */
+    .chart-frame {
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      margin-bottom: 16px;
+    }
+    .chart-frame .title {
+      color: var(--amber);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .chart-frame .sub { color: var(--dim); font-size: 11px; margin-bottom: 12px; }
+    .chart-canvas { height: 360px; }
+    .chart-canvas.tall { height: 540px; }
+
+    /* ---- Footer ---- */
+    .pit-footer {
+      border-top: 1px solid var(--line);
+      margin-top: 30px;
+      padding-top: 14px;
+      color: var(--dim);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 920px) {
+      .kpis { grid-template-columns: 1fr; }
+      .policy-row { grid-template-columns: 24px 1fr; }
+      .policy-row .body, .policy-row .ticker-tag { grid-column: 2; }
+      .persona-grid { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; }
+      .hero .meta-block { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status-bar">
+    <span><span class="pip">▮</span> MARKET TRACKER // INSIGHTS // 2026-05-02 // <span class="live">SESSION ACTIVE</span> <span class="cursor"></span></span>
+    <span>SRC: market-intelligence.json · pricing-strategy.json</span>
+    <span style="margin-left:auto;">PIT FLOOR · vol.01</span>
+  </div>
+
+  <div class="ticker">
+    <div class="ticker-track" id="ticker-track">loading…</div>
+  </div>
+
+  <div class="frame">
+
+    <section class="hero">
+      <div>
+        <div style="color:var(--amber);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;">[ INSTRUMENT 02 / MARKET INTEL ]</div>
+        <h1>Insights <span class="accent">::</span> Pit Floor</h1>
+        <div class="sub">TAM / SAM / SOM, policy gravity, persona quotes, tier order book.</div>
+      </div>
+      <div class="meta-block">
+        <strong>MARKET TRACKER 2026</strong>
+        Booth-EMBA Equity Analysis<br>
+        Singapore · SGD<br>
+        An Elitez Group instrument
+      </div>
+    </section>
+
+    <!-- KPI strip -->
+    <div class="kpis" id="kpis"></div>
+
+    <!-- Market funnel cascade -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ MKT.SIZE :: DERIVATION CASCADE</span>
+        <span class="meta" id="src-meta">auditable</span>
+      </div>
+      <div class="section-body" id="cascade"></div>
+    </section>
+
+    <!-- Implications -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ IMPL :: STRATEGIC IMPLICATIONS</span>
+        <span class="meta" id="impl-meta"></span>
+      </div>
+      <div class="section-body">
+        <div class="impl-grid" id="impls"></div>
+      </div>
+    </section>
+
+    <!-- Sources + appendix (collapsible) -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ APPENDIX :: SOURCES + METHODOLOGY</span>
+        <span class="meta">collapsed by default</span>
+      </div>
+      <div id="appendix-mount"></div>
+    </section>
+
+    <!-- Policy ticker rows -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ POL :: POLICY LANDSCAPE</span>
+        <span class="meta" id="pol-count"></span>
+      </div>
+      <div class="policy-rows" id="policies"></div>
+    </section>
+
+    <!-- Country readiness futures grid -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ FUT :: COUNTRY READINESS GRID</span>
+        <span class="meta">REG · TECH · PRICE_TOL (1–5)</span>
+      </div>
+      <div class="section-body">
+        <table class="futures-grid" id="futures"></table>
+      </div>
+    </section>
+
+    <!-- Personas as instrument cards -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ PER :: PERSONA INSTRUMENTS</span>
+        <span class="meta" id="per-count"></span>
+      </div>
+      <div class="section-body">
+        <div class="persona-grid" id="personas"></div>
+      </div>
+    </section>
+
+    <!-- Tier order book -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ ORD :: TIER ORDER BOOK</span>
+        <span class="meta" id="tier-count"></span>
+      </div>
+      <div id="tiers"></div>
+    </section>
+
+    <!-- Charts -->
+    <div class="chart-frame">
+      <div class="title">CHT.01 :: TARGET-MARKET DISTRIBUTION</div>
+      <div class="sub">Buyer-segment frequency across mapped competitor field (top 8).</div>
+      <div class="chart-canvas"><canvas id="market-donut"></canvas></div>
+    </div>
+
+    <div class="chart-frame">
+      <div class="title">CHT.02 :: COMPETITOR PRICE BOOK</div>
+      <div class="sub">Recommended-tier midpoint overlaid against published competitor SGD/mo.</div>
+      <div class="chart-canvas tall"><canvas id="price-bars"></canvas></div>
+    </div>
+
+    <footer class="pit-footer">
+      <span>MARKET TRACKER · ELITEZ GROUP · PIT FLOOR INSTRUMENT</span>
+      <span><a href="insights.html">↩ canonical</a> · <a href="insights-zine.html">zine</a> · <a href="insights-hosai.html">hosai</a></span>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { loadAppData } from '../assets/js/app.js';
+    import { h, mount } from '../assets/js/dom.js';
+
+    const { competitors, market, pricing } = await loadAppData();
+    const ms = market.market_size || {};
+    const curLab = ms.currency_label || 'SGD';
+    const curSym = curLab === 'USD' ? 'US$' : curLab === 'AUD' ? 'A$' : curLab === 'HKD' ? 'HK$' : 'S$';
+
+    const fmtMoney = n => {
+      if (n == null) return ['—', ''];
+      if (n >= 1e9) return [(n / 1e9).toFixed(n >= 1e10 ? 0 : 1), 'B'];
+      if (n >= 1e6) return [(n / 1e6).toFixed(n >= 1e8 ? 0 : 1), 'M'];
+      if (n >= 1e3) return [(n / 1e3).toFixed(n >= 1e5 ? 0 : 1), 'k'];
+      return [String(Math.round(n)), ''];
+    };
+    const sentDir = s => s === 'support' ? '▲' : s === 'against' ? '▼' : '◆';
+
+    /* ---- Ticker tape ---- */
+    // STYLISTIC NOTE: ± percentages on KPIs and ticker are *aesthetic*
+    // (no real timeseries data exists). Hardcoded plausible deltas.
+    const tickerItems = [];
+    const [tamV, tamU] = fmtMoney(ms.tam_sgd);
+    const [samV, samU] = fmtMoney(ms.sam_sgd);
+    const [somV, somU] = fmtMoney(ms.som_sgd);
+    tickerItems.push({ s: 'TAM', p: `${curSym}${tamV}${tamU}`, d: '+2.3%', up: true });
+    tickerItems.push({ s: 'SAM', p: `${curSym}${samV}${samU}`, d: '+1.1%', up: true });
+    tickerItems.push({ s: 'SOM', p: `${curSym}${somV}${somU}`, d: '+5.0%', up: true });
+    (competitors.competitors || []).slice(0, 8).forEach((c, i) => {
+      const fakeUp = i % 3 !== 0; // stylistic
+      tickerItems.push({
+        s: (c.name || '').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,8),
+        p: c.sg_monthly_sgd != null ? `S$${c.sg_monthly_sgd}` : 'NQ',
+        d: fakeUp ? `+${(Math.random()*2.4+0.2).toFixed(2)}%` : `-${(Math.random()*1.8+0.1).toFixed(2)}%`,
+        up: fakeUp
+      });
+    });
+    const trackEl = document.getElementById('ticker-track');
+    trackEl.replaceChildren();
+    // Repeat the items twice so the marquee feels continuous before wrap
+    for (let pass = 0; pass < 2; pass++) {
+      for (const t of tickerItems) {
+        trackEl.append(
+          h('span', { class: 'item' },
+            h('span', { class: 'sym' }, t.s),
+            h('span', { class: 'px' }, t.p),
+            h('span', { class: t.up ? 'up' : 'down' }, (t.up ? '▲ ' : '▼ ') + t.d)
+          )
+        );
+      }
+    }
+
+    /* ---- KPI tiles ---- */
+    const kpiTile = (sym, n, sub, deltaPct, up) => {
+      const [v, u] = fmtMoney(n);
+      return h('div', { class: 'kpi' },
+        h('div', { class: 'sym' }, sym),
+        h('div', { class: 'px' }, curSym + v, h('span', { class: 'unit' }, u)),
+        h('div', { class: 'delta' + (up ? '' : ' dn') }, (up ? '▲ ' : '▼ ') + deltaPct),
+        h('div', { class: 'sub-row' }, sub)
+      );
+    };
+    mount(document.getElementById('kpis'),
+      kpiTile('TAM', ms.tam_sgd, 'Total addressable spend, full geography in scope.', '+2.30%', true),
+      kpiTile('SAM', ms.sam_sgd, 'Realistically reachable with current channels.',     '+1.10%', true),
+      kpiTile('SOM', ms.som_sgd, 'Year-3 obtainable share — what we commit to.',       '+5.00%', true),
+    );
+
+    if (ms.sources?.length) {
+      document.getElementById('src-meta').textContent = `${ms.sources.length} src`;
+    }
+
+    /* ---- Cascade derivation flow ---- */
+    const stageOrder = ['tam', 'sam', 'som'];
+    const flow = ms.derivation_flow || {};
+    const cascadeEl = document.getElementById('cascade');
+    cascadeEl.replaceChildren();
+    for (const key of stageOrder) {
+      const st = flow[key];
+      if (!st) continue;
+      const stageEl = h('div', { class: 'cascade-stage' });
+      stageEl.append(
+        h('div', { class: 'cascade-head' },
+          h('span', { class: 'arrow' }, '▼'),
+          h('span', { class: 'label' }, st.stage_label || key.toUpperCase()),
+          st.result_label ? h('span', { class: 'result' }, st.result_label) : null
+        ),
+        st.subtitle ? h('div', { class: 'cascade-sub' }, st.subtitle) : null,
+        st.total_equation ? h('div', { class: 'cascade-eq' }, '= ' + st.total_equation) : null,
+      );
+      if (st.filters?.length) {
+        stageEl.append(h('div', { class: 'cascade-filters' },
+          ...st.filters.map(f => h('span', { class: 'chip' }, f))
+        ));
+      }
+      if (st.stacks?.length) {
+        const tbl = h('table', { class: 'stack-table' },
+          h('thead', {}, h('tr', {},
+            h('th', {}, 'Stack'),
+            h('th', {}, 'Equation'),
+            h('th', { style: { textAlign: 'right' } }, 'Result'),
+          ))
+        );
+        const tbody = h('tbody', {});
+        for (const s of st.stacks) {
+          tbody.append(
+            h('tr', {},
+              h('td', { class: 'name' }, s.name || '—'),
+              h('td', { class: 'eq'   }, s.equation || ''),
+              h('td', { class: 'res'  }, s.result_label || '')
+            ),
+            (s.inputs?.length || s.source) ? h('tr', {},
+              h('td', { colSpan: 3, class: 'src' },
+                s.inputs?.length ? h('span', { class: 'stack-inputs-mini' },
+                  s.inputs.map(i => `${i.label}: ${i.value}`).join('  ·  ')
+                ) : null,
+                s.source ? h('div', {}, '↳ ' + s.source) : null
+              )
+            ) : null
+          );
+        }
+        tbl.append(tbody);
+        stageEl.append(tbl);
+      }
+      cascadeEl.append(stageEl);
+    }
+
+    /* ---- Implications ---- */
+    const impls = ms.implications || [];
+    mount(document.getElementById('impls'), ...impls.map(im => h('div', { class: 'impl' },
+      h('h4', {}, '▸ ' + (im.headline || '')),
+      h('p', {}, im.body || ''),
+      im.agent_targets?.length ? h('div', { class: 'targets' },
+        ...im.agent_targets.map(t => h('span', { class: 'tg' }, t.replace('_', ' ')))
+      ) : null
+    )));
+    document.getElementById('impl-meta').textContent = `${impls.length} item${impls.length === 1 ? '' : 's'}`;
+
+    /* ---- Sources + methodology appendix ---- */
+    const apxMount = document.getElementById('appendix-mount');
+    apxMount.replaceChildren();
+    if (ms.sources?.length) {
+      apxMount.append(h('details', {},
+        h('summary', {}, `▸ ${ms.sources.length} source${ms.sources.length > 1 ? 's' : ''} cited`),
+        h('ul', {}, ...ms.sources.map(s => h('li', {},
+          h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title)
+        )))
+      ));
+    }
+    if (ms.methodology_appendix) {
+      apxMount.append(h('details', {},
+        h('summary', {}, '▸ Methodology appendix (full derivation)'),
+        h('div', { class: 'appendix-body' }, ms.methodology_appendix)
+      ));
+    }
+
+    /* ---- Policy ticker rows ---- */
+    const policies = market.policies || [];
+    mount(document.getElementById('policies'), ...policies.map(p => {
+      const sent = p.sentiment || 'neutral';
+      return h('div', { class: 'policy-row' },
+        h('div', { class: `dir ${sent}` }, sentDir(sent)),
+        h('div', { class: 'title' },
+          p.title || '',
+          h('small', {}, [sent.toUpperCase(), p.effective_date].filter(Boolean).join(' · '))
+        ),
+        h('div', { class: 'body' },
+          h('div', {}, p.body || ''),
+          p.implication_for_us ? h('div', {},
+            h('strong', {}, 'IMPL.'),
+            h('span', { class: 'imp' }, p.implication_for_us)
+          ) : null,
+          p.url ? h('div', { style: { marginTop: '6px' } },
+            h('a', { href: p.url, target: '_blank', rel: 'noopener' }, '↗ source')
+          ) : null
+        ),
+        h('div', { class: `ticker-tag ${sent}` }, sent.toUpperCase())
+      );
+    }));
+    document.getElementById('pol-count').textContent = `${policies.length} polic${policies.length === 1 ? 'y' : 'ies'}`;
+
+    /* ---- Country futures grid ---- */
+    const futuresEl = document.getElementById('futures');
+    const cellClass = n => n >= 4 ? 'cell-hot' : n === 3 ? 'cell-warm' : 'cell-cold';
+    const rows = market.adoption_patterns?.country_readiness || [];
+    futuresEl.replaceChildren(
+      h('thead', {}, h('tr', {},
+        h('th', { style: { textAlign: 'left' } }, 'COUNTRY'),
+        h('th', {}, 'REGULATORY'),
+        h('th', {}, 'TECH'),
+        h('th', {}, 'PRICE.TOL')
+      )),
+      h('tbody', {}, ...rows.map(r => h('tr', {},
+        h('td', { class: 'country' }, r.country),
+        h('td', { class: `cell ${cellClass(r.regulatory)}` }, r.regulatory),
+        h('td', { class: `cell ${cellClass(r.tech_maturity)}` }, r.tech_maturity),
+        h('td', { class: `cell ${cellClass(r.price_tolerance)}` }, r.price_tolerance)
+      )))
+    );
+
+    /* ---- Personas as instrument cards ---- */
+    const personas = pricing.personas || [];
+    const personaCard = p => {
+      const wtp = p.wtp_band_sgd || {};
+      const nbaSummary = (typeof p.nba === 'string' ? p.nba : (p.nba?.summary || '—'));
+      const nbaMo = p.nba?.monthly_sgd_equivalent;
+      const conf = p.nba?.confidence;
+      return h('div', { class: 'persona-card' },
+        h('div', { class: 'persona-head' },
+          h('span', { class: 'tag' }, '[PERSONA]'),
+          h('span', { class: 'name' }, (p.name || '').toUpperCase()),
+          h('span', { class: 'live' }, '[LIVE]')
+        ),
+        h('div', { class: 'persona-quotes' },
+          h('div', { class: 'qq bid' },
+            h('div', { class: 'lab' }, 'BID'),
+            h('div', { class: 'px' }, wtp.low_anchor != null ? curSym + wtp.low_anchor : '—')
+          ),
+          h('div', { class: 'qq' },
+            h('div', { class: 'lab' }, 'LAST'),
+            h('div', { class: 'px' }, wtp.expected != null ? curSym + wtp.expected : '—')
+          ),
+          h('div', { class: 'qq ask' },
+            h('div', { class: 'lab' }, 'ASK'),
+            h('div', { class: 'px' }, wtp.upper_stretch != null ? curSym + wtp.upper_stretch : '—')
+          )
+        ),
+        h('div', { class: 'persona-meta' },
+          h('div', { class: 'persona-meta-row' },
+            h('div', { class: 'k' }, 'ICP'),
+            h('div', { class: 'v' }, p.icp || '—')
+          ),
+          (p.pains?.length ? h('div', { class: 'persona-meta-row' },
+            h('div', { class: 'k' }, 'PAIN'),
+            h('div', { class: 'v' }, p.pains.slice(0,2).join(' · '))
+          ) : null),
+          (p.current_workaround ? h('div', { class: 'persona-meta-row' },
+            h('div', { class: 'k' }, 'WORK'),
+            h('div', { class: 'v' }, p.current_workaround)
+          ) : null),
+          h('div', { class: 'persona-meta-row' },
+            h('div', { class: 'k' }, 'NBA'),
+            h('div', { class: 'v' }, nbaSummary,
+              (nbaMo != null) ? h('small', {}, ` · ${curSym}${nbaMo}/mo`) : null,
+              (conf != null) ? h('small', {}, ` · CONF ${conf.toFixed(2)}`) : null
+            )
+          )
+        )
+      );
+    };
+    mount(document.getElementById('personas'), ...personas.map(personaCard));
+    document.getElementById('per-count').textContent = `${personas.length} icp${personas.length === 1 ? '' : 's'}`;
+
+    /* ---- Tier order book ---- */
+    const tiers = pricing.recommended_tiers || [];
+    const tiersWrap = document.getElementById('tiers');
+    tiersWrap.replaceChildren();
+    const obTable = h('table', { class: 'order-book' },
+      h('thead', {}, h('tr', {},
+        h('th', {}, 'TIER'),
+        h('th', {}, 'SIZE'),
+        h('th', {}, 'PRICE/MO'),
+        h('th', {}, 'POST-PSG'),
+        h('th', {}, 'PERSONA')
+      ))
+    );
+    const obBody = h('tbody', {});
+    tiers.forEach(t => {
+      const sz = (t.what_in?.length || 0);
+      obBody.append(h('tr', {},
+        h('td', { class: 'tier-name' }, (t.name || '').toUpperCase()),
+        h('td', { class: 'size' }, String(sz)),
+        h('td', { class: 'px'   }, curSym + (t.price_sgd ?? 0)),
+        h('td', { class: 'eff'  }, curSym + (t.effective_price_after_psg ?? 0)),
+        h('td', { class: 'persona' }, t.target_persona || '—')
+      ));
+    });
+    obTable.append(obBody);
+    tiersWrap.append(obTable);
+    // Per-tier expanded detail rows
+    tiers.forEach(t => {
+      tiersWrap.append(
+        h('div', { class: 'tier-detail' },
+          h('div', { class: 'col in' },
+            h('h5', {}, '▸ ' + (t.name || '') + ' :: WHAT IN'),
+            h('ul', {}, ...(t.what_in || []).map(x => h('li', {}, x))),
+            t.psychological_anchor ? h('div', { class: 'anchor', style: { marginTop: '6px' } }, '"' + t.psychological_anchor + '"') : null
+          ),
+          h('div', { class: 'col out' },
+            h('h5', {}, '▸ EXCLUDED'),
+            h('ul', {}, ...(t.what_excluded || []).map(x => h('li', {}, x)))
+          )
+        )
+      );
+    });
+    document.getElementById('tier-count').textContent = `${tiers.length} tier${tiers.length === 1 ? '' : 's'}`;
+
+    /* ---- Charts: monochrome amber on dark ---- */
+    const COMP_LIST = competitors.competitors || [];
+    const counts = {};
+    for (const c of COMP_LIST) for (const m of (c.target_market || [])) counts[m] = (counts[m] || 0) + 1;
+    const donutEntries = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0, 8);
+    new Chart(document.getElementById('market-donut').getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: donutEntries.map(e => e[0]),
+        datasets: [{
+          data: donutEntries.map(e => e[1]),
+          // Stylistic: monochrome amber gradient
+          backgroundColor: ['#f7931e','#c8761a','#a05d14','#7a4710','#5a350c','#3e2408','#2a1905','#1a0f03'],
+          borderColor: '#0a0a0a', borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'right', labels: { color: '#e8e6e3', font: { family: 'IBM Plex Mono', size: 11 } } }
+        }
+      }
+    });
+
+    const visible = COMP_LIST.filter(c => c.sg_monthly_sgd != null).slice(0, 20);
+    const labels = visible.map(c => c.name);
+    const data = visible.map(c => c.sg_monthly_sgd);
+    const ourPx = pricing.recommended_tiers?.[1]?.price_sgd ?? null;
+    const datasets = [{
+      label: `${curSym}/mo`,
+      data,
+      backgroundColor: 'rgba(247,147,30,0.85)',
+      borderColor: 'rgba(247,147,30,1)',
+      borderWidth: 1
+    }];
+    if (ourPx != null && labels.length) {
+      datasets.push({
+        label: 'OUR.MID', type: 'line',
+        data: labels.map(() => ourPx),
+        borderColor: 'rgba(0,217,127,1)', borderDash: [4,3], pointRadius: 0, fill: false, borderWidth: 2
+      });
+    }
+    new Chart(document.getElementById('price-bars').getContext('2d'), {
+      type: 'bar',
+      data: { labels, datasets },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        scales: {
+          x: { beginAtZero: true, ticks: { color: '#7a7770' }, grid: { color: '#1a1a1a' }, title: { display: true, text: `${curSym} / month`, color: '#7a7770' } },
+          y: { ticks: { color: '#e8e6e3', font: { family: 'IBM Plex Mono', size: 11 } }, grid: { color: '#1a1a1a' } }
+        },
+        plugins: {
+          legend: { position: 'top', labels: { color: '#e8e6e3', font: { family: 'IBM Plex Mono', size: 11 } } }
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>

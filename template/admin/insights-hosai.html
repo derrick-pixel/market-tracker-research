@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights · 法廷 — Market Tracker 2026</title>
+  <meta name="description" content="Market Tracker 2026 insights — Hosai variant. Quiet Japanese editorial book aesthetic, sumi black + vermilion, hairline rules and golden-ratio rhythm.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Noto+Serif+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <script src="../assets/vendor/chart.umd.js"></script>
+  <style>
+    /* ===========================================================
+       HOSAI 法廷 — Japanese editorial book
+       Washi paper · sumi black · vermilion accent (sparing).
+       Hairline rules · marginalia · golden-ratio rhythm.
+       =========================================================== */
+    :root {
+      --paper: #f5f1e6;
+      --sumi: #1a1815;
+      --soft: #3a3530;
+      --dim: #8a847a;
+      --rule: #c8c0b0;
+      --vermilion: #bb2238; /* 朱 — used sparingly, max 3-4 places per page */
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--paper); }
+    body {
+      color: var(--sumi);
+      font-family: 'Cormorant Garamond', 'Noto Serif JP', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      min-height: 100vh;
+      background-image:
+        linear-gradient(to right, rgba(26,24,21,0.018) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26,24,21,0.018) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    a { color: var(--vermilion); text-decoration: none; border-bottom: 0.5px solid currentColor; }
+    a:hover { color: var(--sumi); }
+
+    /* ---- Frame: single primary column with marginalia ---- */
+    .book {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 64px 32px 120px;
+    }
+    /* Two-column layout: marginalia (left) + main column (right) */
+    .row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+    .row > .marg {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--dim);
+      line-height: 1.7;
+      text-align: right;
+      padding-top: 8px;
+      letter-spacing: 0.04em;
+    }
+    .row > .marg .num {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--vermilion);
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+    .row > .body {
+      max-width: 640px;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      margin-bottom: 80px;
+    }
+    .hero .vol {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--vermilion);
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+    }
+    .hero .stamp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--dim);
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 84px;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px 0;
+      color: var(--sumi);
+    }
+    .hero .subtitle-jp {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: var(--soft);
+      margin-bottom: 12px;
+    }
+    .hero .lede {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      line-height: 1.55;
+      font-weight: 300;
+      color: var(--soft);
+      max-width: 580px;
+    }
+
+    /* ---- Section break ---- */
+    .break {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 72px 0 40px;
+      color: var(--dim);
+    }
+    .break .rule {
+      flex: 1;
+      height: 0.5px;
+      background: var(--rule);
+    }
+    .break .marker {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--soft);
+      white-space: nowrap;
+    }
+
+    /* ---- KPI printer's marks ---- */
+    .kpi-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .kpi {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 16px;
+      align-items: baseline;
+      padding: 18px 0;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .kpi:last-child { border-bottom: none; }
+    .kpi .label {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 16px;
+      color: var(--soft);
+      letter-spacing: 0.04em;
+    }
+    .kpi .label-jp {
+      display: block;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      margin-top: 2px;
+    }
+    .kpi .figure {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: 38px;
+      line-height: 1;
+      color: var(--sumi);
+      letter-spacing: 0.06em;
+      text-align: right;
+      padding-right: 16px;
+      border-right: 1px solid var(--vermilion); /* the ┃ separator */
+    }
+    .kpi .latin {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--soft);
+      text-align: right;
+      letter-spacing: 0.05em;
+      min-width: 130px;
+    }
+    .kpi .latin small {
+      display: block;
+      font-size: 11px;
+      color: var(--dim);
+      font-style: italic;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
+    /* ---- Funnel cascade — vertically rhythmed ---- */
+    .stage {
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .stage:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    .stage .stage-label {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--vermilion);
+      margin-bottom: 8px;
+    }
+    .stage h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1;
+      margin: 0 0 4px 0;
+      color: var(--sumi);
+    }
+    .stage .stage-result {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--sumi);
+      margin-bottom: 14px;
+    }
+    .stage .stage-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--soft);
+      max-width: 580px;
+      margin-bottom: 14px;
+    }
+    .stage .stage-eq {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--dim);
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+      padding-left: 16px;
+      border-left: 0.5px solid var(--rule);
+    }
+    .stage .stage-filters { margin-bottom: 18px; }
+    .stage .stage-filters .chip {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--soft);
+      margin-right: 16px;
+      padding-bottom: 2px;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .stack {
+      padding: 12px 0;
+      border-top: 0.5px solid var(--rule);
+    }
+    .stack:last-child { padding-bottom: 0; }
+    .stack h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 18px;
+      margin: 0 0 4px 0;
+      color: var(--sumi);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: baseline;
+    }
+    .stack h5 .res {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 17px;
+      color: var(--vermilion);
+      letter-spacing: 0.04em;
+    }
+    .stack .eq {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--dim);
+      margin-bottom: 6px;
+    }
+    .stack .inputs {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: var(--soft);
+      margin-bottom: 6px;
+    }
+    .stack .inputs em { font-style: italic; color: var(--dim); }
+    .stack .src {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    /* ---- Implications ---- */
+    .impl {
+      padding: 20px 0;
+      border-top: 0.5px solid var(--rule);
+    }
+    .impl:first-child { border-top: none; padding-top: 0; }
+    .impl h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.25;
+      margin: 0 0 8px 0;
+      color: var(--sumi);
+    }
+    .impl p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--soft);
+      margin: 0 0 8px 0;
+    }
+    .impl .targets { display: flex; gap: 14px; flex-wrap: wrap; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; color: var(--dim); }
+
+    /* ---- Collapsibles ---- */
+    details { margin: 24px 0; padding: 18px 0; border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule); }
+    details summary {
+      cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--sumi);
+      letter-spacing: 0.02em;
+    }
+    details summary::marker, details summary::-webkit-details-marker { color: var(--vermilion); }
+    details[open] summary { margin-bottom: 14px; }
+    details ul { padding-left: 24px; margin: 0; }
+    details li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      line-height: 1.55;
+      margin-bottom: 6px;
+      color: var(--soft);
+    }
+    .appendix-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--soft);
+      max-width: 64ch;
+      white-space: pre-wrap;
+    }
+
+    /* ---- Policies as folded scroll cards ---- */
+    .policy {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-top: 0.5px solid var(--rule);
+    }
+    .policy:first-of-type { border-top: 0.5px solid var(--rule); }
+    .policy .glyph {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      line-height: 1;
+      padding-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .policy .glyph.support { color: var(--vermilion); }
+    .policy .glyph.against { color: var(--sumi); }
+    .policy .glyph.neutral { color: var(--dim); }
+    .policy .vert {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      writing-mode: vertical-rl;
+      letter-spacing: 0.18em;
+      color: var(--dim);
+      padding-top: 8px;
+    }
+    .policy h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 0 0 4px 0;
+      color: var(--sumi);
+    }
+    .policy .meta {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--dim);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .policy .meta .sent {
+      color: var(--vermilion);
+      font-style: normal;
+    }
+    .policy p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      line-height: 1.65;
+      margin: 0 0 8px 0;
+      color: var(--soft);
+    }
+    .policy .imp {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--sumi);
+      padding-left: 16px;
+      border-left: 0.5px solid var(--vermilion);
+    }
+    .policy .imp strong {
+      display: block;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--vermilion);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    /* ---- Country readiness — ultra-thin gauges ---- */
+    .country-list {
+      display: grid;
+      gap: 18px;
+    }
+    .country-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      align-items: center;
+      gap: 24px;
+      padding: 12px 0;
+      border-top: 0.5px solid var(--rule);
+    }
+    .country-row .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--sumi);
+    }
+    .country-row .gauges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .gauge .gauge-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 12px;
+      color: var(--dim);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .gauge .gauge-track {
+      height: 0.5px;
+      background: var(--rule);
+      position: relative;
+    }
+    .gauge .gauge-fill {
+      position: absolute;
+      left: 0; top: -1px;
+      height: 2px;
+      background: var(--sumi);
+    }
+    .gauge.alt .gauge-fill { background: var(--vermilion); }
+
+    /* ---- Personas as menu cards ---- */
+    .menu-card {
+      padding: 24px 0;
+      border-top: 0.5px solid var(--rule);
+    }
+    .menu-card:first-child { border-top: none; padding-top: 0; }
+    .menu-card .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sumi);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .menu-card .name::before, .menu-card .name::after {
+      content: '';
+      flex: 0 0 24px;
+      height: 0.5px;
+      background: var(--rule);
+    }
+    .menu-card .icp {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.55;
+      margin-bottom: 16px;
+      color: var(--soft);
+      max-width: 580px;
+    }
+    .menu-card .row-line {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      margin-bottom: 8px;
+      align-items: baseline;
+    }
+    .menu-card .row-line .k {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 12px;
+      color: var(--vermilion);
+      letter-spacing: 0.16em;
+    }
+    .menu-card .row-line .v {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--soft);
+      line-height: 1.55;
+    }
+    .menu-card .wtp-line {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 20px 0 4px;
+      padding-top: 16px;
+      border-top: 0.5px solid var(--rule);
+    }
+    .menu-card .wtp-line .cell {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--dim);
+      letter-spacing: 0.04em;
+    }
+    .menu-card .wtp-line .cell .num {
+      font-family: 'Noto Serif JP', serif;
+      font-style: normal;
+      font-size: 22px;
+      color: var(--sumi);
+      letter-spacing: 0.04em;
+      margin-right: 6px;
+    }
+
+    /* ---- Tier masu boxes ---- */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .masu {
+      aspect-ratio: 1 / 1.05;
+      border: 0.5px solid var(--sumi);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      background: var(--paper);
+      transition: background 200ms;
+    }
+    .masu:hover { background: #efe9d8; }
+    .masu .rank {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--vermilion);
+    }
+    .masu .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.1;
+      margin: 0;
+      color: var(--sumi);
+    }
+    .masu .target {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--dim);
+    }
+    .masu .price-seal {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .masu .price {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: 32px;
+      color: var(--vermilion);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .masu .price small { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--soft); margin-left: 4px; font-style: italic; }
+    .masu .seal {
+      width: 32px; height: 32px;
+      flex: 0 0 auto;
+    }
+    .masu .anchor {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--soft);
+      line-height: 1.5;
+      border-top: 0.5px solid var(--rule);
+      padding-top: 8px;
+    }
+    .masu .foot {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      color: var(--dim);
+      letter-spacing: 0.04em;
+    }
+    .masu ul { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--soft); padding-left: 16px; margin: 0; line-height: 1.5; }
+    .masu ul li { margin-bottom: 2px; }
+
+    /* Tier full detail — printed below the masu grid in single column */
+    .tier-detail {
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 0.5px solid var(--rule);
+    }
+    .tier-detail h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 18px;
+      margin: 16px 0 8px;
+      color: var(--sumi);
+    }
+    .tier-detail .col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .tier-detail ul {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--soft);
+      padding-left: 20px;
+      margin: 0;
+    }
+    .tier-detail ul.excl li { color: var(--dim); }
+    .tier-detail ul.excl li::marker { content: '×  '; color: var(--vermilion); }
+
+    /* ---- Charts (ultra-thin grayscale) ---- */
+    .chart-frame {
+      padding: 28px 0 8px;
+    }
+    .chart-frame .ctitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 22px;
+      margin-bottom: 4px;
+      color: var(--sumi);
+    }
+    .chart-frame .csub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--dim);
+      margin-bottom: 16px;
+    }
+    .chart-canvas { height: 320px; }
+    .chart-canvas.tall { height: 540px; }
+
+    /* ---- Footer / colophon ---- */
+    .colophon {
+      margin-top: 100px;
+      padding-top: 28px;
+      border-top: 0.5px solid var(--rule);
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--dim);
+      letter-spacing: 0.06em;
+    }
+    .colophon nav { margin-top: 8px; }
+    .colophon nav a { margin: 0 10px; }
+
+    @media (max-width: 760px) {
+      .row { grid-template-columns: 1fr; gap: 8px; }
+      .row > .marg { text-align: left; }
+      .hero h1 { font-size: 56px; }
+      .country-row { grid-template-columns: 1fr; gap: 8px; }
+      .kpi { grid-template-columns: 1fr; gap: 4px; }
+      .kpi .figure, .kpi .latin { text-align: left; padding-right: 0; border-right: none; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <article class="book">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="vol">第一巻</div>
+      <div class="stamp-date">2026.05.02</div>
+      <h1>Insights</h1>
+      <div class="subtitle-jp">フラッシュカート ・ 市場分析</div>
+      <p class="lede">Market Tracker market intelligence and pricing strategy — set in single column with hairline rules and golden-ratio rhythm. Quiet density.</p>
+    </header>
+
+    <!-- KPIs -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">一</span>
+        Market size
+        <br>市場規模
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第一段 · 規模</span><span class="rule"></span></div>
+        <div class="kpi-stack" id="kpis"></div>
+      </div>
+    </div>
+
+    <!-- Funnel cascade -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">二</span>
+        Derivation
+        <br>導出
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第二段 · 導出</span><span class="rule"></span></div>
+        <div id="funnel"></div>
+      </div>
+    </div>
+
+    <!-- Implications -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">三</span>
+        Implications
+        <br>含意
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第三段 · 含意</span><span class="rule"></span></div>
+        <div id="impls"></div>
+      </div>
+    </div>
+
+    <!-- Sources + appendix -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">四</span>
+        Apparatus
+        <br>付録
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第四段 · 付録</span><span class="rule"></span></div>
+        <div id="appendix-mount"></div>
+      </div>
+    </div>
+
+    <!-- Policies -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">五</span>
+        Policy
+        <br>政策
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第五段 · 政策</span><span class="rule"></span></div>
+        <div id="policies"></div>
+      </div>
+    </div>
+
+    <!-- Country readiness -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">六</span>
+        Readiness
+        <br>地域準備度
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第六段 · 準備度</span><span class="rule"></span></div>
+        <div class="country-list" id="country"></div>
+      </div>
+    </div>
+
+    <!-- Personas -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">七</span>
+        Personas
+        <br>顧客像
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第七段 · 顧客像</span><span class="rule"></span></div>
+        <div id="personas"></div>
+      </div>
+    </div>
+
+    <!-- Tiers -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">八</span>
+        Tiers
+        <br>枡
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第八段 · 枡</span><span class="rule"></span></div>
+        <div class="tier-grid" id="tiers"></div>
+        <div id="tier-detail"></div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row">
+      <aside class="marg">
+        <span class="num">九</span>
+        Field
+        <br>競合分布
+      </aside>
+      <div class="body">
+        <div class="break"><span class="rule"></span><span class="marker">第九段 · 競合分布</span><span class="rule"></span></div>
+        <div class="chart-frame">
+          <div class="ctitle">Target-market distribution</div>
+          <div class="csub">Buyer-segment frequency across the mapped competitor field — printed in greyscale.</div>
+          <div class="chart-canvas"><canvas id="market-donut"></canvas></div>
+        </div>
+        <div class="chart-frame">
+          <div class="ctitle">Competitor price comparison</div>
+          <div class="csub">Hairline bars; recommended-tier midpoint as a vermilion line — the only colour in the spread.</div>
+          <div class="chart-canvas tall"><canvas id="price-bars"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="colophon">
+      Set in Cormorant Garamond &amp; Noto Serif JP · printed in sumi black with a single vermilion accent · Market Tracker 2026
+      <nav>
+        <a href="insights.html">canonical</a>
+        <a href="insights-terminal.html">pit floor</a>
+        <a href="insights-zine.html">flash press</a>
+      </nav>
+    </footer>
+  </article>
+
+  <script type="module">
+    import { loadAppData } from '../assets/js/app.js';
+    import { h, mount } from '../assets/js/dom.js';
+
+    const { competitors, market, pricing } = await loadAppData();
+    const ms = market.market_size || {};
+    const curLab = ms.currency_label || 'SGD';
+    const curSym = curLab === 'USD' ? 'US$' : curLab === 'AUD' ? 'A$' : curLab === 'HKD' ? 'HK$' : 'S$';
+
+    const fmtMoney = n => {
+      if (n == null) return ['—', ''];
+      if (n >= 1e9) return [(n / 1e9).toFixed(n >= 1e10 ? 0 : 1), 'B'];
+      if (n >= 1e6) return [(n / 1e6).toFixed(n >= 1e8 ? 0 : 1), 'M'];
+      if (n >= 1e3) return [(n / 1e3).toFixed(n >= 1e5 ? 0 : 1), 'k'];
+      return [String(Math.round(n)), ''];
+    };
+
+    /* ---------- Kanji number helpers ---------- */
+    const kanjiDigits = ['〇','一','二','三','四','五','六','七','八','九'];
+    const toKanjiDigits = s => String(s).split('').map(ch => /\d/.test(ch) ? kanjiDigits[+ch] : ch).join('');
+    // Render the figure portion in kanji digits with magnitude word.
+    // e.g. 11.4B → "一一・四〇" + "billion"
+    const kanjiFigure = n => {
+      if (n == null) return { fig: '—', mag: '' };
+      if (n >= 1e9) {
+        const v = (n / 1e9).toFixed(1);
+        return { fig: toKanjiDigits(v.replace('.', '・')), mag: '十億' };
+      }
+      if (n >= 1e6) {
+        const v = Math.round(n / 1e6).toString();
+        return { fig: toKanjiDigits(v), mag: '百万' };
+      }
+      if (n >= 1e3) {
+        const v = (n / 1e3).toFixed(0);
+        return { fig: toKanjiDigits(v), mag: '千' };
+      }
+      return { fig: toKanjiDigits(String(Math.round(n))), mag: '' };
+    };
+
+    /* ---- KPIs ---- */
+    const kpiTile = (labelEn, labelJp, n, sub) => {
+      const { fig, mag } = kanjiFigure(n);
+      const [v, u] = fmtMoney(n);
+      return h('div', { class: 'kpi' },
+        h('div', { class: 'label' }, labelEn,
+          h('span', { class: 'label-jp' }, labelJp)
+        ),
+        h('div', { class: 'figure' }, fig,
+          mag ? h('span', { style: { display: 'block', fontSize: '11px', color: 'var(--dim)', letterSpacing: '0.12em', marginTop: '4px' } }, mag) : null
+        ),
+        h('div', { class: 'latin' },
+          curSym + v + u,
+          h('small', {}, sub)
+        )
+      );
+    };
+    mount(document.getElementById('kpis'),
+      kpiTile('Total addressable market', '総市場 (TAM)', ms.tam_sgd, 'Total addressable spend, full geography in scope.'),
+      kpiTile('Serviceable market',         '到達可能市場 (SAM)', ms.sam_sgd, 'Realistically reachable with current channels.'),
+      kpiTile('Obtainable market · Yr-3',   '獲得可能市場 (SOM)', ms.som_sgd, 'Year-3 obtainable share — what we commit to.'),
+    );
+
+    /* ---- Funnel cascade ---- */
+    const flow = ms.derivation_flow || {};
+    const stageOrder = ['tam', 'sam', 'som'];
+    const stageJp = { tam: '総市場', sam: '到達可能市場', som: '獲得可能市場' };
+    const funnelEl = document.getElementById('funnel');
+    funnelEl.replaceChildren();
+    for (const key of stageOrder) {
+      const st = flow[key];
+      if (!st) continue;
+      const stageEl = h('div', { class: 'stage' },
+        h('div', { class: 'stage-label' }, (st.stage_label || key.toUpperCase()) + ' · ' + (stageJp[key] || '')),
+        h('h3', {}, key.toUpperCase()),
+        st.result_label ? h('div', { class: 'stage-result' }, st.result_label) : null,
+        st.subtitle ? h('p', { class: 'stage-sub' }, st.subtitle) : null,
+        st.total_equation ? h('div', { class: 'stage-eq' }, st.total_equation) : null,
+        st.filters?.length ? h('div', { class: 'stage-filters' },
+          ...st.filters.map(f => h('span', { class: 'chip' }, f))
+        ) : null,
+      );
+      if (st.stacks?.length) {
+        for (const s of st.stacks) {
+          stageEl.append(h('div', { class: 'stack' },
+            h('h5', {},
+              s.name || '—',
+              s.result_label ? h('span', { class: 'res' }, s.result_label) : null
+            ),
+            s.equation ? h('div', { class: 'eq' }, s.equation) : null,
+            s.inputs?.length ? h('div', { class: 'inputs' },
+              ...s.inputs.map((i, idx) => h('span', {},
+                h('em', {}, i.label),
+                ' ' + i.value + (idx < s.inputs.length - 1 ? '  ·  ' : '')
+              ))
+            ) : null,
+            s.source ? h('div', { class: 'src' }, '— ' + s.source) : null
+          ));
+        }
+      }
+      funnelEl.append(stageEl);
+    }
+
+    /* ---- Implications ---- */
+    const impls = ms.implications || [];
+    mount(document.getElementById('impls'), ...impls.map(im => h('div', { class: 'impl' },
+      h('h4', {}, im.headline || ''),
+      h('p', {}, im.body || ''),
+      im.agent_targets?.length ? h('div', { class: 'targets' },
+        ...im.agent_targets.map(t => h('span', {}, '— ' + t.replace('_', ' ')))
+      ) : null
+    )));
+
+    /* ---- Sources + appendix ---- */
+    const apxMount = document.getElementById('appendix-mount');
+    apxMount.replaceChildren();
+    if (ms.sources?.length) {
+      apxMount.append(h('details', {},
+        h('summary', {}, `${ms.sources.length} source${ms.sources.length > 1 ? 's' : ''} cited · 出典`),
+        h('ul', {}, ...ms.sources.map(s => h('li', {},
+          h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title)
+        )))
+      ));
+    }
+    if (ms.methodology_appendix) {
+      apxMount.append(h('details', {},
+        h('summary', {}, 'Methodology appendix · 方法論'),
+        h('div', { class: 'appendix-body' }, ms.methodology_appendix)
+      ));
+    }
+
+    /* ---- Policies — folded scrolls ---- */
+    const sentGlyph = s => s === 'support' ? '○' : s === 'against' ? '×' : '△';
+    const sentJp = s => s === 'support' ? '賛同' : s === 'against' ? '反対' : '中立';
+    const policies = market.policies || [];
+    mount(document.getElementById('policies'), ...policies.map(p => h('div', { class: 'policy' },
+      h('div', { class: `glyph ${p.sentiment || 'neutral'}` }, sentGlyph(p.sentiment)),
+      h('div', {},
+        h('h4', {}, p.title || ''),
+        h('div', { class: 'meta' },
+          h('span', { class: 'sent' }, sentJp(p.sentiment) + ' · ' + (p.sentiment || '')),
+          p.effective_date ? ' · ' + p.effective_date : ''
+        ),
+        h('p', {}, p.body || ''),
+        p.implication_for_us ? h('div', { class: 'imp' },
+          h('strong', {}, 'Implication for us'),
+          p.implication_for_us
+        ) : null,
+        p.url ? h('div', { style: { marginTop: '8px', fontSize: '13px', fontStyle: 'italic' } },
+          h('a', { href: p.url, target: '_blank', rel: 'noopener' }, '— source ↗')
+        ) : null
+      )
+    )));
+
+    /* ---- Country readiness — hairline gauges ---- */
+    const gauge = (n, label, alt) => h('div', { class: `gauge${alt ? ' alt' : ''}` },
+      h('div', { class: 'gauge-label' },
+        h('span', {}, label),
+        h('span', {}, n + ' / 5')
+      ),
+      h('div', { class: 'gauge-track' },
+        h('div', { class: 'gauge-fill', style: { width: ((n / 5) * 100) + '%' } })
+      )
+    );
+    const ctry = market.adoption_patterns?.country_readiness || [];
+    mount(document.getElementById('country'), ...ctry.map(r => h('div', { class: 'country-row' },
+      h('div', { class: 'name' }, r.country),
+      h('div', { class: 'gauges' },
+        gauge(r.regulatory, 'Regulatory', false),
+        gauge(r.tech_maturity, 'Tech maturity', false),
+        gauge(r.price_tolerance, 'Price tolerance', true)
+      )
+    )));
+
+    /* ---- Personas — menu cards ---- */
+    const personas = pricing.personas || [];
+    mount(document.getElementById('personas'), ...personas.map(p => {
+      const wtp = p.wtp_band_sgd || {};
+      const nbaSummary = (typeof p.nba === 'string' ? p.nba : (p.nba?.summary || '—'));
+      const wtpKanji = v => v != null ? toKanjiDigits(String(v)) : '—';
+      return h('div', { class: 'menu-card' },
+        h('div', { class: 'name' }, p.name || ''),
+        p.icp ? h('p', { class: 'icp' }, p.icp) : null,
+        p.pains?.length ? h('div', { class: 'row-line' },
+          h('div', { class: 'k' }, '痛点'),
+          h('div', { class: 'v' }, p.pains.slice(0,2).join(' · '))
+        ) : null,
+        p.current_workaround ? h('div', { class: 'row-line' },
+          h('div', { class: 'k' }, '代替案'),
+          h('div', { class: 'v' }, p.current_workaround)
+        ) : null,
+        h('div', { class: 'row-line' },
+          h('div', { class: 'k' }, '次善策'),
+          h('div', { class: 'v' }, nbaSummary)
+        ),
+        h('div', { class: 'wtp-line' },
+          h('div', { class: 'cell' }, h('span', { class: 'num' }, wtpKanji(wtp.low_anchor)), '低 · low (' + curSym + (wtp.low_anchor ?? '—') + ')'),
+          h('div', { class: 'cell' }, h('span', { class: 'num' }, wtpKanji(wtp.expected)), '期待 · expected (' + curSym + (wtp.expected ?? '—') + ')'),
+          h('div', { class: 'cell' }, h('span', { class: 'num' }, wtpKanji(wtp.upper_stretch)), '上 · stretch (' + curSym + (wtp.upper_stretch ?? '—') + ')'),
+        )
+      );
+    }));
+
+    /* ---- Tiers — masu boxes ---- */
+    const sealSvg = () => {
+      const ns = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(ns, 'svg');
+      svg.setAttribute('viewBox', '0 0 32 32');
+      svg.setAttribute('class', 'seal');
+      const c = document.createElementNS(ns, 'circle');
+      c.setAttribute('cx', '16'); c.setAttribute('cy', '16'); c.setAttribute('r', '14');
+      c.setAttribute('fill', 'none'); c.setAttribute('stroke', '#bb2238'); c.setAttribute('stroke-width', '0.7');
+      const c2 = document.createElementNS(ns, 'circle');
+      c2.setAttribute('cx', '16'); c2.setAttribute('cy', '16'); c2.setAttribute('r', '11');
+      c2.setAttribute('fill', 'none'); c2.setAttribute('stroke', '#bb2238'); c2.setAttribute('stroke-width', '0.5');
+      const t = document.createElementNS(ns, 'text');
+      t.setAttribute('x', '16'); t.setAttribute('y', '20');
+      t.setAttribute('text-anchor', 'middle');
+      t.setAttribute('font-family', 'Noto Serif JP, serif');
+      t.setAttribute('font-size', '13'); t.setAttribute('fill', '#bb2238');
+      t.textContent = '朱';
+      svg.append(c, c2, t);
+      return svg;
+    };
+    const tiers = pricing.recommended_tiers || [];
+    const rankLabel = ['壱', '弐', '参', '肆', '伍'];
+    mount(document.getElementById('tiers'), ...tiers.map((t, i) => {
+      const node = h('div', { class: 'masu' },
+        h('div', { class: 'rank' }, (rankLabel[i] || (i+1)) + ' · TIER ' + (i + 1)),
+        h('h4', { class: 'name' }, t.name || ''),
+        t.target_persona ? h('div', { class: 'target' }, t.target_persona) : null,
+        h('div', { class: 'price-seal' },
+          h('div', { class: 'price' },
+            curSym + (t.price_sgd ?? 0),
+            h('small', {}, ' / mo')
+          )
+        ),
+        t.psychological_anchor ? h('div', { class: 'anchor' }, '"' + t.psychological_anchor + '"') : null,
+        h('div', { class: 'foot' }, 'After PSG · ' + curSym + (t.effective_price_after_psg ?? 0))
+      );
+      // Append vermilion seal SVG into the price-seal block
+      node.querySelector('.price-seal').append(sealSvg());
+      return node;
+    }));
+
+    // Tier detail (what_in / what_excluded) — printed below grid in editorial detail
+    const detailMount = document.getElementById('tier-detail');
+    detailMount.replaceChildren();
+    tiers.forEach(t => {
+      detailMount.append(h('div', { class: 'tier-detail' },
+        h('h5', {}, '— ' + (t.name || '')),
+        h('div', { class: 'col' },
+          h('div', {},
+            h('div', { style: { fontFamily: 'Noto Serif JP, serif', fontSize: '12px', letterSpacing: '0.16em', color: 'var(--vermilion)', marginBottom: '6px' } }, '内 · WHAT IN'),
+            h('ul', {}, ...(t.what_in || []).map(x => h('li', {}, x)))
+          ),
+          h('div', {},
+            h('div', { style: { fontFamily: 'Noto Serif JP, serif', fontSize: '12px', letterSpacing: '0.16em', color: 'var(--dim)', marginBottom: '6px' } }, '外 · EXCLUDED'),
+            h('ul', { class: 'excl' }, ...(t.what_excluded || []).map(x => h('li', {}, x)))
+          )
+        )
+      ));
+    });
+
+    /* ---- Charts — woodcut greyscale ---- */
+    const COMP_LIST = competitors.competitors || [];
+    const counts = {};
+    for (const c of COMP_LIST) for (const m of (c.target_market || [])) counts[m] = (counts[m] || 0) + 1;
+    const donutEntries = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0, 8);
+    new Chart(document.getElementById('market-donut').getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: donutEntries.map(e => e[0]),
+        datasets: [{
+          data: donutEntries.map(e => e[1]),
+          backgroundColor: ['#1a1815','#3a3530','#5a544c','#7a7468','#9a9484','#bbb4a3','#d2cbb9','#e6dfcd'],
+          borderColor: '#f5f1e6', borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'right', labels: { color: '#3a3530', font: { family: 'Cormorant Garamond, serif', size: 13 } } }
+        }
+      }
+    });
+
+    const visible = COMP_LIST.filter(c => c.sg_monthly_sgd != null).slice(0, 20);
+    const labels = visible.map(c => c.name);
+    const data = visible.map(c => c.sg_monthly_sgd);
+    const ourPx = pricing.recommended_tiers?.[1]?.price_sgd ?? null;
+    const datasets = [{
+      label: `${curSym}/mo`,
+      data,
+      backgroundColor: 'rgba(26,24,21,0.85)',
+      borderColor: '#1a1815',
+      borderWidth: 0.5,
+      barThickness: 10
+    }];
+    if (ourPx != null && labels.length) {
+      datasets.push({
+        label: 'recommended midpoint', type: 'line',
+        data: labels.map(() => ourPx),
+        borderColor: '#bb2238', borderDash: [4, 3], pointRadius: 0, fill: false, borderWidth: 1
+      });
+    }
+    new Chart(document.getElementById('price-bars').getContext('2d'), {
+      type: 'bar',
+      data: { labels, datasets },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        scales: {
+          x: { beginAtZero: true, ticks: { color: '#8a847a', font: { family: 'Cormorant Garamond, serif', size: 11 } }, grid: { color: '#e6dfcd', lineWidth: 0.5 }, title: { display: true, text: `${curSym} / month`, color: '#8a847a', font: { family: 'Cormorant Garamond, serif', size: 12, style: 'italic' } } },
+          y: { ticks: { color: '#3a3530', font: { family: 'Cormorant Garamond, serif', size: 12 } }, grid: { color: '#e6dfcd', lineWidth: 0.5 } }
+        },
+        plugins: {
+          legend: { position: 'top', labels: { color: '#3a3530', font: { family: 'Cormorant Garamond, serif', size: 13, style: 'italic' } } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

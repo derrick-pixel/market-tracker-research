@@ -1,0 +1,69 @@
+@import url('./site.css');
+
+.pdf-root { font-family: var(--font-body); color: var(--neutral-dark); }
+
+/* html2canvas word-spacing collapse fix. See methodology Pitfall 4.
+   html2canvas v1.4.1 reflows text in JS and mismeasures kerning offsets,
+   so spaces inside headings ("Top 3 threats" → "Top3 threats") render
+   collapsed in the rasterised PDF. The triple defence:
+     1. font-kerning: none + text-rendering: geometricPrecision —
+        ask the browser for un-kerned glyph advances so the live layout
+        matches what html2canvas measures.
+     2. letter-spacing: 0.01em — forces html2canvas to lay out each
+        glyph independently rather than combining adjacent characters
+        into a single text run (where the space-loss bug lives).
+     3. scale: 2 in pdf-generator.js — gives 4× pixel headroom so the
+        space character has room to render even after rounding.
+   The visual cost is a barely-perceptible looseness at A4 (0.01em ≈
+   0.18px at 18pt) — readers don't notice, but it's the difference
+   between collapsed and correct word spacing in the captured raster. */
+.pdf-page, .pdf-page * {
+  font-kerning: none;
+  text-rendering: geometricPrecision;
+  letter-spacing: 0.01em;
+}
+
+.pdf-page {
+  width: 210mm; height: 297mm;
+  position: relative; overflow: hidden;
+  page-break-after: always;
+  margin: 0 auto var(--space-6);
+  background: white;
+  box-shadow: var(--shadow-md);
+}
+
+.pdf-cover { background: var(--brand-secondary); color: var(--neutral-light); padding: 60mm 20mm; height: 100%; }
+.pdf-cover h1 { font-size: 48pt; color: var(--neutral-light); margin-bottom: 10mm; }
+.pdf-cover .meta { font-family: var(--font-mono); font-size: 12pt; opacity: 0.8; }
+
+.pdf-content { padding: 20mm; }
+.pdf-content h2 { font-size: 28pt; color: var(--brand-secondary); border-bottom: 4px solid var(--brand-primary); padding-bottom: 4mm; margin-bottom: 8mm; }
+.pdf-content h3 { font-size: 18pt; color: var(--brand-primary); margin-top: 8mm; }
+.pdf-content p { font-size: 11pt; line-height: 1.55; }
+.pdf-content .opening { background: var(--neutral-light); padding: 6mm; border-left: 4px solid var(--accent); font-style: italic; margin-bottom: 8mm; }
+
+.pdf-fullbleed { background: var(--brand-primary); color: white; padding: 20mm; height: 100%; }
+.pdf-fullbleed h2 { color: white; border-bottom-color: white; }
+.pdf-fullbleed .opening { background: rgba(255,255,255,0.1); color: white; }
+
+.pdf-toc { padding: 20mm; }
+.pdf-toc h2 { font-size: 32pt; color: var(--brand-secondary); margin-bottom: 12mm; }
+.pdf-toc ol { list-style: none; padding: 0; }
+.pdf-toc li { display: flex; justify-content: space-between; align-items: baseline; padding: 3mm 0; border-bottom: 1px dotted rgba(0,0,0,0.3); font-size: 12pt; }
+.pdf-toc li .page-num { font-family: var(--font-mono); color: var(--brand-primary); }
+
+.pdf-footer {
+  position: absolute; bottom: 8mm; left: 20mm; right: 20mm;
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 9pt; color: rgba(0,0,0,0.5);
+}
+
+.cell-appendix .cell-row { margin-bottom: 5mm; padding: 3mm; border-radius: 2mm; font-size: 10pt; }
+.cell-appendix .cell-row.green { background: #d8f5c3; }
+.cell-appendix .cell-row.red   { background: #fecaca; }
+.cell-appendix .cell-row h4 { margin: 0 0 2mm; font-size: 11pt; }
+.cell-appendix .cell-row li { font-size: 10pt; margin-left: 6mm; }
+
+.appendix-table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+.appendix-table th, .appendix-table td { padding: 2mm 3mm; border-bottom: 1px solid var(--neutral-light); text-align: left; }
+.appendix-table th { background: var(--brand-secondary); color: white; }

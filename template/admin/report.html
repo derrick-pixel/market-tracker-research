@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLASH PRESS // PRINT EDITION // VOL.01</title>
+  <meta name="description" content="Market Tracker 2026 board-grade competitive intelligence — risograph zine. Generate the print edition; preflight DENIED stamps surface any violations.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/report.css">
+  <script src="../assets/vendor/chart.umd.js"></script>
+  <script src="../assets/vendor/html2canvas.min.js"></script>
+  <script src="../assets/vendor/jspdf.umd.min.js"></script>
+  <style>
+    :root {
+      --paper: #d8d4cc;
+      --paper-2: #c8c4bc;
+      --ink: #1a1a1a;
+      --pink: #ff2d8a;
+      --cyan: #00c9d9;
+      --indigo: #352a82;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--paper); }
+    body { color: var(--ink); font-family: 'Space Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.55; min-height: 100vh; position: relative; overflow-x: hidden; }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; opacity: 0.18; z-index: 1000;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      mix-blend-mode: multiply;
+    }
+    /* Don't overlay grain on the rasterised PDF root */
+    .pdf-root { position: relative; z-index: 1; }
+    a { color: var(--pink); text-decoration: underline; text-decoration-thickness: 2px; }
+    a:hover { color: var(--cyan); }
+
+    .frame { max-width: 1320px; margin: 0 auto; padding: 24px 28px 80px; position: relative; z-index: 2; }
+
+    .zine-nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 14px 0; border-bottom: 3px solid var(--ink); margin-bottom: 14px; }
+    .zine-nav .brand { font-family: 'Archivo Black', sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 12px; border: 3px solid var(--ink); background: var(--ink); color: var(--paper); text-decoration: none; margin-right: 8px; }
+    .zine-nav .brand em { font-style: normal; color: var(--pink); }
+    .zine-nav a.zlink { font-family: 'Archivo Black', sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; }
+    .zine-nav a.zlink:hover { color: var(--pink); }
+    .zine-nav a.zlink.active { background: var(--paper); color: var(--ink); text-shadow: 2px 0 var(--pink), -2px 0 var(--cyan); }
+    .zine-nav .spacer { flex: 1; }
+    .zine-nav .back { font-family: 'Space Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; border: 2px dashed var(--ink); padding: 6px 10px; }
+    .zine-nav .back:hover { color: var(--cyan); }
+    .issue-strip { display: flex; gap: 10px; flex-wrap: wrap; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+    .issue-strip span { border: 2px solid var(--ink); padding: 3px 9px; background: var(--paper); }
+
+    .hero { position: relative; padding: 32px 0 14px; border-bottom: 6px solid var(--ink); margin-bottom: 36px; }
+    .reg-mark { position: absolute; width: 18px; height: 18px; opacity: 0.65; }
+    .hero .kicker { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; }
+    .hero h1 { font-family: 'Archivo Black', sans-serif; font-size: clamp(64px, 12vw, 200px); line-height: 0.85; margin: 0 0 16px 0; letter-spacing: -0.04em; text-shadow: 4px 0 var(--pink), -4px 0 var(--cyan); text-transform: uppercase; }
+    .hero h2 { font-family: 'Archivo Black', sans-serif; font-size: clamp(28px, 4.5vw, 56px); line-height: 0.9; margin: 0 0 12px 0; letter-spacing: -0.02em; text-transform: uppercase; }
+    .hero .lede { max-width: 760px; font-size: 16px; line-height: 1.5; margin-bottom: 20px; }
+
+    /* ---- Concert merch CTA ---- */
+    .merch-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 18px 0;
+      border-top: 4px dashed var(--ink);
+      border-bottom: 4px dashed var(--ink);
+      margin: 18px 0 6px;
+    }
+    .btn-merch {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 16px 28px;
+      border: 4px solid var(--ink);
+      background: var(--pink);
+      color: var(--paper);
+      cursor: pointer;
+      box-shadow: 6px 6px 0 var(--ink), 6px 6px 0 4px var(--cyan);
+      transition: transform 0.06s, box-shadow 0.06s;
+      transform: rotate(-1deg);
+    }
+    .btn-merch:hover {
+      transform: rotate(0) translate(-2px, -2px);
+      box-shadow: 8px 8px 0 var(--ink), 8px 8px 0 4px var(--cyan);
+    }
+    .btn-merch:active {
+      transform: rotate(0) translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    .btn-merch:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: 4px 4px 0 var(--ink); }
+    .merch-row .price-tag {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      padding: 8px 12px;
+      background: var(--paper);
+      box-shadow: 3px 3px 0 var(--cyan);
+      transform: rotate(2deg);
+    }
+
+    /* ---- Progress bar ---- */
+    #progress {
+      display: none;
+      margin: 18px 0;
+      padding: 14px;
+      border: 3px solid var(--ink);
+      background: var(--paper);
+    }
+    #progress-bar {
+      width: 100%;
+      height: 18px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      accent-color: var(--pink);
+    }
+    progress::-webkit-progress-bar { background: var(--paper); }
+    progress::-webkit-progress-value { background: var(--pink); }
+    progress::-moz-progress-bar { background: var(--pink); }
+    #progress-text { display: block; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
+
+    /* ---- Preflight DENIED stamp box ---- */
+    #preflight-fail {
+      display: none;
+      margin: 18px 0;
+      position: relative;
+      padding: 22px 22px 22px 22px;
+      border: 4px solid var(--pink);
+      background: var(--paper);
+      box-shadow: 8px 8px 0 var(--ink);
+    }
+    #preflight-fail::before {
+      content: 'DENIED';
+      position: absolute;
+      top: -16px;
+      right: 22px;
+      transform: rotate(-8deg);
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.18em;
+      color: var(--pink);
+      background: var(--paper);
+      border: 4px double var(--pink);
+      padding: 4px 14px;
+    }
+    #preflight-fail strong {
+      display: block;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    #preflight-fail-list {
+      margin: 0;
+      padding-left: 20px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    #preflight-fail-list li {
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-left: 3px solid var(--pink);
+      background: rgba(255,45,138,0.10);
+      list-style: none;
+      position: relative;
+    }
+    #preflight-fail-list li::before {
+      content: '✕';
+      color: var(--pink);
+      font-family: 'Archivo Black', sans-serif;
+      margin-right: 8px;
+    }
+    #preflight-fail .footnote { margin-top: 12px; font-size: 12px; }
+    #preflight-fail code { background: var(--ink); color: var(--paper); padding: 2px 6px; font-family: 'Space Mono', monospace; font-size: 11px; }
+
+    .stripe { height: 28px; margin: 36px 0 24px; background: repeating-linear-gradient(90deg, var(--pink) 0, var(--pink) 24px, var(--cyan) 24px, var(--cyan) 48px); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); position: relative; }
+    .stripe::after { content: attr(data-label); position: absolute; top: 50%; left: 24px; transform: translateY(-50%); background: var(--paper); border: 3px solid var(--ink); padding: 4px 14px; font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .sec { position: relative; margin-bottom: 24px; }
+    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+    .sec-head h3 { font-family: 'Archivo Black', sans-serif; font-size: 36px; line-height: 1; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink); }
+    .sec-head .meta { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo); border: 2px solid var(--ink); padding: 4px 10px; background: var(--paper); }
+
+    /* PDF preview frame */
+    .pdf-frame {
+      border: 3px solid var(--ink);
+      padding: 18px;
+      background: var(--paper-2);
+      box-shadow: 6px 6px 0 var(--cyan);
+    }
+
+    .zine-footer { margin-top: 40px; padding-top: 18px; border-top: 6px solid var(--ink); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    @media (max-width: 760px) {
+      .hero h1 { font-size: 56px; text-shadow: 3px 0 var(--pink), -3px 0 var(--cyan); }
+      .btn-merch { font-size: 18px; padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="frame">
+
+    <nav class="zine-nav" aria-label="Admin sections">
+      <a href="index.html" class="brand">Flash<em>·</em>26</a>
+      <a href="index.html" class="zlink">Roster</a>
+      <a href="insights.html" class="zlink">Market &amp; Pricing</a>
+      <a href="whitespace.html" class="zlink">Whitespace</a>
+      <a href="design-audit.html" class="zlink">Design</a>
+      <a href="report.html" class="zlink active">Print Edition</a>
+      <span class="spacer"></span>
+      <a href="../index.html" class="back">← Back to site</a>
+    </nav>
+
+    <div class="issue-strip">
+      <span>VOL.01</span><span>NO.1</span><span>SG ONLY</span><span>ELITEZ GROUP</span>
+    </div>
+
+    <section class="hero">
+      <svg class="reg-mark" style="top:8px;left:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
+      <svg class="reg-mark" style="top:8px;right:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
+      <div class="kicker">FLASH PRESS // PRINT // 2026-05-02 // PRINT RUN: 100</div>
+      <h1>PRINT EDITION</h1>
+      <h2>Take it home.</h2>
+      <div class="lede">Stitches every artefact in the run into a board-grade PDF: cover, executive summary, market funnel, competitor landscape with the top-five threat brief, pricing strategy, whitespace atlas, design audit, and methodology appendix. The four-phase preflight validator stamps any violations in red before paper hits press.</div>
+
+      <div class="merch-row">
+        <button id="download-btn" class="btn-merch">▸ Press Print · Generate PDF</button>
+        <span class="price-tag">A4 · 10–14 pages · ~3MB</span>
+      </div>
+
+      <div id="progress">
+        <progress id="progress-bar" max="100" value="0"></progress>
+        <span id="progress-text"></span>
+      </div>
+
+      <div id="preflight-fail">
+        <strong>Phase 4 Preflight Failed — PDF not generated.</strong>
+        <ul id="preflight-fail-list"></ul>
+        <p class="footnote">Fix the violations above (re-dispatch the responsible agent if needed), reload, and try Generate again. See <code>methodology/08-report-generator.md §Pre-flight Phase 4</code>.</p>
+      </div>
+    </section>
+
+    <div class="stripe" data-label="01 · FULL REPORT PREVIEW"></div>
+    <section class="sec">
+      <div class="sec-head">
+        <h3>Preview.</h3>
+        <span class="meta">A4 · rasterised at 2× for crispness</span>
+      </div>
+      <div class="pdf-frame">
+        <div id="pdf-root" class="pdf-root"></div>
+      </div>
+    </section>
+
+    <footer class="zine-footer">
+      <span>FLASH PRESS · printed in two colours plus black · newsprint stock</span>
+      <span><a href="../index.html">Public site</a> // <a href="https://github.com/derrick-pixel/market-tracker-research">GitHub</a></span>
+    </footer>
+
+  </div>
+
+  <script type="module">
+    import { loadAppData, mountSampleBanner } from '../assets/js/app.js';
+    import { buildSections, renderPages } from '../assets/js/report/page-templates.js';
+    import { generatePDF, PreflightError } from '../assets/js/report/pdf-generator.js';
+    import { clear } from '../assets/js/dom.js';
+
+    const data = await loadAppData();
+    mountSampleBanner();
+
+    const root = document.getElementById('pdf-root');
+    const sections = buildSections(data);
+    renderPages(root, sections, data);
+
+    document.getElementById('download-btn').addEventListener('click', async () => {
+      const btn = document.getElementById('download-btn');
+      const progress = document.getElementById('progress');
+      const bar = document.getElementById('progress-bar');
+      const txt = document.getElementById('progress-text');
+      const failBox = document.getElementById('preflight-fail');
+      const failList = document.getElementById('preflight-fail-list');
+
+      failBox.style.display = 'none';
+      clear(failList);
+      progress.style.display = 'block';
+      btn.disabled = true;
+      btn.textContent = 'Pressing…';
+
+      const slug = data.competitors.meta.project_name.replace(/\s+/g, '-').toLowerCase();
+      try {
+        await generatePDF({
+          root,
+          data,
+          filename: `${slug}-competitive-intelligence-${data.competitors.meta.research_date}.pdf`,
+          onProgress: (done, total) => { bar.value = (done / total) * 100; txt.textContent = `Rasterising page ${done} of ${total}…`; }
+        });
+      } catch (err) {
+        if (err instanceof PreflightError) {
+          for (const v of err.violations) {
+            const li = document.createElement('li');
+            li.textContent = `[Phase ${v.check}] ${v.message}`;
+            failList.appendChild(li);
+          }
+          failBox.style.display = 'block';
+        } else {
+          alert(`Generate failed: ${err.message}`);
+          console.error(err);
+        }
+      } finally {
+        progress.style.display = 'none';
+        btn.disabled = false;
+        btn.textContent = '▸ Press Print · Generate PDF';
+      }
+    });
+  </script>
+</body>
+</html>

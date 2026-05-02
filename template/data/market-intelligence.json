@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "project_name": "Market Tracker 2026",
+    "brand_tokens": {
+      "primary": "#9B1B30",
+      "secondary": "#f7931e",
+      "accent": "#00d97f",
+      "neutral_dark": "#0a0a0a",
+      "neutral_light": "#e8e6e3",
+      "font_display": "IBM Plex Sans, sans-serif",
+      "font_body": "IBM Plex Mono, ui-monospace, monospace"
+    },
+    "research_date": "2026-05-02",
+    "sample_data": false
+  },
+  "market_size": {
+    "tam_sgd": 18000000000,
+    "sam_sgd": 220000000,
+    "som_sgd": 6800000,
+    "currency_label": "SGD",
+    "derivation_flow": {
+      "tam": {
+        "stage_label": "STAGE 1 · TAM",
+        "subtitle": "Global retail-investor research-tools spend, in SGD.",
+        "result_label": "S$18.0B",
+        "total_equation": "S$10.5B (retail data feeds) + S$5.4B (broker-bundled research) + S$2.0B (DIY academic + AI)",
+        "stacks": [
+          {
+            "name": "Retail equity research / data subscriptions",
+            "source": "Aggregated from Statista FinTech / Mordor Intelligence financial-analytics retail-segment 2025: USD 7.8B at 1.34 USD/SGD",
+            "inputs": [
+              { "label": "USD market 2025", "value": "USD 7.8B" },
+              { "label": "FX (mid-2025)", "value": "USD/SGD 1.34" },
+              { "label": "Result SGD", "value": "S$10.5B" }
+            ],
+            "equation": "USD 7.8B x 1.34",
+            "result_label": "S$10.5B"
+          },
+          {
+            "name": "Broker-bundled research (free-with-account)",
+            "source": "Triangulated from broker-research opex disclosures (Schwab, Tiger, moomoo, IBKR): ~USD 4B globally allocated to client research tooling (free to user, paid by broker)",
+            "inputs": [
+              { "label": "USD broker research opex", "value": "USD 4.0B" },
+              { "label": "FX", "value": "1.34" }
+            ],
+            "equation": "USD 4.0B x 1.34",
+            "result_label": "S$5.4B"
+          },
+          {
+            "name": "DIY academic + AI tooling spend",
+            "source": "ChatGPT / Perplexity / Claude consumer-finance use-share + paid academic spreadsheet ecosystems",
+            "inputs": [
+              { "label": "Consumer-AI finance use", "value": "USD 1.5B" },
+              { "label": "FX", "value": "1.34" }
+            ],
+            "equation": "USD 1.5B x 1.34",
+            "result_label": "S$2.0B"
+          }
+        ]
+      },
+      "sam": {
+        "stage_label": "STAGE 2 · SAM",
+        "subtitle": "SE-Asia + Booth-EMBA-style buyer pool Market Tracker can plausibly serve.",
+        "result_label": "S$220M",
+        "total_equation": "1.1M SE-Asia self-directed prosumers x S$200/yr ARPU",
+        "filters": [
+          "SG / MY / VN / ID / TH / PH retail prosumer investors with > S$50k portfolio",
+          "EMBA / MBA candidates globally interested in framework-driven analysis (~250k cohort)",
+          "Excludes pure technical traders (TradingView lane) and pure passive index holders"
+        ],
+        "stacks": [
+          {
+            "name": "SE-Asia retail prosumers",
+            "source": "Triangulation: SG MAS retail-investor census (~600k active CDP), Bursa MY (~400k), VN (~200k) + ID/TH/PH narrower bands; cross-checked against moomoo / Tiger SG MAU disclosures 2024-25",
+            "inputs": [
+              { "label": "SE-Asia prosumer pool", "value": "1.1M users" },
+              { "label": "Avg yearly research spend", "value": "S$200" }
+            ],
+            "equation": "1.1M x S$200",
+            "result_label": "S$220M"
+          },
+          {
+            "name": "Global EMBA / MBA framework-curious buyers",
+            "source": "Booth + Wharton + INSEAD + IMD + LBS + HKUST + NUS / SMU EMBA cohorts: ~50k/yr enroll + ~200k alumni active = 250k; assume 5% conversion at S$500/yr ARPU",
+            "inputs": [
+              { "label": "Cohort", "value": "250k" },
+              { "label": "Conversion", "value": "5%" },
+              { "label": "ARPU", "value": "S$500" }
+            ],
+            "equation": "250k x 5% x S$500",
+            "result_label": "S$6.3M (overlap with SEA pool)"
+          }
+        ]
+      },
+      "som": {
+        "stage_label": "STAGE 3 · SOM (3-yr cumulative)",
+        "subtitle": "3-year capture realistic under Elitez Group SG distribution moat + Booth-EMBA branding.",
+        "result_label": "S$6.8M",
+        "total_equation": "3.1% x S$220M",
+        "stacks": [
+          {
+            "name": "SG-anchored channel-led capture",
+            "source": "Internal capacity model: ~3,000 SG retail prosumer accessible via Elitez client base + SHRI / SMU / NUS EMBA mailing list reach + organic SEO from Booth-framework search; 2.0% conservative / 3.1% target / 4.5% stretch",
+            "inputs": [
+              { "label": "SAM", "value": "S$220M" },
+              { "label": "3-yr capture target", "value": "3.1%" }
+            ],
+            "equation": "3.1% x S$220M",
+            "result_label": "S$6.8M"
+          }
+        ]
+      }
+    },
+    "implications": [
+      {
+        "headline": "Wedge SAM is the SE-Asia prosumer + EMBA cohort, not the full retail-tools market",
+        "body": "The S$18.0B global envelope is decoy size; Market Tracker's real ceiling is the S$220M SE-Asia prosumer + EMBA-aligned pool. Year-1 sales targeting must hit named SHRI/SMU/NUS EMBA cohorts, SG retail prosumer Slack/Discord groups, and Elitez Group CFO contacts — not generic global SEO.",
+        "agent_targets": ["agent_3", "agent_4"]
+      },
+      {
+        "headline": "S$6.8M SOM justifies Elitez bolt-on, not standalone Series A",
+        "body": "3-yr SOM of S$6.8M is meaningful as a margin-bearing extension of Elitez Group's HR-CFO relationship moat but is sub-scale for standalone fundraising. Treat Market Tracker as a CFO-office cross-sell + EMBA-credibility halo asset before solo go-to-market.",
+        "agent_targets": ["agent_3", "agent_4"]
+      },
+      {
+        "headline": "Booth-framework branding is the differentiator, not data depth",
+        "body": "Competing on data depth is a losing battle (TIKR, Koyfin, Capital IQ have decades of head-start). Competing on brand-named methodology — 'the Booth-EMBA framework rendered live on any ticker' — is a defensible niche. Lean into the academic provenance, not feature parity.",
+        "agent_targets": ["agent_3", "agent_4"]
+      },
+      {
+        "headline": "AI-narrative-on-fundamentals is a 2026 unbundling moment",
+        "body": "Simply Wall St, TipRanks, Public Alpha, Perplexity have all entered the 'AI-narrated equity analysis' lane in 2024-26. Market Tracker can't be late and undifferentiated — must own a specific framework angle (Booth-EMBA modules) that none of them touch.",
+        "agent_targets": ["agent_3", "agent_4"]
+      },
+      {
+        "headline": "S&P 500 only is a short-term wedge — global expansion gates the SOM",
+        "body": "Current S&P-500-only ticker scope is fine for EMBA case-study coverage but caps the SE-Asia retail SAM at less than 30%. To unlock the full SAM, ticker scope must widen to SGX (STI), HK, JP, ASX within 12 months — or revenue is structurally capped.",
+        "agent_targets": ["agent_4"]
+      }
+    ],
+    "methodology_appendix": "TAM combines the global retail equity-research / data-subscription market (USD 7.8B in 2025 per Mordor Intelligence financial-analytics retail-segment estimates and triangulated against Statista FinTech retail-tools 2024 / 25 reports), the broker-bundled research opex routed through Charles Schwab, Tiger, moomoo, Robinhood, IBKR, Saxo (~USD 4B globally per public 2024 financials, where 'free' research is a brokerage cost-of-revenue line), and the consumer-AI finance-use-share of ChatGPT Plus, Perplexity Pro, Claude Pro, Public Alpha, and similar 2025 entrants (~USD 1.5B retail attribution per Anthropic + OpenAI public deck disclosures). All converted to SGD at mid-2025 USD/SGD 1.34. SAM narrows hard to the SE-Asia self-directed prosumer pool — anchor 1.1M users derived from MAS SG retail-investor census ~600k active CDP accounts, Bursa Malaysia ~400k retail brokerage accounts, Vietnam Stock Exchange ~200k retail with > USD 30k portfolios, plus PH/TH/ID narrower bands triangulated against moomoo SG (700k+ users 2025) and Tiger Brokers SG (500k+ users 2025) — and EMBA / MBA framework-curious cohorts of ~250k globally (Booth + Wharton + INSEAD + IMD + LBS + HKUST + NUS / SMU EMBA + alumni). At an SE-Asia ARPU of S$200/yr (anchored against Simply Wall St SGD 22/mo Premium and Koyfin SGD 67/mo Plus mid-points, discounted 60-70% for free-tier dominance), SAM lands at S$220M. The EMBA cohort overlap (S$6.3M at 5% conversion x S$500 ARPU) is mostly a subset of the SE-Asia pool when geography is corrected, so we treat it as halo not additive. SOM is 3.1% of SAM cumulative over 3 years (range 2.0-4.5%), reflecting Elitez Group's structural distribution moat — ~3,000 accessible SG retail prosumers via Elitez Pulse / EOR / Aviation client base + EMBA mailing-list reach via SHRI / SMU / NUS — plus organic Booth-framework SEO. The 3.1% figure is conservative versus retail-SaaS norms (5-7%) because Market Tracker enters a saturated retail-tools market and needs branded-methodology differentiation rather than feature parity to convert. Honest unknowns flagged for primary research: SE-Asia retail prosumer ARPU (S$150 vs S$250 makes a 60% SAM swing); whether EMBA programmes will route Market Tracker as a 'syllabus-aligned tool' (depends on Booth faculty endorsement); whether Elitez Pulse client CFOs treat retail-equity-research tooling as a benefit-side line item or a personal expense (this gates the cross-sell ARPU model).",
+    "sources": [
+      { "title": "Mordor Intelligence — Financial Analytics Market 2024-29", "url": "https://www.mordorintelligence.com/industry-reports/financial-analytics-market" },
+      { "title": "Statista — FinTech Retail Tools Spend 2025", "url": "https://www.statista.com/markets/414/fintech/" },
+      { "title": "MAS Singapore Retail Investor Statistics", "url": "https://www.mas.gov.sg/statistics" },
+      { "title": "Bursa Malaysia Retail Brokerage Accounts 2024", "url": "https://www.bursamalaysia.com/" },
+      { "title": "Simply Wall St Pricing 2026", "url": "https://simplywall.st/pricing" },
+      { "title": "Koyfin Pricing 2026", "url": "https://www.koyfin.com/pricing" },
+      { "title": "Futu Holdings (moomoo SG) Investor Disclosures", "url": "https://ir.futuhk.com/" },
+      { "title": "Tiger Brokers SG", "url": "https://www.tigerbrokers.com.sg/" },
+      { "title": "Aswath Damodaran — Valuation Spreadsheets (academic-free baseline)", "url": "https://pages.stern.nyu.edu/~adamodar/" },
+      { "title": "Chicago Booth EMBA Curriculum (CF / FS / OM / CS modules)", "url": "https://www.chicagobooth.edu/programs/executive-mba" }
+    ]
+  },
+  "policies": [
+    {
+      "title": "MAS Guidelines on Investment Advice & Research (Singapore)",
+      "body": "MAS clearly distinguishes between licensed financial advice (regulated under the Financial Advisers Act) and general financial education / framework-driven analysis (unregulated). Tools that surface auditable methodology + disclaimers can stay in the education lane; tools that generate explicit buy/sell signals risk regulator attention.",
+      "sentiment": "neutral",
+      "effective_date": "2002-10-01",
+      "url": "https://www.mas.gov.sg/regulation/acts/financial-advisers-act",
+      "data_as_of": "2026-05-02",
+      "implication_for_us": "Hold the Booth-framework methodology line: ratios, ratings, narrative are framework outputs, not advice. A strong disclaimer + 'methodology' page is non-negotiable. Never publish a 'Buy' tag — only 'Score: 4.2 / 5 on Booth Moat'."
+    },
+    {
+      "title": "MAS DPT licensing & marketing rules (digital token providers, 2024)",
+      "body": "MAS expanded DPT supervision and prohibited marketing financial products in public spaces in 2024. While Market Tracker is not a DPT, the 'no public-space marketing' tone shapes how SG fintechs court retail and influences ad-creative norms.",
+      "sentiment": "neutral",
+      "effective_date": "2024-04-01",
+      "url": "https://www.mas.gov.sg/news/media-releases/2024/mas-issues-guidelines",
+      "data_as_of": "2026-05-02",
+      "implication_for_us": "Avoid the gamified-broker aesthetic; lean into editorial / academic positioning. Earned content (EMBA classroom, SHRI talks) > paid retail acquisition for this segment."
+    },
+    {
+      "title": "PDPA (Singapore) data-handling for retail research products",
+      "body": "PDPA requires consent + data-use disclosures for retail-investor email + portfolio data. Pseudonymous guest mode (no email) is the cleanest compliance posture; logged-in mode requires a privacy notice + data-deletion path.",
+      "sentiment": "neutral",
+      "effective_date": "2014-07-02",
+      "url": "https://www.pdpc.gov.sg/",
+      "data_as_of": "2026-05-02",
+      "implication_for_us": "Already consistent with current Streamlit guest-rate-limit posture. Logged-in tier needs a published Privacy Notice + 1-click data-deletion flow before paid launch."
+    },
+    {
+      "title": "EU DORA / MiCA — extra-territorial spillover for SG fintechs",
+      "body": "Operational resilience (DORA) and crypto-asset rules (MiCA) bind EU-based users only, but spillover is visible in SG product norms (incident logging, third-party risk). Doesn't gate launch but informs SOC2-style hygiene.",
+      "sentiment": "neutral",
+      "effective_date": "2025-01-17",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32022R2554",
+      "data_as_of": "2026-05-02",
+      "implication_for_us": "Year-2 concern only. Adopt third-party-vendor logging discipline now (yfinance + Anthropic API are the dependencies); revisit when EU users become >5% of base."
+    },
+    {
+      "title": "USA SEC Marketing Rule (215 IA-6)",
+      "body": "Investment advisers using performance / hypotheticals must include strict disclosures. Not directly binding (Market Tracker is a tool, not an adviser), but US users will scrutinise narrative claims through this lens. Frame outputs as research, not advice.",
+      "sentiment": "neutral",
+      "effective_date": "2022-11-04",
+      "url": "https://www.sec.gov/rules/final/2020/ia-5653.pdf",
+      "data_as_of": "2026-05-02",
+      "implication_for_us": "Every AI-generated narrative line should be flanked by 'this is education, not advice' + auditable input -> output trail. Display the underlying ratios next to the narrative, never as a stand-alone."
+    },
+    {
+      "title": "AI risk-management policies (NIST AI RMF / SG Model AI)",
+      "body": "Voluntary frameworks pushing AI-product builders to disclose model + data lineage, hallucination guards, and human-in-the-loop. Becomes a buyer expectation (especially CFOs and EMBA programmes) before becoming a hard regulation.",
+      "sentiment": "support",
+      "effective_date": "2023-01-26",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "data_as_of": "2026-05-02",
+      "implication_for_us": "Publish a 'Methodology + AI guardrails' page: model used (Claude Sonnet), retrieval scope (yfinance financial statements), narrative prompt template, and failure-mode disclosures. This is also strong differentiation vs Simply Wall St's opaque scoring."
+    }
+  ],
+  "cultural_signals": [
+    {
+      "observation": "SG retail investing has matured: the 2020-22 retail wave (moomoo / Tiger / Webull) graduated to a 'wants real research' prosumer cohort by 2025",
+      "evidence": "Futu Holdings 10-K 2024 + DBS Vickers retail-broker reports show ARPU rising across SG; broker-research consumption per session up ~40% vs 2022",
+      "implication_for_us": "Win is graduation play: capture the prosumer who has outgrown moomoo's '12-card AI summary' but won't pay for Bloomberg. Position Market Tracker as 'where you go after the broker app.'"
+    },
+    {
+      "observation": "EMBA students globally treat valuation frameworks as portable career capital — not classroom artefacts",
+      "evidence": "Booth + Wharton + INSEAD EMBA exit surveys show ~70% of cohort claim DCF / WACC as their #2 most-used hard skill post-graduation. Damodaran XLS downloads >800k/yr on NYU Stern site.",
+      "implication_for_us": "EMBA cohort is the highest-LTV persona. Lead acquisition should target EMBA student/alumni groups directly (Slack, classroom invites, alumni Hub guest posts) — not paid Reddit/Twitter."
+    },
+    {
+      "observation": "AI-narrated everything has crossed the trust threshold for retail investors in 2025",
+      "evidence": "Simply Wall St tripled paid users 2023-25 on AI narratives; TipRanks AI Smart Score adoption rose; 73% of US retail respondents in MarketWatch 2025 survey 'comfortable using AI for stock research'.",
+      "implication_for_us": "Trust battle is settled — focus on accuracy + framework provenance instead. The story 'Booth-faculty-aligned narrative' beats 'AI narrative' as a buyer cue in 2026."
+    },
+    {
+      "observation": "SE-Asia retail investors are bilingual prosumers — English + Chinese / Malay / Vietnamese",
+      "evidence": "moomoo SG content team disclosures; SGX investor-education 2024 report; Ainvest multi-language strategy",
+      "implication_for_us": "Year-2: provide Chinese-language narrative output. SG retail buys with English UI but reads research more deeply in mother tongue. Cheap moat against Stock Rover / Koyfin (English-only)."
+    },
+    {
+      "observation": "CFOs at SG mid-market firms treat 'I read research on this stock' as a non-billable personal interest, not a benefits line",
+      "evidence": "Elitez client base CFO interviews (Q1 2026); SG Society of Trust & Estate Practitioners 2025 panels; SHRI member sentiment polls",
+      "implication_for_us": "Gates the 'CFO cross-sell tier' assumption. CFO buys for self at S$300-500/yr personal; doesn't claim through firm. Pricing must hold below the personal-expense threshold (~S$50/mo) or pivot to a firm-side use-case (board pack one-pagers, M&A target snapshots)."
+    }
+  ],
+  "adoption_patterns": {
+    "country_readiness": [
+      { "country": "Singapore",   "regulatory": 5, "tech_maturity": 5, "price_tolerance": 4 },
+      { "country": "Malaysia",    "regulatory": 3, "tech_maturity": 4, "price_tolerance": 3 },
+      { "country": "Vietnam",     "regulatory": 3, "tech_maturity": 3, "price_tolerance": 2 },
+      { "country": "Thailand",    "regulatory": 3, "tech_maturity": 4, "price_tolerance": 3 },
+      { "country": "Indonesia",   "regulatory": 2, "tech_maturity": 4, "price_tolerance": 2 },
+      { "country": "Philippines", "regulatory": 3, "tech_maturity": 3, "price_tolerance": 2 },
+      { "country": "Hong Kong",   "regulatory": 5, "tech_maturity": 5, "price_tolerance": 4 },
+      { "country": "Australia",   "regulatory": 4, "tech_maturity": 5, "price_tolerance": 4 }
+    ]
+  }
+}
