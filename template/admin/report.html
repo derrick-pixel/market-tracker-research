@@ -3,324 +3,284 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLASH PRESS // PRINT EDITION // VOL.01</title>
-  <meta name="description" content="Market Tracker 2026 board-grade competitive intelligence — risograph zine. Generate the print edition; preflight DENIED stamps surface any violations.">
+  <title>MARKET TRACKER :: REPORT :: PIT FLOOR</title>
+  <meta name="description" content="Market Tracker 2026 board-grade synthesis report. Pit-floor terminal aesthetic. Print- and PDF-ready.">
   <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/report.css">
-  <script src="../assets/vendor/chart.umd.js"></script>
-  <script src="../assets/vendor/html2canvas.min.js"></script>
-  <script src="../assets/vendor/jspdf.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/pit-floor.css">
   <style>
-    :root {
-      --paper: #d8d4cc;
-      --paper-2: #c8c4bc;
-      --ink: #1a1a1a;
-      --pink: #ff2d8a;
-      --cyan: #00c9d9;
-      --indigo: #352a82;
+    .download-row {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      padding: 12px 16px; border: 1px solid var(--line);
+      background: var(--panel); margin-bottom: 16px; align-items: center;
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--paper); }
-    body { color: var(--ink); font-family: 'Space Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.55; min-height: 100vh; position: relative; overflow-x: hidden; }
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      pointer-events: none; opacity: 0.18; z-index: 1000;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-      mix-blend-mode: multiply;
-    }
-    /* Don't overlay grain on the rasterised PDF root */
-    .pdf-root { position: relative; z-index: 1; }
-    a { color: var(--pink); text-decoration: underline; text-decoration-thickness: 2px; }
-    a:hover { color: var(--cyan); }
-
-    .frame { max-width: 1320px; margin: 0 auto; padding: 24px 28px 80px; position: relative; z-index: 2; }
-
-    .zine-nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 14px 0; border-bottom: 3px solid var(--ink); margin-bottom: 14px; }
-    .zine-nav .brand { font-family: 'Archivo Black', sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 12px; border: 3px solid var(--ink); background: var(--ink); color: var(--paper); text-decoration: none; margin-right: 8px; }
-    .zine-nav .brand em { font-style: normal; color: var(--pink); }
-    .zine-nav a.zlink { font-family: 'Archivo Black', sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; }
-    .zine-nav a.zlink:hover { color: var(--pink); }
-    .zine-nav a.zlink.active { background: var(--paper); color: var(--ink); text-shadow: 2px 0 var(--pink), -2px 0 var(--cyan); }
-    .zine-nav .spacer { flex: 1; }
-    .zine-nav .back { font-family: 'Space Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; border: 2px dashed var(--ink); padding: 6px 10px; }
-    .zine-nav .back:hover { color: var(--cyan); }
-    .issue-strip { display: flex; gap: 10px; flex-wrap: wrap; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-    .issue-strip span { border: 2px solid var(--ink); padding: 3px 9px; background: var(--paper); }
-
-    .hero { position: relative; padding: 32px 0 14px; border-bottom: 6px solid var(--ink); margin-bottom: 36px; }
-    .reg-mark { position: absolute; width: 18px; height: 18px; opacity: 0.65; }
-    .hero .kicker { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; }
-    .hero h1 { font-family: 'Archivo Black', sans-serif; font-size: clamp(64px, 12vw, 200px); line-height: 0.85; margin: 0 0 16px 0; letter-spacing: -0.04em; text-shadow: 4px 0 var(--pink), -4px 0 var(--cyan); text-transform: uppercase; }
-    .hero h2 { font-family: 'Archivo Black', sans-serif; font-size: clamp(28px, 4.5vw, 56px); line-height: 0.9; margin: 0 0 12px 0; letter-spacing: -0.02em; text-transform: uppercase; }
-    .hero .lede { max-width: 760px; font-size: 16px; line-height: 1.5; margin-bottom: 20px; }
-
-    /* ---- Concert merch CTA ---- */
-    .merch-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-      padding: 18px 0;
-      border-top: 4px dashed var(--ink);
-      border-bottom: 4px dashed var(--ink);
-      margin: 18px 0 6px;
-    }
-    .btn-merch {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 16px 28px;
-      border: 4px solid var(--ink);
-      background: var(--pink);
-      color: var(--paper);
+    .download-row .lbl { color: var(--dim); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .btn {
+      padding: 8px 14px;
+      border: 1px solid var(--maroon);
+      background: var(--maroon); color: white;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 6px 6px 0 var(--ink), 6px 6px 0 4px var(--cyan);
-      transition: transform 0.06s, box-shadow 0.06s;
-      transform: rotate(-1deg);
     }
-    .btn-merch:hover {
-      transform: rotate(0) translate(-2px, -2px);
-      box-shadow: 8px 8px 0 var(--ink), 8px 8px 0 4px var(--cyan);
+    .btn:hover { background: transparent; color: var(--maroon); }
+    .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn.ghost:hover { border-color: var(--amber); color: var(--amber); }
+    .syn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .syn-grid .syn { border: 1px solid var(--line); background: var(--panel-2); padding: 14px 16px; }
+    .syn h4 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--amber); font-size: 12px; letter-spacing: 0.06em;
+      text-transform: uppercase; margin: 0 0 8px 0; font-weight: 600;
     }
-    .btn-merch:active {
-      transform: rotate(0) translate(2px, 2px);
-      box-shadow: 2px 2px 0 var(--ink);
+    .syn ul { margin: 0; padding-left: 18px; font-size: 12px; color: var(--ink); }
+    .syn li { margin-bottom: 6px; line-height: 1.55; }
+    .syn p { margin: 0 0 8px 0; font-size: 12px; color: var(--ink); line-height: 1.55; }
+    .num-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+    .num-tile {
+      border: 1px solid var(--line); background: var(--panel-2);
+      padding: 12px 14px;
     }
-    .btn-merch:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: 4px 4px 0 var(--ink); }
-    .merch-row .price-tag {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--ink);
-      border: 2px solid var(--ink);
-      padding: 8px 12px;
-      background: var(--paper);
-      box-shadow: 3px 3px 0 var(--cyan);
-      transform: rotate(2deg);
+    .num-tile .lbl { color: var(--amber); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .num-tile .val {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700; color: var(--ink); font-size: 22px; letter-spacing: -0.02em; margin-top: 4px;
     }
+    .num-tile .sub { color: var(--dim); font-size: 11px; margin-top: 4px; line-height: 1.4; }
 
-    /* ---- Progress bar ---- */
-    #progress {
-      display: none;
-      margin: 18px 0;
-      padding: 14px;
-      border: 3px solid var(--ink);
-      background: var(--paper);
+    .tier-line {
+      display: grid; grid-template-columns: 200px 80px 1fr;
+      gap: 14px; padding: 8px 0; border-bottom: 1px dashed var(--line-soft);
+      font-size: 12px; align-items: baseline;
     }
-    #progress-bar {
-      width: 100%;
-      height: 18px;
-      border: 2px solid var(--ink);
-      background: var(--paper);
-      accent-color: var(--pink);
-    }
-    progress::-webkit-progress-bar { background: var(--paper); }
-    progress::-webkit-progress-value { background: var(--pink); }
-    progress::-moz-progress-bar { background: var(--pink); }
-    #progress-text { display: block; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
+    .tier-line:last-child { border-bottom: none; }
+    .tier-line .name { color: var(--amber); font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 13px; }
+    .tier-line .px { color: var(--ink); font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 14px; text-align: right; }
+    .tier-line .px.free { color: var(--green); }
+    .tier-line .desc { color: var(--ink); font-size: 12px; }
 
-    /* ---- Preflight DENIED stamp box ---- */
-    #preflight-fail {
-      display: none;
-      margin: 18px 0;
-      position: relative;
-      padding: 22px 22px 22px 22px;
-      border: 4px solid var(--pink);
-      background: var(--paper);
-      box-shadow: 8px 8px 0 var(--ink);
-    }
-    #preflight-fail::before {
-      content: 'DENIED';
-      position: absolute;
-      top: -16px;
-      right: 22px;
-      transform: rotate(-8deg);
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.18em;
-      color: var(--pink);
-      background: var(--paper);
-      border: 4px double var(--pink);
-      padding: 4px 14px;
-    }
-    #preflight-fail strong {
-      display: block;
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--ink);
-      margin-bottom: 12px;
-    }
-    #preflight-fail-list {
-      margin: 0;
-      padding-left: 20px;
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    #preflight-fail-list li {
-      margin-bottom: 8px;
-      padding: 6px 10px;
-      border-left: 3px solid var(--pink);
-      background: rgba(255,45,138,0.10);
-      list-style: none;
-      position: relative;
-    }
-    #preflight-fail-list li::before {
-      content: '✕';
-      color: var(--pink);
-      font-family: 'Archivo Black', sans-serif;
-      margin-right: 8px;
-    }
-    #preflight-fail .footnote { margin-top: 12px; font-size: 12px; }
-    #preflight-fail code { background: var(--ink); color: var(--paper); padding: 2px 6px; font-family: 'Space Mono', monospace; font-size: 11px; }
-
-    .stripe { height: 28px; margin: 36px 0 24px; background: repeating-linear-gradient(90deg, var(--pink) 0, var(--pink) 24px, var(--cyan) 24px, var(--cyan) 48px); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); position: relative; }
-    .stripe::after { content: attr(data-label); position: absolute; top: 50%; left: 24px; transform: translateY(-50%); background: var(--paper); border: 3px solid var(--ink); padding: 4px 14px; font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    .sec { position: relative; margin-bottom: 24px; }
-    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
-    .sec-head h3 { font-family: 'Archivo Black', sans-serif; font-size: 36px; line-height: 1; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink); }
-    .sec-head .meta { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo); border: 2px solid var(--ink); padding: 4px 10px; background: var(--paper); }
-
-    /* PDF preview frame */
-    .pdf-frame {
-      border: 3px solid var(--ink);
-      padding: 18px;
-      background: var(--paper-2);
-      box-shadow: 6px 6px 0 var(--cyan);
-    }
-
-    .zine-footer { margin-top: 40px; padding-top: 18px; border-top: 6px solid var(--ink); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    @media (max-width: 760px) {
-      .hero h1 { font-size: 56px; text-shadow: 3px 0 var(--pink), -3px 0 var(--cyan); }
-      .btn-merch { font-size: 18px; padding: 14px 20px; }
+    @media (max-width: 920px) {
+      .syn-grid, .num-strip { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <div class="status-bar">
+    <span><span class="pip">▮</span> MARKET TRACKER // REPORT // 2026-05-03 // <span class="live">SESSION ACTIVE</span> <span class="cursor"></span></span>
+    <span>SRC: all four data files · synthesised</span>
+    <span style="margin-left:auto;">PIT FLOOR · vol.01</span>
+  </div>
+
+  <nav class="pit-nav">
+    <a href="index.html">Overview</a>
+    <a href="insights-terminal.html">Insights · Pit Floor</a>
+    <a href="whitespace.html">Whitespace Atlas</a>
+    <a href="design-audit.html">Design Audit</a>
+    <a href="report.html" class="active">Report</a>
+    <span class="spacer"></span>
+    <a href="../../index.html" class="ext">↩ Public site</a>
+    <a href="https://elitez-market.streamlit.app/" target="_blank" rel="noopener" class="ext">↗ Live product</a>
+  </nav>
+
   <div class="frame">
 
-    <nav class="zine-nav" aria-label="Admin sections">
-      <a href="index.html" class="brand">Flash<em>·</em>26</a>
-      <a href="index.html" class="zlink">Roster</a>
-      <a href="insights.html" class="zlink">Market &amp; Pricing</a>
-      <a href="whitespace.html" class="zlink">Whitespace</a>
-      <a href="design-audit.html" class="zlink">Design</a>
-      <a href="report.html" class="zlink active">Print Edition</a>
-      <span class="spacer"></span>
-      <a href="../index.html" class="back">← Back to site</a>
-    </nav>
+    <section class="hero">
+      <div>
+        <div class="kicker">[ INSTRUMENT 05 / BOARD-GRADE SYNTHESIS ]</div>
+        <h1>Report <span class="accent">::</span> Synthesis</h1>
+        <div class="sub">Headline thesis · Numbers · Top-5 threats · Whitespace · Pricing · Recommended actions.</div>
+      </div>
+      <div class="meta-block">
+        <strong>MARKET TRACKER 2026</strong>
+        Booth-EMBA Equity Analysis<br>
+        Singapore · SGD<br>
+        An Elitez Group instrument
+      </div>
+    </section>
 
-    <div class="issue-strip">
-      <span>VOL.01</span><span>NO.1</span><span>SG ONLY</span><span>ELITEZ GROUP</span>
+    <div class="download-row">
+      <span class="lbl">Export</span>
+      <button class="btn" onclick="window.print()">▼ Print / Save as PDF</button>
+      <a class="btn ghost" href="../data/competitors.json" target="_blank">competitors.json</a>
+      <a class="btn ghost" href="../data/market-intelligence.json" target="_blank">market-intelligence.json</a>
+      <a class="btn ghost" href="../data/pricing-strategy.json" target="_blank">pricing-strategy.json</a>
+      <a class="btn ghost" href="../data/whitespace-framework.json" target="_blank">whitespace-framework.json</a>
     </div>
 
-    <section class="hero">
-      <svg class="reg-mark" style="top:8px;left:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
-      <svg class="reg-mark" style="top:8px;right:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
-      <div class="kicker">FLASH PRESS // PRINT // 2026-05-02 // PRINT RUN: 100</div>
-      <h1>PRINT EDITION</h1>
-      <h2>Take it home.</h2>
-      <div class="lede">Stitches every artefact in the run into a board-grade PDF: cover, executive summary, market funnel, competitor landscape with the top-five threat brief, pricing strategy, whitespace atlas, design audit, and methodology appendix. The four-phase preflight validator stamps any violations in red before paper hits press.</div>
-
-      <div class="merch-row">
-        <button id="download-btn" class="btn-merch">▸ Press Print · Generate PDF</button>
-        <span class="price-tag">A4 · 10–14 pages · ~3MB</span>
+    <!-- Headline thesis -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ THS :: HEADLINE THESIS</span>
+        <span class="meta">2026-05-03</span>
       </div>
-
-      <div id="progress">
-        <progress id="progress-bar" max="100" value="0"></progress>
-        <span id="progress-text"></span>
-      </div>
-
-      <div id="preflight-fail">
-        <strong>Phase 4 Preflight Failed — PDF not generated.</strong>
-        <ul id="preflight-fail-list"></ul>
-        <p class="footnote">Fix the violations above (re-dispatch the responsible agent if needed), reload, and try Generate again. See <code>methodology/08-report-generator.md §Pre-flight Phase 4</code>.</p>
+      <div class="section-body">
+        <p id="thesis" style="font-size:15px; line-height:1.6; color:var(--ink); margin: 0; max-width: 920px; font-family: 'IBM Plex Sans', sans-serif;"></p>
       </div>
     </section>
 
-    <div class="stripe" data-label="01 · FULL REPORT PREVIEW"></div>
-    <section class="sec">
-      <div class="sec-head">
-        <h3>Preview.</h3>
-        <span class="meta">A4 · rasterised at 2× for crispness</span>
+    <!-- Numbers strip -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ NUM :: HEADLINE NUMBERS</span>
+        <span class="meta">all in SGD</span>
       </div>
-      <div class="pdf-frame">
-        <div id="pdf-root" class="pdf-root"></div>
+      <div class="section-body">
+        <div class="num-strip" id="num-strip"></div>
       </div>
     </section>
 
-    <footer class="zine-footer">
-      <span>FLASH PRESS · printed in two colours plus black · newsprint stock</span>
-      <span><a href="../index.html">Public site</a> // <a href="https://github.com/derrick-pixel/market-tracker-research">GitHub</a></span>
+    <!-- Synthesis grid -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ SYN :: TWO-PAGER SYNTHESIS</span>
+        <span class="meta">CF-FS-OM-CS-grade read</span>
+      </div>
+      <div class="section-body">
+        <div class="syn-grid">
+          <div class="syn">
+            <h4>▸ TOP-5 STRUCTURAL THREATS</h4>
+            <ol id="top5-list" style="margin:0; padding-left:18px;"></ol>
+          </div>
+          <div class="syn">
+            <h4>▸ STRATEGIC IMPLICATIONS (MARKET-LEVEL)</h4>
+            <ul id="impl-list"></ul>
+          </div>
+          <div class="syn">
+            <h4>▸ FIVE RANKED ATTACK PLANS</h4>
+            <ol id="atk-list" style="margin:0; padding-left:18px;"></ol>
+          </div>
+          <div class="syn">
+            <h4>▸ RECOMMENDED PRICING TIERS</h4>
+            <div id="tiers"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommended actions -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ ACT :: RECOMMENDED ACTIONS (NEXT 90 DAYS)</span>
+        <span class="meta">opinionated</span>
+      </div>
+      <div class="section-body">
+        <ol style="margin:0; padding-left: 22px; font-size: 13px; color: var(--ink); line-height: 1.7;">
+          <li><b style="color:var(--amber);">Lock the Booth-EMBA methodology brand line.</b> Publish a single canonical "Methodology + AI Guardrails" page disclosing model (Claude Sonnet), retrieval scope (yfinance financial statements), and the four module formulas. This is the differentiator vs Simply Wall St / TipRanks (proprietary) and ChatGPT (ungrounded). No other 90-day work is more important.</li>
+          <li><b style="color:var(--amber);">Ship the Pro tier (S$29/mo).</b> Add login + watchlists + email alerts + full ticker scope (S&amp;P 500 + SGX STI + HK + ASX). Conversion target: 4% of free guests inside 90 days, anchored against Simply Wall St freemium benchmarks.</li>
+          <li><b style="color:var(--amber);">Run two EMBA cohort pilots.</b> NUS or SMU EMBA programme this term. Site licence S$4,500/yr. Halo + alumni-Pro funnel + classroom case-study templates ship with the pilot.</li>
+          <li><b style="color:var(--amber);">Elitez Pulse cross-sell experiment.</b> 60-day free trial of Pro for 50 named SG SME CFO contacts inside the Elitez client base. Volume-seeding + testimonial harvest + EMBA spouse referrals.</li>
+          <li><b style="color:var(--amber);">Open the boutique-fund Team conversation.</b> Direct outreach to 30 SG / HK boutique funds + family offices. SGD 199/mo for 3 seats. Opportunity-cost framing in the deck (4 hrs saved x 8 names x S$80/hr = S$2,560/mo vs SGD 199 ask).</li>
+          <li><b style="color:var(--amber);">Defer:</b> Building Bloomberg-grade ratio depth, real-time market data feed, multi-language narrative, on-prem deployment. None of these win the SOM in the next 12 months.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Methodology -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ APX :: METHODOLOGY APPENDIX</span>
+        <span class="meta" id="src-meta">sources cited</span>
+      </div>
+      <div class="section-body">
+        <p style="font-size:12px; color:var(--ink); line-height:1.6; max-width:920px; white-space: pre-wrap;" id="methodology"></p>
+        <h4 style="margin: 18px 0 8px 0; color: var(--amber); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;">▸ Sources</h4>
+        <ul id="sources" style="margin:0; padding-left: 18px; font-size: 12px; color: var(--ink); line-height: 1.7;"></ul>
+      </div>
+    </section>
+
+    <footer class="pit-footer">
+      <span>MARKET TRACKER · ELITEZ GROUP · PIT FLOOR INSTRUMENT · COMPILED 2026-05-03</span>
+      <span><a href="index.html">↩ overview</a> · <a href="insights-terminal.html">insights</a> · <a href="whitespace.html">whitespace</a> · <a href="design-audit.html">design audit</a></span>
     </footer>
-
   </div>
 
   <script type="module">
-    import { loadAppData, mountSampleBanner } from '../assets/js/app.js';
-    import { buildSections, renderPages } from '../assets/js/report/page-templates.js';
-    import { generatePDF, PreflightError } from '../assets/js/report/pdf-generator.js';
-    import { clear } from '../assets/js/dom.js';
+    import { loadAppData } from '../assets/js/app.js';
+    import { h, mount } from '../assets/js/dom.js';
 
-    const data = await loadAppData();
-    mountSampleBanner();
+    const { competitors, market, pricing, whitespace } = await loadAppData();
+    const ms = market.market_size || {};
+    const sc = whitespace.strategy_canvas || {};
 
-    const root = document.getElementById('pdf-root');
-    const sections = buildSections(data);
-    renderPages(root, sections, data);
+    /* ---- Currency helpers ---- */
+    const fmtMoney = n => {
+      if (n == null) return '—';
+      if (n >= 1e9) return 'S$' + (n/1e9).toFixed(n >= 1e10 ? 0 : 1) + 'B';
+      if (n >= 1e6) return 'S$' + (n/1e6).toFixed(n >= 1e8 ? 0 : 1) + 'M';
+      if (n >= 1e3) return 'S$' + (n/1e3).toFixed(0) + 'K';
+      return 'S$' + Math.round(n).toLocaleString();
+    };
 
-    document.getElementById('download-btn').addEventListener('click', async () => {
-      const btn = document.getElementById('download-btn');
-      const progress = document.getElementById('progress');
-      const bar = document.getElementById('progress-bar');
-      const txt = document.getElementById('progress-text');
-      const failBox = document.getElementById('preflight-fail');
-      const failList = document.getElementById('preflight-fail-list');
+    /* ---- Thesis ---- */
+    document.getElementById('thesis').textContent = sc.headline_thesis || '';
 
-      failBox.style.display = 'none';
-      clear(failList);
-      progress.style.display = 'block';
-      btn.disabled = true;
-      btn.textContent = 'Pressing…';
+    /* ---- Number strip ---- */
+    const numStrip = document.getElementById('num-strip');
+    const tile = (lbl, val, sub) => h('div', { class: 'num-tile' },
+      h('div', { class: 'lbl' }, lbl),
+      h('div', { class: 'val' }, val),
+      h('div', { class: 'sub' }, sub)
+    );
+    mount(numStrip,
+      tile('TAM', fmtMoney(ms.tam_sgd), 'Global retail-investor research-tools spend.'),
+      tile('SAM', fmtMoney(ms.sam_sgd), 'SE-Asia prosumer + EMBA cohort pool.'),
+      tile('SOM (3-YR)', fmtMoney(ms.som_sgd), 'Elitez-channel-led capture target.'),
+      tile('COMPETITORS', String(competitors.competitors?.length || 0), 'mapped across 14 categories.')
+    );
 
-      const slug = data.competitors.meta.project_name.replace(/\s+/g, '-').toLowerCase();
-      try {
-        await generatePDF({
-          root,
-          data,
-          filename: `${slug}-competitive-intelligence-${data.competitors.meta.research_date}.pdf`,
-          onProgress: (done, total) => { bar.value = (done / total) * 100; txt.textContent = `Rasterising page ${done} of ${total}…`; }
-        });
-      } catch (err) {
-        if (err instanceof PreflightError) {
-          for (const v of err.violations) {
-            const li = document.createElement('li');
-            li.textContent = `[Phase ${v.check}] ${v.message}`;
-            failList.appendChild(li);
-          }
-          failBox.style.display = 'block';
-        } else {
-          alert(`Generate failed: ${err.message}`);
-          console.error(err);
-        }
-      } finally {
-        progress.style.display = 'none';
-        btn.disabled = false;
-        btn.textContent = '▸ Press Print · Generate PDF';
-      }
-    });
+    /* ---- Top-5 list ---- */
+    const compById = Object.fromEntries((competitors.competitors||[]).map(c => [c.id, c]));
+    const top5El = document.getElementById('top5-list');
+    top5El.replaceChildren(...(competitors.top_five || []).map(t => {
+      const c = compById[t.competitor_id] || {};
+      return h('li', { style: { marginBottom: '10px', lineHeight: '1.55' } },
+        h('b', { style: { color: 'var(--amber)' } }, c.name || t.competitor_id),
+        ' — ',
+        t.rationale || ''
+      );
+    }));
+
+    /* ---- Implications ---- */
+    const implEl = document.getElementById('impl-list');
+    implEl.replaceChildren(...(ms.implications || []).map(im =>
+      h('li', {},
+        h('b', { style: { color: 'var(--amber)' } }, '▸ ' + (im.headline || '')),
+        ' — ',
+        im.body || ''
+      )
+    ));
+
+    /* ---- Attack plans ---- */
+    const atkEl = document.getElementById('atk-list');
+    atkEl.replaceChildren(...(whitespace.attack_plans || []).map(a =>
+      h('li', { style: { marginBottom: '10px', lineHeight: '1.55' } },
+        h('b', { style: { color: 'var(--amber)' } }, a.niche_name || ''),
+        ' — ',
+        h('span', { style: { color: 'var(--green)' } }, fmtMoney(a.tam_estimate_sgd) + ' TAM. '),
+        a.why_we_win || ''
+      )
+    ));
+
+    /* ---- Tiers ---- */
+    const tiersEl = document.getElementById('tiers');
+    tiersEl.replaceChildren(...(pricing.recommended_tiers || []).map(t =>
+      h('div', { class: 'tier-line' },
+        h('div', { class: 'name' }, t.name),
+        h('div', { class: 'px' + (t.price_sgd === 0 ? ' free' : '') }, t.price_sgd === 0 ? 'FREE' : 'S$' + t.price_sgd),
+        h('div', { class: 'desc' }, t.target_persona + ' · ' + (t.psychological_anchor || ''))
+      )
+    ));
+
+    /* ---- Methodology + sources ---- */
+    document.getElementById('methodology').textContent = ms.methodology_appendix || '';
+    const srcs = ms.sources || [];
+    document.getElementById('src-meta').textContent = `${srcs.length} sources cited`;
+    document.getElementById('sources').replaceChildren(...srcs.map(s =>
+      h('li', {}, h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title))
+    ));
   </script>
 </body>
 </html>

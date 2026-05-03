@@ -3,410 +3,318 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLASH PRESS // WHITESPACE ATLAS // VOL.01</title>
-  <meta name="description" content="Market Tracker 2026 whitespace atlas — risograph zine. Where the pit is empty: strategy canvas, segment×need rubber stamps, ranked attack tour.">
+  <title>MARKET TRACKER :: WHITESPACE ATLAS :: PIT FLOOR</title>
+  <meta name="description" content="Market Tracker 2026 whitespace atlas — strategy canvas, segment x need heatmap, and 5 ranked attack plans. Pit-floor terminal aesthetic.">
   <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/pit-floor.css">
   <script src="../assets/vendor/chart.umd.js"></script>
   <style>
-    :root {
-      --paper: #d8d4cc;
-      --paper-2: #c8c4bc;
-      --ink: #1a1a1a;
-      --pink: #ff2d8a;
-      --cyan: #00c9d9;
-      --indigo: #352a82;
+    .heat-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .heat-table th, .heat-table td {
+      padding: 8px 10px; border: 1px solid var(--line); text-align: center; vertical-align: middle;
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--paper); }
-    body { color: var(--ink); font-family: 'Space Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.55; min-height: 100vh; position: relative; overflow-x: hidden; }
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      pointer-events: none; opacity: 0.18; z-index: 1000;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-      mix-blend-mode: multiply;
+    .heat-table thead th {
+      background: #0c0c0c; color: var(--dim);
+      font-weight: 500; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
     }
-    a { color: var(--pink); text-decoration: underline; text-decoration-thickness: 2px; }
-    a:hover { color: var(--cyan); }
-
-    .frame { max-width: 1320px; margin: 0 auto; padding: 24px 28px 80px; position: relative; z-index: 2; }
-
-    .zine-nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 14px 0; border-bottom: 3px solid var(--ink); margin-bottom: 14px; }
-    .zine-nav .brand { font-family: 'Archivo Black', sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 12px; border: 3px solid var(--ink); background: var(--ink); color: var(--paper); text-decoration: none; margin-right: 8px; }
-    .zine-nav .brand em { font-style: normal; color: var(--pink); }
-    .zine-nav a.zlink { font-family: 'Archivo Black', sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; }
-    .zine-nav a.zlink:hover { color: var(--pink); }
-    .zine-nav a.zlink.active { background: var(--paper); color: var(--ink); text-shadow: 2px 0 var(--pink), -2px 0 var(--cyan); }
-    .zine-nav .spacer { flex: 1; }
-    .zine-nav .back { font-family: 'Space Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; border: 2px dashed var(--ink); padding: 6px 10px; }
-    .zine-nav .back:hover { color: var(--cyan); }
-    .issue-strip { display: flex; gap: 10px; flex-wrap: wrap; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-    .issue-strip span { border: 2px solid var(--ink); padding: 3px 9px; background: var(--paper); }
-
-    .hero { position: relative; padding: 32px 0 14px; border-bottom: 6px solid var(--ink); margin-bottom: 36px; }
-    .reg-mark { position: absolute; width: 18px; height: 18px; opacity: 0.65; }
-    .hero .kicker { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; }
-    .hero h1 { font-family: 'Archivo Black', sans-serif; font-size: clamp(64px, 11vw, 180px); line-height: 0.85; margin: 0 0 16px 0; letter-spacing: -0.04em; text-shadow: 4px 0 var(--pink), -4px 0 var(--cyan); text-transform: uppercase; }
-    .hero h2 { font-family: 'Archivo Black', sans-serif; font-size: clamp(28px, 4.5vw, 56px); line-height: 0.9; margin: 0 0 12px 0; letter-spacing: -0.02em; text-transform: uppercase; }
-    .hero .lede { max-width: 760px; font-size: 16px; line-height: 1.5; }
-
-    .stripe { height: 28px; margin: 36px 0 24px; background: repeating-linear-gradient(90deg, var(--pink) 0, var(--pink) 24px, var(--cyan) 24px, var(--cyan) 48px); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); position: relative; }
-    .stripe::after { content: attr(data-label); position: absolute; top: 50%; left: 24px; transform: translateY(-50%); background: var(--paper); border: 3px solid var(--ink); padding: 4px 14px; font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    .sec { position: relative; margin-bottom: 24px; }
-    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
-    .sec-head h3 { font-family: 'Archivo Black', sans-serif; font-size: 36px; line-height: 1; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink); }
-    .sec-head .meta { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo); border: 2px solid var(--ink); padding: 4px 10px; background: var(--paper); }
-
-    /* ---- Strategy canvas: chart in halftone frame ---- */
-    .chart-frame {
-      position: relative;
-      border: 3px solid var(--ink);
-      padding: 18px;
-      background: var(--paper);
-      margin-bottom: 24px;
-      box-shadow: 6px 6px 0 var(--cyan);
+    .heat-table tbody th {
+      background: #0c0c0c; color: var(--ink); text-align: left;
+      font-weight: 500; font-family: 'IBM Plex Sans', sans-serif; font-size: 12px;
     }
-    .chart-frame::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image: radial-gradient(circle at 2px 2px, rgba(255,45,138,0.18) 1px, transparent 1.5px);
-      background-size: 12px 12px;
-      mix-blend-mode: multiply;
-      opacity: 0.6;
+    .heat-cell {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600; font-size: 14px;
     }
-    .chart-frame .ctitle { font-family: 'Archivo Black', sans-serif; font-size: 22px; text-transform: uppercase; margin-bottom: 4px; position: relative; }
-    .chart-frame .csub { font-size: 13px; margin-bottom: 14px; position: relative; }
-    .chart-canvas { height: 540px; position: relative; }
-
-    /* ---- Heatmap as rubber stamps ---- */
-    .heatmap-grid {
-      display: grid;
-      gap: 6px;
-      background: var(--ink);
-      padding: 6px;
-      border: 3px solid var(--ink);
+    .heat-cell .ours {
+      color: var(--maroon); font-size: 11px; letter-spacing: 0.06em;
+      display: block; margin-top: 2px;
     }
-    .heatmap-header-col, .heatmap-header-row {
-      background: var(--ink);
-      color: var(--paper);
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
+    .heat-cell .ours b { color: var(--amber); font-size: 13px; font-weight: 700; }
+    .canvas-shell {
+      padding: 16px; border: 1px solid var(--line); background: var(--panel);
+      margin-bottom: 16px;
     }
-    .heatmap-header-row { justify-content: center; text-align: center; min-height: 64px; line-height: 1.2; }
-    .heatmap-header-col { flex-direction: column; align-items: flex-start; }
-    .heatmap-header-col .descriptor { display: block; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; opacity: 0.75; margin-top: 4px; text-transform: none; font-weight: normal; }
-    .heatmap-cell {
-      cursor: pointer;
-      padding: 18px 8px;
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 24px;
-      line-height: 1;
-      text-align: center;
-      border: 3px double currentColor;
-      transition: transform 0.12s;
-      position: relative;
-      transform: rotate(-2deg);
+    .canvas-shell .title {
+      color: var(--amber); font-size: 12px; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 4px;
     }
-    .heatmap-cell::after {
-      content: attr(data-stamp);
-      display: block;
-      font-size: 9px;
-      letter-spacing: 0.14em;
-      margin-top: 6px;
-      opacity: 0.85;
+    .canvas-shell .sub { color: var(--dim); font-size: 11px; margin-bottom: 12px; }
+    .canvas-shell .holder { height: 480px; }
+    .legend-row { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11px; color: var(--dim); margin-top: 8px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .legend-row .sw { display: inline-block; width: 11px; height: 11px; vertical-align: -1px; margin-right: 5px; border: 1px solid var(--line); }
+    .cell-detail summary {
+      cursor: pointer; color: var(--amber);
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 8px 10px; background: #0c0c0c; border: 1px solid var(--line);
     }
-    .heatmap-cell:nth-child(even) { transform: rotate(2deg); }
-    .heatmap-cell:hover { transform: rotate(0) scale(1.04); z-index: 2; }
-    .heatmap-cell.cell-green { background: var(--paper); color: #0e6b3a; }
-    .heatmap-cell.cell-amber { background: var(--paper); color: #8a6500; }
-    .heatmap-cell.cell-red   { background: var(--paper); color: #b3243b; }
-    .heatmap-cell.cell-selected { outline: 4px solid var(--pink); outline-offset: -4px; transform: rotate(0) scale(1.04); }
-
-    .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-    .legend .swatch-chip { display: inline-flex; gap: 8px; align-items: center; padding: 4px 8px; border: 2px solid var(--ink); background: var(--paper); }
-    .legend .swatch-chip .legend-swatch { width: 14px; height: 14px; border: 2px double currentColor; display: inline-block; }
-    .legend .green { color: #0e6b3a; }
-    .legend .amber { color: #8a6500; }
-    .legend .red   { color: #b3243b; }
-
-    .cell-detail {
-      margin-top: 18px;
-      padding: 18px;
-      border: 3px solid var(--ink);
-      background: var(--paper);
-      box-shadow: 6px 6px 0 var(--pink);
-    }
-    .cell-detail .verdict { font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 10px; display: inline-block; border: 3px double currentColor; margin-bottom: 10px; }
-    .cell-detail .verdict.green { color: #0e6b3a; }
-    .cell-detail .verdict.amber { color: #8a6500; }
-    .cell-detail .verdict.red   { color: #b3243b; }
-    .cell-detail h3 { font-family: 'Archivo Black', sans-serif; font-size: 22px; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 10px 0; }
-    .cell-detail p { margin: 0 0 10px 0; font-size: 13px; }
-    .cell-detail ul { padding-left: 18px; margin: 0; font-size: 13px; line-height: 1.5; }
-    .cell-detail ul li { margin-bottom: 4px; }
-
-    /* ---- Attack plans as tour-poster cards ---- */
-    .attack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 22px; }
-    .attack-card-v2 {
-      position: relative;
-      border: 3px solid var(--ink);
-      background: var(--paper);
-      padding: 18px;
-    }
-    .attack-card-v2:nth-child(odd)  { transform: rotate(-0.8deg); box-shadow: 6px 6px 0 var(--pink); }
-    .attack-card-v2:nth-child(even) { transform: rotate(0.8deg); box-shadow: 6px 6px 0 var(--cyan); }
-    .attack-head { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: start; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 3px solid var(--ink); }
-    .attack-rank-badge { font-family: 'Archivo Black', sans-serif; font-size: 64px; line-height: 0.85; color: var(--pink); letter-spacing: -0.04em; text-shadow: 3px 0 var(--cyan); }
-    .attack-head-text h3 { font-family: 'Archivo Black', sans-serif; font-size: 22px; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 6px 0; line-height: 1; }
-    .attack-icp { font-family: 'Space Mono', monospace; font-style: italic; font-size: 12px; margin: 0; opacity: 0.85; }
-    .attack-tam-chip { background: var(--ink); color: var(--paper); padding: 8px 12px; text-align: center; }
-    .tam-label { font-family: 'Archivo Black', sans-serif; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); }
-    .tam-value { font-family: 'Archivo Black', sans-serif; font-size: 22px; line-height: 1; margin-top: 2px; }
-    .attack-body { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-    .attack-body-cell { border-left: 3px solid var(--pink); padding: 4px 10px 4px 12px; }
-    .attack-body-cell:nth-child(2) { border-left-color: var(--cyan); }
-    .attack-body-label { font-family: 'Archivo Black', sans-serif; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--indigo); margin-bottom: 6px; }
-    .attack-body-cell p { font-size: 13px; line-height: 1.5; margin: 0; }
-    .gtm-band { background: var(--paper-2); border: 2px solid var(--ink); padding: 12px; }
-    .gtm-band-label { font-family: 'Archivo Black', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 8px; color: var(--pink); }
-    .gtm-band-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .gtm-tile { padding: 6px 8px; border-left: 2px solid var(--ink); font-size: 12px; line-height: 1.4; }
-    .gtm-label { display: block; font-family: 'Archivo Black', sans-serif; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--indigo); margin-bottom: 2px; }
-    .gtm-value { font-family: 'Space Mono', monospace; font-size: 12px; }
-
-    .zine-footer { margin-top: 40px; padding-top: 18px; border-top: 6px solid var(--ink); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    @media (max-width: 760px) {
-      .hero h1 { font-size: 56px; text-shadow: 3px 0 var(--pink), -3px 0 var(--cyan); }
-      .attack-body { grid-template-columns: 1fr; }
-      .gtm-band-grid { grid-template-columns: 1fr; }
-    }
+    .cell-detail[open] summary { margin-bottom: 6px; }
+    .cell-detail ul { padding: 8px 14px 8px 26px; margin: 0; background: var(--panel-2); border: 1px solid var(--line); border-top: none; }
+    .cell-detail li { font-size: 12px; color: var(--ink); margin-bottom: 6px; }
+    .cell-detail li b { color: var(--amber); }
   </style>
 </head>
 <body>
 
+  <div class="status-bar">
+    <span><span class="pip">▮</span> MARKET TRACKER // WHITESPACE // 2026-05-03 // <span class="live">SESSION ACTIVE</span> <span class="cursor"></span></span>
+    <span>SRC: whitespace-framework.json · competitors.json</span>
+    <span style="margin-left:auto;">PIT FLOOR · vol.01</span>
+  </div>
+
+  <nav class="pit-nav">
+    <a href="index.html">Overview</a>
+    <a href="insights-terminal.html">Insights · Pit Floor</a>
+    <a href="whitespace.html" class="active">Whitespace Atlas</a>
+    <a href="design-audit.html">Design Audit</a>
+    <a href="report.html">Report</a>
+    <span class="spacer"></span>
+    <a href="../../index.html" class="ext">↩ Public site</a>
+    <a href="https://elitez-market.streamlit.app/" target="_blank" rel="noopener" class="ext">↗ Live product</a>
+  </nav>
+
+  <div class="ticker">
+    <div class="ticker-track" id="ticker-track">loading…</div>
+  </div>
+
   <div class="frame">
 
-    <nav class="zine-nav" aria-label="Admin sections">
-      <a href="index.html" class="brand">Flash<em>·</em>26</a>
-      <a href="index.html" class="zlink">Roster</a>
-      <a href="insights.html" class="zlink">Market &amp; Pricing</a>
-      <a href="whitespace.html" class="zlink active">Whitespace</a>
-      <a href="design-audit.html" class="zlink">Design</a>
-      <a href="report.html" class="zlink">Print Edition</a>
-      <span class="spacer"></span>
-      <a href="../index.html" class="back">← Back to site</a>
-    </nav>
-
-    <div class="issue-strip">
-      <span>VOL.01</span><span>NO.1</span><span>SG ONLY</span><span>ELITEZ GROUP</span>
-    </div>
-
     <section class="hero">
-      <svg class="reg-mark" style="top:8px;left:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
-      <svg class="reg-mark" style="top:8px;right:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
-      <div class="kicker">FLASH PRESS // ATLAS // 2026-05-02 // PRINT RUN: 100</div>
-      <h1>WHITESPACE</h1>
-      <h2>Where the pit is empty.</h2>
-      <div class="lede">Strategy canvas, segment×need rubber-stamp grid, four ranked attack plans. Each cell tells you where the pit is empty enough to play, and which acts you'll be sharing the bill with if you take the slot.</div>
+      <div>
+        <div class="kicker">[ INSTRUMENT 03 / WHITESPACE ATLAS ]</div>
+        <h1>Whitespace <span class="accent">::</span> Atlas</h1>
+        <div class="sub">Strategy canvas radar · Segment x need heatmap · Five ranked attack plans.</div>
+        <p id="thesis" style="font-size:13px;color:var(--ink);max-width:760px;margin:14px 0 0 0;line-height:1.55;"></p>
+      </div>
+      <div class="meta-block">
+        <strong>MARKET TRACKER 2026</strong>
+        Booth-EMBA Equity Analysis<br>
+        Singapore · SGD<br>
+        An Elitez Group instrument
+      </div>
     </section>
 
-    <!-- Strategy canvas -->
-    <div class="stripe" data-label="01 · STRATEGY CANVAS"></div>
-    <section class="sec">
-      <div class="sec-head">
-        <h3>Strategy Canvas.</h3>
-        <span class="meta">8 dimensions · all named competitors</span>
+    <!-- Strategy canvas radar -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ CVS :: STRATEGY CANVAS</span>
+        <span class="meta" id="cvs-meta">8 dimensions · 9 players</span>
       </div>
-      <div class="chart-frame">
-        <div class="ctitle">Where competitors cluster — and where the field is empty.</div>
-        <div class="csub" id="thesis"></div>
-        <div class="chart-canvas"><canvas id="radar-canvas"></canvas></div>
+      <div class="section-body">
+        <div class="canvas-shell">
+          <div class="title">CHT.01 :: WHERE WE OUTBID + UNDERBID</div>
+          <div class="sub">Each line is a player; each axis is a strategic dimension scored 0-5. Maroon = us.</div>
+          <div class="holder"><canvas id="radar"></canvas></div>
+        </div>
       </div>
     </section>
 
     <!-- Heatmap -->
-    <div class="stripe" data-label="02 · SEGMENT × NEED RUBBER STAMPS"></div>
-    <section class="sec">
-      <div class="sec-head">
-        <h3 id="heatmap-title">Segment × Need.</h3>
-        <span class="meta" id="heatmap-meta"></span>
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ HEAT :: SEGMENT × NEED HEATMAP</span>
+        <span class="meta" id="heat-meta"></span>
       </div>
-      <div id="heatmap"></div>
-      <div class="legend">
-        <span class="swatch-chip green"><span class="legend-swatch"></span>0–1 · APPROVED · whitespace</span>
-        <span class="swatch-chip amber"><span class="legend-swatch"></span>2–3 · PENDING · contested</span>
-        <span class="swatch-chip red"><span class="legend-swatch"></span>4+ · DENIED · crowded</span>
+      <div class="section-body">
+        <table class="heat-table" id="heatmap"></table>
+        <div class="legend-row">
+          <span><span class="sw cell-hot"></span>HOT (us ≥ best competitor)</span>
+          <span><span class="sw cell-warm"></span>WARM (us = ±1 from best)</span>
+          <span><span class="sw cell-cold"></span>COLD (us &lt; best - 1)</span>
+        </div>
+        <div style="margin-top:14px; display:grid; grid-template-columns: 1fr; gap: 6px;" id="cell-drilldown"></div>
       </div>
-      <div id="cell-detail" class="cell-detail" style="display: none;"></div>
     </section>
 
     <!-- Attack plans -->
-    <div class="stripe" data-label="03 · TOUR DATES · ATTACK PLANS"></div>
-    <section class="sec">
-      <div class="sec-head">
-        <h3>Attack Plans.</h3>
-        <span class="meta" id="attack-count"></span>
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ ATK :: RANKED ATTACK PLANS</span>
+        <span class="meta" id="atk-meta"></span>
       </div>
-      <div id="attack-plans" class="attack-grid"></div>
+      <div class="section-body">
+        <div class="attack-grid" id="attacks"></div>
+      </div>
     </section>
 
-    <footer class="zine-footer">
-      <span>FLASH PRESS · printed in two colours plus black · newsprint stock</span>
-      <span><a href="../index.html">Public site</a> // <a href="https://github.com/derrick-pixel/market-tracker-research">GitHub</a></span>
+    <footer class="pit-footer">
+      <span>MARKET TRACKER · ELITEZ GROUP · PIT FLOOR INSTRUMENT</span>
+      <span><a href="index.html">↩ overview</a> · <a href="insights-terminal.html">insights · pit floor</a> · <a href="report.html">report</a></span>
     </footer>
-
   </div>
 
   <script type="module">
-    import { loadAppData, mountSampleBanner } from '../assets/js/app.js';
-    import { renderRadar } from '../assets/js/viz/radar.js';
-    import { renderHeatmap, renderCellDetail } from '../assets/js/viz/heatmap.js';
+    import { loadAppData } from '../assets/js/app.js';
     import { h, mount } from '../assets/js/dom.js';
 
-    const { whitespace } = await loadAppData();
-    mountSampleBanner();
+    const { whitespace, competitors } = await loadAppData();
+    const sc = whitespace.strategy_canvas || {};
+    const hm = whitespace.heatmap || {};
+    const attacks = whitespace.attack_plans || [];
+    const COMPS = competitors.competitors || [];
+
+    document.getElementById('thesis').textContent = sc.headline_thesis || '';
+
+    /* ---- Ticker ---- */
+    const tickerItems = [];
+    COMPS.slice(0, 14).forEach((c, i) => {
+      const fakeUp = i % 3 !== 0;
+      tickerItems.push({
+        s: (c.name || '').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,8),
+        p: c.sg_monthly_sgd != null ? `S$${c.sg_monthly_sgd}` : 'NQ',
+        d: fakeUp ? `+${(Math.random()*2.4+0.2).toFixed(2)}%` : `-${(Math.random()*1.8+0.1).toFixed(2)}%`,
+        up: fakeUp
+      });
+    });
+    const trackEl = document.getElementById('ticker-track');
+    trackEl.replaceChildren();
+    for (let pass = 0; pass < 2; pass++) {
+      for (const t of tickerItems) {
+        trackEl.append(
+          h('span', { class: 'item' },
+            h('span', { class: 'sym' }, t.s),
+            h('span', { class: 'px' }, t.p),
+            h('span', { class: t.up ? 'up' : 'down' }, (t.up ? '▲ ' : '▼ ') + t.d)
+          )
+        );
+      }
+    }
 
     /* ---- Strategy canvas radar ---- */
-    document.getElementById('thesis').textContent = whitespace.strategy_canvas.headline_thesis;
-    renderRadar({
-      canvas: document.getElementById('radar-canvas'),
-      dimensions: whitespace.strategy_canvas.dimensions,
-      scores: whitespace.strategy_canvas.scores
+    const dims = sc.dimensions || [];
+    const labels = dims.map(d => d.label);
+    const players = Object.keys(sc.scores || {});
+    const otherPalette = ['#f7931e','#00d97f','#0aafd9','#7a4ed1','#c43a5a','#a05d14','#3e2408','#5a350c','#7a7770'];
+    let pi = 0;
+    const datasets = players.map(p => {
+      const isUs = p === 'us';
+      const baseColor = isUs ? '#9B1B30' : otherPalette[pi++ % otherPalette.length];
+      return {
+        label: isUs ? 'US (Market Tracker)' : (COMPS.find(c => c.id === p)?.name || p),
+        data: dims.map(d => sc.scores[p][d.key] ?? 0),
+        borderColor: baseColor,
+        backgroundColor: isUs ? 'rgba(155,27,48,0.18)' : 'rgba(255,255,255,0.02)',
+        borderWidth: isUs ? 3 : 1.4,
+        pointRadius: isUs ? 4 : 2,
+        pointBackgroundColor: baseColor,
+        fill: isUs
+      };
+    });
+    new Chart(document.getElementById('radar').getContext('2d'), {
+      type: 'radar',
+      data: { labels, datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+          r: {
+            min: 0, max: 5,
+            ticks: { color: '#7a7770', backdropColor: 'transparent', stepSize: 1, font: { family: 'IBM Plex Mono', size: 10 } },
+            grid: { color: '#2a2a2a' },
+            angleLines: { color: '#1a1a1a' },
+            pointLabels: { color: '#e8e6e3', font: { family: 'IBM Plex Mono', size: 11 } }
+          }
+        },
+        plugins: {
+          legend: { position: 'right', labels: { color: '#e8e6e3', font: { family: 'IBM Plex Mono', size: 10 }, boxWidth: 14 } }
+        }
+      }
     });
 
     /* ---- Heatmap ---- */
-    const segCount = whitespace.heatmap.segments.length;
-    const needCount = whitespace.heatmap.needs.length;
-    document.getElementById('heatmap-title').textContent = 'Segment × Need.';
-    document.getElementById('heatmap-meta').textContent = `${segCount} segments × ${needCount} needs · ${segCount * needCount} cells`;
-
-    const panel = document.getElementById('cell-detail');
-    renderHeatmap({
-      container: document.getElementById('heatmap'),
-      segments: whitespace.heatmap.segments,
-      needs: whitespace.heatmap.needs,
-      cells: whitespace.heatmap.cells,
-      onCellClick: detail => {
-        panel.style.display = 'block';
-        renderCellDetail(panel, detail);
-        panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-
-    /* Decorate heatmap cells with stamp labels (post-render — non-destructive). */
-    const stampMap = { 'cell-green': 'APPROVED', 'cell-amber': 'PENDING', 'cell-red': 'DENIED' };
-    requestAnimationFrame(() => {
-      document.querySelectorAll('#heatmap .heatmap-cell').forEach(cell => {
-        for (const [k, v] of Object.entries(stampMap)) {
-          if (cell.classList.contains(k)) { cell.dataset.stamp = v; break; }
-        }
-      });
-    });
-
-    /* ---- Attack plans as tour-poster cards ---- */
-    const fmtTam = n => {
-      if (!n && n !== 0) return '—';
-      if (n >= 1e9) return 'S$' + (n / 1e9).toFixed(1).replace(/\.0$/, '') + 'B';
-      if (n >= 1e6) return 'S$' + (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M';
-      if (n >= 1e3) return 'S$' + (n / 1e3).toFixed(0) + 'k';
-      return 'S$' + n;
+    const segs = hm.segments || [];
+    const needs = hm.needs || [];
+    const cells = hm.cells || {};
+    const cellHeat = (ours, best) => {
+      if (ours == null) return 'cell-zero';
+      if (best == null) return 'cell-mid';
+      if (ours >= best) return 'cell-hot';
+      if (best - ours <= 1) return 'cell-warm';
+      return 'cell-cold';
     };
-    const padRank = n => String(n).padStart(2, '0');
-    const truncate = (s, max = 220) => {
-      if (!s) return '';
-      const t = String(s).trim();
-      return t.length > max ? t.slice(0, max - 1).replace(/\s+\S*$/, '') + '…' : t;
-    };
-
-    const attackCard = p => h('div', { class: 'attack-card-v2' },
-      h('div', { class: 'attack-head' },
-        h('div', { class: 'attack-rank-badge' }, '#' + padRank(p.rank)),
-        h('div', { class: 'attack-head-text' },
-          h('h3', {}, p.niche_name),
-          h('p', { class: 'attack-icp' }, '"' + (p.icp || '') + '"')
-        ),
-        h('div', { class: 'attack-tam-chip' },
-          h('div', { class: 'tam-label' }, 'TAM · GATE'),
-          h('div', { class: 'tam-value' }, fmtTam(p.tam_estimate_sgd))
-        )
-      ),
-      h('div', { class: 'attack-body' },
-        h('div', { class: 'attack-body-cell' },
-          h('div', { class: 'attack-body-label' }, 'Why we play'),
-          h('p', {}, truncate(p.why_gap, 360))
-        ),
-        h('div', { class: 'attack-body-cell' },
-          h('div', { class: 'attack-body-label' }, 'Why we win'),
-          h('p', {}, truncate(p.why_we_win, 360))
-        )
-      ),
-      h('div', { class: 'gtm-band' },
-        h('div', { class: 'gtm-band-label' }, 'SETLIST · GTM'),
-        h('div', { class: 'gtm-band-grid' },
-          h('div', { class: 'gtm-tile' },
-            h('span', { class: 'gtm-label' }, 'Channel · Venue'),
-            h('div', { class: 'gtm-value' }, truncate(p.gtm?.channel, 120))
-          ),
-          h('div', { class: 'gtm-tile' },
-            h('span', { class: 'gtm-label' }, 'Pitch · Headline act'),
-            h('div', { class: 'gtm-value' }, truncate(p.gtm?.pitch, 120))
-          ),
-          h('div', { class: 'gtm-tile' },
-            h('span', { class: 'gtm-label' }, 'Pricing · Door price'),
-            h('div', { class: 'gtm-value' }, truncate(p.gtm?.pricing, 120))
-          ),
-          h('div', { class: 'gtm-tile' },
-            h('span', { class: 'gtm-label' }, 'Content · Merch'),
-            h('div', { class: 'gtm-value' }, truncate(p.gtm?.content, 120))
-          )
-        )
+    const heatTable = document.getElementById('heatmap');
+    heatTable.replaceChildren();
+    const thead = h('thead', {},
+      h('tr', {},
+        h('th', {}, 'SEGMENT \\ NEED'),
+        ...needs.map(n => h('th', {}, n.short || n.name))
       )
     );
-
-    const plans = whitespace.attack_plans || [];
-    mount(document.getElementById('attack-plans'), ...plans.map(attackCard));
-    document.getElementById('attack-count').textContent = `${plans.length} dates booked`;
-
-    /* ---- Re-skin radar in zine palette (override after renderRadar) ---- */
-    requestAnimationFrame(() => {
-      const chart = Chart.getChart(document.getElementById('radar-canvas'));
-      if (!chart) return;
-      const css = getComputedStyle(document.documentElement);
-      const PINK = css.getPropertyValue('--pink').trim() || '#ff2d8a';
-      const CYAN = css.getPropertyValue('--cyan').trim() || '#00c9d9';
-      const INDIGO = css.getPropertyValue('--indigo').trim() || '#352a82';
-      const INK = css.getPropertyValue('--ink').trim() || '#1a1a1a';
-      // Hex+alpha works in modern browsers and Chart.js; PINK22 = ~13% alpha.
-      const ZINE = [PINK, CYAN, INDIGO, INK, '#ff7eb6', '#3fdfe9', '#5e51c2', '#4a4a4a', '#a02060', '#7a3a8c'];
-      chart.data.datasets.forEach((ds, i) => {
-        const isUs = i === 0;
-        const c = isUs ? PINK : ZINE[(i + 1) % ZINE.length];
-        ds.borderColor = c;
-        ds.backgroundColor = isUs ? PINK + '40' : c + '1A';
-        ds.borderWidth = isUs ? 4 : 2;
-      });
-      if (chart.options?.scales?.r) {
-        chart.options.scales.r.grid = { color: 'rgba(0,0,0,0.18)' };
-        chart.options.scales.r.angleLines = { color: 'rgba(0,0,0,0.25)' };
-        chart.options.scales.r.pointLabels = { font: { size: 12, weight: 'bold', family: 'Archivo Black' }, color: INK };
+    const tbody = h('tbody', {});
+    for (const seg of segs) {
+      const row = h('tr', {}, h('th', {}, seg.name));
+      for (const need of needs) {
+        const cell = cells[`${seg.id}:${need.id}`];
+        const ours = cell?.our_score;
+        const competitorScores = (cell?.competitors || []).map(c => c.score).filter(s => Number.isFinite(s));
+        const bestComp = competitorScores.length ? Math.max(...competitorScores) : null;
+        const cls = cellHeat(ours, bestComp);
+        row.append(h('td', { class: 'heat-cell ' + cls },
+          ours != null ? String(ours) : '—',
+          h('span', { class: 'ours' }, 'vs best ', h('b', {}, bestComp != null ? String(bestComp) : '—'))
+        ));
       }
-      if (chart.options?.plugins?.legend) {
-        chart.options.plugins.legend.labels = { color: INK, font: { family: 'Space Mono', size: 11, weight: 'bold' }, boxWidth: 14, padding: 6 };
+      tbody.append(row);
+    }
+    heatTable.append(thead, tbody);
+    document.getElementById('heat-meta').textContent = `${segs.length} segments × ${needs.length} needs`;
+
+    /* ---- Cell drilldown ---- */
+    const drillEl = document.getElementById('cell-drilldown');
+    drillEl.replaceChildren();
+    for (const seg of segs) {
+      const items = [];
+      for (const need of needs) {
+        const cell = cells[`${seg.id}:${need.id}`];
+        if (!cell || !cell.competitors?.length) continue;
+        const ours = cell.our_score;
+        for (const co of cell.competitors) {
+          items.push(h('li', {},
+            h('b', {}, `${need.short || need.name} · ${co.name}`),
+            ` — score ${co.score}; us ${ours}. `,
+            co.specialisation_for_cell || ''
+          ));
+        }
       }
-      chart.update();
-    });
+      if (items.length) {
+        drillEl.append(h('details', { class: 'cell-detail' },
+          h('summary', {}, '▸ ' + seg.name + ' · ' + items.length + ' competitor reads'),
+          h('ul', {}, ...items)
+        ));
+      }
+    }
+
+    /* ---- Attack plans ---- */
+    const segById = Object.fromEntries(segs.map(s => [s.id, s]));
+    const fmtMoney = n => {
+      if (n == null) return '—';
+      if (n >= 1e9) return 'S$' + (n/1e9).toFixed(n >= 1e10 ? 0 : 1) + 'B';
+      if (n >= 1e6) return 'S$' + (n/1e6).toFixed(n >= 1e8 ? 0 : 1) + 'M';
+      if (n >= 1e3) return 'S$' + (n/1e3).toFixed(0) + 'K';
+      return 'S$' + Math.round(n).toLocaleString();
+    };
+    const atkEl = document.getElementById('attacks');
+    mount(atkEl, ...attacks.map(a => h('div', { class: 'attack-card' },
+      h('div', { class: 'rank' }, '#' + (a.rank || '?')),
+      h('div', { class: 'body' },
+        h('h4', {}, a.niche_name || ''),
+        h('div', { class: 'meta' }, (segById[a.whitespace_segment_id]?.name || a.whitespace_segment_id || '—') + ' · ICP: ' + (a.icp || '—')),
+        h('p', {}, h('strong', {}, '▸ Why gap'), a.why_gap || ''),
+        h('p', {}, h('strong', {}, '▸ Why we win'), a.why_we_win || ''),
+        h('p', {}, h('strong', {}, '▸ TAM reasoning'), a.tam_reasoning || '')
+      ),
+      h('div', { class: 'gtm' },
+        h('div', { class: 'tam' }, fmtMoney(a.tam_estimate_sgd) + ' TAM'),
+        h('div', { style: { marginTop: '10px' } },
+          h('span', { class: 'lab' }, 'Channel'), a.gtm?.channel || '—',
+          h('span', { class: 'lab' }, 'Pitch'), a.gtm?.pitch || '—',
+          h('span', { class: 'lab' }, 'Pricing'), a.gtm?.pricing || '—',
+          h('span', { class: 'lab' }, 'Content'), a.gtm?.content || '—'
+        )
+      )
+    )));
+    document.getElementById('atk-meta').textContent = `${attacks.length} ranked attack plans`;
   </script>
 </body>
 </html>

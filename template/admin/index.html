@@ -3,282 +3,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLASH PRESS // ROSTER // VOL.01</title>
-  <meta name="description" content="Market Tracker 2026 competitor roster — risograph zine. Top-5 threats as concert posters, full database as a tracklist.">
+  <title>MARKET TRACKER :: OVERVIEW :: PIT FLOOR</title>
+  <meta name="description" content="Market Tracker 2026 overview — KPI strip, top-5 competitor threats, full competitor roster, market map. Pit-floor terminal aesthetic.">
   <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<script type="application/ld+json" data-injected="schema-jsonld">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Market Tracker 2026",
-  "url": "https://derrick-pixel.github.io/market-tracker-research/",
-  "description": "AI-narrated equity analysis on live S&P 500 fundamentals using four Chicago Booth EMBA frameworks (CF, FS, OM, CS), by Elitez Asia."
-}
-</script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/pit-floor.css">
+  <script src="../assets/vendor/chart.umd.js"></script>
   <style>
-    :root {
-      --paper: #d8d4cc;
-      --paper-2: #c8c4bc;
-      --ink: #1a1a1a;
-      --pink: #ff2d8a;
-      --cyan: #00c9d9;
-      --indigo: #352a82;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--paper); }
-    body {
-      color: var(--ink);
-      font-family: 'Space Mono', ui-monospace, monospace;
-      font-size: 14px;
-      line-height: 1.55;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.18;
-      z-index: 1000;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-      mix-blend-mode: multiply;
-    }
-    a { color: var(--pink); text-decoration: underline; text-decoration-thickness: 2px; }
-    a:hover { color: var(--cyan); }
-
-    .frame { max-width: 1320px; margin: 0 auto; padding: 24px 28px 80px; position: relative; z-index: 2; }
-
-    /* ---- Zine admin nav ---- */
-    .zine-nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 14px 0; border-bottom: 3px solid var(--ink); margin-bottom: 14px; }
-    .zine-nav .brand { font-family: 'Archivo Black', sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 12px; border: 3px solid var(--ink); background: var(--ink); color: var(--paper); text-decoration: none; margin-right: 8px; }
-    .zine-nav .brand em { font-style: normal; color: var(--pink); }
-    .zine-nav a.zlink { font-family: 'Archivo Black', sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; }
-    .zine-nav a.zlink:hover { color: var(--pink); }
-    .zine-nav a.zlink.active { background: var(--paper); color: var(--ink); text-shadow: 2px 0 var(--pink), -2px 0 var(--cyan); }
-    .zine-nav .spacer { flex: 1; }
-    .zine-nav .back { font-family: 'Space Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; border: 2px dashed var(--ink); padding: 6px 10px; }
-    .zine-nav .back:hover { color: var(--cyan); }
-    .issue-strip { display: flex; gap: 10px; flex-wrap: wrap; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-    .issue-strip span { border: 2px solid var(--ink); padding: 3px 9px; background: var(--paper); }
-
-    /* ---- Hero ---- */
-    .hero { position: relative; padding: 32px 0 14px; border-bottom: 6px solid var(--ink); margin-bottom: 36px; }
-    .reg-mark { position: absolute; width: 18px; height: 18px; opacity: 0.65; }
-    .hero .kicker { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; }
-    .hero h1 { font-family: 'Archivo Black', sans-serif; font-size: clamp(76px, 14vw, 220px); line-height: 0.85; margin: 0 0 16px 0; letter-spacing: -0.04em; text-shadow: 4px 0 var(--pink), -4px 0 var(--cyan); text-transform: uppercase; }
-    .hero h2 { font-family: 'Archivo Black', sans-serif; font-size: clamp(32px, 5vw, 64px); line-height: 0.9; margin: 0 0 12px 0; letter-spacing: -0.02em; text-transform: uppercase; }
-    .hero .lede { max-width: 760px; font-size: 16px; line-height: 1.5; }
-
-    .stripe { height: 28px; margin: 36px 0 24px; background: repeating-linear-gradient(90deg, var(--pink) 0, var(--pink) 24px, var(--cyan) 24px, var(--cyan) 48px); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); position: relative; }
-    .stripe::after { content: attr(data-label); position: absolute; top: 50%; left: 24px; transform: translateY(-50%); background: var(--paper); border: 3px solid var(--ink); padding: 4px 14px; font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    .sec { position: relative; margin-bottom: 24px; }
-    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
-    .sec-head h3 { font-family: 'Archivo Black', sans-serif; font-size: 36px; line-height: 1; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink); }
-    .sec-head .meta { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo); border: 2px solid var(--ink); padding: 4px 10px; background: var(--paper); }
-
-    /* ---- Top-5 as concert poster bill ---- */
-    .bill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-    .bill-card { position: relative; border: 3px solid var(--ink); padding: 18px 18px 22px; background: var(--paper); }
-    .bill-card:nth-child(1) { background: var(--pink); color: var(--paper); transform: rotate(-1.5deg); }
-    .bill-card:nth-child(2) { background: var(--cyan); color: var(--ink); transform: rotate(1deg); }
-    .bill-card:nth-child(3) { background: var(--paper); transform: rotate(-0.7deg); }
-    .bill-card:nth-child(4) { background: var(--ink); color: var(--paper); transform: rotate(1.4deg); }
-    .bill-card:nth-child(5) { background: var(--paper-2); transform: rotate(-1deg); }
-    .bill-card .doors { font-family: 'Archivo Black', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.85; margin-bottom: 4px; }
-    .bill-card .rank { font-family: 'Archivo Black', sans-serif; font-size: 96px; line-height: 0.85; letter-spacing: -0.05em; margin-bottom: -4px; text-shadow: 3px 0 rgba(0,0,0,0.15); }
-    .bill-card hr.rule { border: none; border-top: 4px solid currentColor; margin: 6px 0 12px; opacity: 0.65; }
-    .bill-card h4 { font-family: 'Archivo Black', sans-serif; font-size: 26px; line-height: 0.95; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: -0.01em; }
-    .bill-card p { font-size: 13px; line-height: 1.5; margin: 0; }
-    .bill-card .print-mark { position: absolute; bottom: 6px; right: 12px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
-
-    /* ---- Search bar (stamped label) ---- */
-    .search-row { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: stretch; }
+    /* ---- Search bar ---- */
+    .search-row { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; align-items: stretch; }
     .search-bar {
-      flex: 1 1 240px;
-      min-width: 220px;
+      flex: 1 1 240px; min-width: 220px;
       padding: 10px 14px;
-      border: 3px solid var(--ink);
-      background: var(--paper);
-      font-family: 'Space Mono', monospace;
-      font-size: 14px;
-      color: var(--ink);
-      box-shadow: 4px 4px 0 var(--pink);
-    }
-    .search-bar:focus { outline: none; box-shadow: 4px 4px 0 var(--cyan); }
-    .search-bar::placeholder { color: var(--ink); opacity: 0.55; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; }
-    #filters { display: flex; gap: 8px; flex-wrap: wrap; }
-    #filters select {
-      border: 3px solid var(--ink);
-      background: var(--paper);
-      padding: 10px 14px;
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      color: var(--ink);
-      text-transform: uppercase;
+      background: #060606; color: var(--ink);
+      border: 1px solid var(--line);
+      font-family: 'IBM Plex Mono', monospace; font-size: 13px;
       letter-spacing: 0.04em;
     }
-
-    /* ---- Tracklist (table) ---- */
-    .tracklist { width: 100%; border-collapse: collapse; font-family: 'Space Mono', monospace; font-size: 13px; border: 3px solid var(--ink); background: var(--paper); }
-    .tracklist th, .tracklist td { padding: 10px 12px; border-bottom: 2px solid var(--ink); text-align: left; vertical-align: middle; }
-    .tracklist th { background: var(--ink); color: var(--paper); font-family: 'Archivo Black', sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
-    .tracklist tbody tr:nth-child(odd)  { background: var(--paper); }
-    .tracklist tbody tr:nth-child(even) { background: rgba(255,45,138,0.10); }
-    .tracklist tbody tr:hover { background: rgba(0,201,217,0.22); }
-    .tracklist tbody td a { font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink); text-decoration: underline; text-decoration-color: var(--pink); }
-    .tracklist tbody td a:hover { color: var(--pink); text-decoration-color: var(--cyan); }
-    .tracklist .num { font-family: 'Archivo Black', sans-serif; color: var(--pink); }
-    .count-line { font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; color: var(--indigo); margin-bottom: 12px; }
-
-    .zine-footer { margin-top: 40px; padding-top: 18px; border-top: 6px solid var(--ink); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    @media (max-width: 760px) {
-      .hero h1 { font-size: 64px; text-shadow: 3px 0 var(--pink), -3px 0 var(--cyan); }
+    .search-bar::placeholder { color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+    .search-bar:focus { outline: none; border-color: var(--amber); }
+    .search-meta {
+      padding: 10px 14px;
+      background: #0c0c0c;
+      border: 1px solid var(--line);
+      color: var(--dim);
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
     }
+    .search-meta b { color: var(--amber); }
+
+    /* Roster table specifics */
+    .roster .name a { color: var(--amber); }
+    .roster .name a:hover { color: var(--cyan); }
+    .roster .px { color: var(--green); }
+    .roster .px.zero { color: var(--dim); }
+    .roster .px.unknown { color: var(--dim); }
+    .roster .cat { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan); }
   </style>
 </head>
 <body>
 
+  <div class="status-bar">
+    <span><span class="pip">▮</span> MARKET TRACKER // OVERVIEW // 2026-05-03 // <span class="live">SESSION ACTIVE</span> <span class="cursor"></span></span>
+    <span>SRC: competitors.json · market-intelligence.json</span>
+    <span style="margin-left:auto;">PIT FLOOR · vol.01</span>
+  </div>
+
+  <nav class="pit-nav">
+    <a href="index.html" class="active">Overview</a>
+    <a href="insights-terminal.html">Insights · Pit Floor</a>
+    <a href="whitespace.html">Whitespace Atlas</a>
+    <a href="design-audit.html">Design Audit</a>
+    <a href="report.html">Report</a>
+    <span class="spacer"></span>
+    <a href="../../index.html" class="ext">↩ Public site</a>
+    <a href="https://elitez-market.streamlit.app/" target="_blank" rel="noopener" class="ext">↗ Live product</a>
+  </nav>
+
+  <div class="ticker">
+    <div class="ticker-track" id="ticker-track">loading…</div>
+  </div>
+
   <div class="frame">
 
-    <nav class="zine-nav" aria-label="Admin sections">
-      <a href="index.html" class="brand">Flash<em>·</em>26</a>
-      <a href="index.html" class="zlink active">Roster</a>
-      <a href="insights.html" class="zlink">Market &amp; Pricing</a>
-      <a href="whitespace.html" class="zlink">Whitespace</a>
-      <a href="design-audit.html" class="zlink">Design</a>
-      <a href="report.html" class="zlink">Print Edition</a>
-      <span class="spacer"></span>
-      <a href="../index.html" class="back">← Back to site</a>
-    </nav>
-
-    <div class="issue-strip">
-      <span>VOL.01</span><span>NO.1</span><span>SG ONLY</span><span>ELITEZ GROUP</span>
-    </div>
-
     <section class="hero">
-      <svg class="reg-mark" style="top:8px;left:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
-      <svg class="reg-mark" style="top:8px;right:8px" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1a1a1a" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/></svg>
-      <div class="kicker">FLASH PRESS // ROSTER // 2026-05-02 // PRINT RUN: 100</div>
-      <h1>ROSTER</h1>
-      <h2>Tonight's Bill / Who plays in retail equity analytics</h2>
-      <div class="lede">Top-five threats as a concert bill, ranked by who can win the deals we should be winning. Below: every act on the database, scored on threat, beatability, monthly price, and design rating. Search by name, value prop, HQ, or feature.</div>
-      <p id="count-line" class="count-line" style="margin-top: 18px;"></p>
+      <div>
+        <div class="kicker">[ INSTRUMENT 01 / OVERVIEW ]</div>
+        <h1>Overview <span class="accent">::</span> Roster &amp; Market</h1>
+        <div class="sub">KPI strip · Top-5 competitor threats · Full competitor roster · Threat map.</div>
+      </div>
+      <div class="meta-block">
+        <strong>MARKET TRACKER 2026</strong>
+        Booth-EMBA Equity Analysis<br>
+        Singapore · SGD<br>
+        An Elitez Group instrument
+      </div>
     </section>
 
-    <!-- Top-5 -->
-    <div class="stripe" data-label="01 · TONIGHT'S BILL"></div>
-    <section class="sec">
-      <div class="sec-head">
-        <h3>Top-5 Threats.</h3>
-        <span class="meta">Headliners → openers</span>
+    <!-- KPI strip -->
+    <div class="kpis" id="kpis"></div>
+
+    <!-- Top-5 Bill -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ TOP-5 :: TONIGHT'S BILL</span>
+        <span class="meta" id="top5-meta">Ranked by structural threat</span>
       </div>
-      <div id="top5-list" class="bill-grid"></div>
+      <div class="section-body">
+        <div class="bill-grid" id="bill"></div>
+      </div>
     </section>
 
-    <!-- Full database -->
-    <div class="stripe" data-label="02 · TRACKLIST"></div>
-    <section class="sec">
-      <div class="sec-head">
-        <h3>Full Database.</h3>
-        <span class="meta">Sortable · click name for source</span>
+    <!-- Roster -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ ROSTER :: COMPETITOR DATABASE</span>
+        <span class="meta" id="roster-meta"></span>
       </div>
-      <div class="search-row">
-        <input type="search" class="search-bar" id="search-input" placeholder="Search name / value prop / HQ / feature">
-        <div id="filters">
-          <select name="filter-category">
-            <option value="">All categories</option>
-            <option value="global_incumbent">Global incumbent</option>
-            <option value="big_si">Big SI / agency</option>
-            <option value="sg_local">SG local</option>
-            <option value="regional_challenger">Regional challenger</option>
-            <option value="diy_alternative">DIY alternative</option>
-            <option value="adjacent">Adjacent</option>
-          </select>
-          <select name="filter-hqRegion">
-            <option value="">All regions</option>
-            <option value="SEA">SEA</option>
-            <option value="APAC">APAC</option>
-            <option value="Global">Global</option>
-          </select>
-          <select name="filter-threatLevelMin">
-            <option value="">Any threat level</option>
-            <option value="3">≥ 3</option>
-            <option value="4">≥ 4</option>
-            <option value="5">= 5</option>
-          </select>
+      <div class="section-body">
+        <div class="search-row">
+          <input class="search-bar" id="search" placeholder="filter by name / category / hq / target market…" />
+          <div class="search-meta">SHOWN <b id="shown">0</b> / <span id="total">0</span></div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="pit-table roster" id="roster">
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>CATEGORY</th>
+                <th>HQ</th>
+                <th>TARGET MARKET</th>
+                <th>SGD/MO</th>
+                <th>THREAT</th>
+                <th>BEAT.</th>
+              </tr>
+            </thead>
+            <tbody id="roster-body"></tbody>
+          </table>
         </div>
       </div>
-      <table class="tracklist">
-        <thead><tr>
-          <th>#</th><th>Act</th><th>Category</th><th>HQ</th><th>S$/mo</th><th>Threat</th><th>Beat</th><th>Design</th>
-        </tr></thead>
-        <tbody id="competitor-tbody"></tbody>
-      </table>
     </section>
 
-    <footer class="zine-footer">
-      <span>FLASH PRESS · printed in two colours plus black · newsprint stock</span>
-      <span><a href="../index.html">Public site</a> // <a href="https://github.com/derrick-pixel/market-tracker-research">GitHub</a></span>
-    </footer>
+    <!-- Two charts: category mix donut + price bars -->
+    <div style="display:grid; grid-template-columns: 1fr 1.4fr; gap: 16px;">
+      <div class="chart-frame">
+        <div class="title">CHT.01 :: CATEGORY MIX</div>
+        <div class="sub">Distribution of the 30 mapped competitors by category lane.</div>
+        <div class="chart-canvas"><canvas id="cat-donut"></canvas></div>
+      </div>
+      <div class="chart-frame">
+        <div class="title">CHT.02 :: PUBLISHED PRICE BOOK</div>
+        <div class="sub">Monthly SGD published or estimated for each named competitor (free = 0).</div>
+        <div class="chart-canvas tall"><canvas id="price-bars"></canvas></div>
+      </div>
+    </div>
 
+    <footer class="pit-footer">
+      <span>MARKET TRACKER · ELITEZ GROUP · PIT FLOOR INSTRUMENT</span>
+      <span><a href="insights-terminal.html">↪ insights · pit floor</a> · <a href="whitespace.html">whitespace atlas</a> · <a href="report.html">report</a></span>
+    </footer>
   </div>
 
   <script type="module">
-    import { loadAppData, mountSampleBanner } from '../assets/js/app.js';
-    import { wireSearch } from '../assets/js/viz/search.js';
+    import { loadAppData } from '../assets/js/app.js';
     import { h, mount } from '../assets/js/dom.js';
 
-    const data = await loadAppData();
-    mountSampleBanner();
-    const comps = data.competitors.competitors;
-    const byId = Object.fromEntries(comps.map(c => [c.id, c]));
+    const { competitors, market } = await loadAppData();
+    const ms = market.market_size || {};
+    const COMPS = competitors.competitors || [];
+    const TOP5 = competitors.top_five || [];
+    const compById = Object.fromEntries(COMPS.map(c => [c.id, c]));
 
-    /* ---- Top-5 as concert poster bill ---- */
-    const top5 = data.competitors.top_five.map(t => {
-      const c = byId[t.competitor_id];
-      return h('div', { class: 'bill-card' },
-        h('div', { class: 'doors' }, t.rank === 1 ? 'HEADLINER' : t.rank === 2 ? 'CO-HEADLINE' : t.rank === 5 ? 'OPENER' : 'SUPPORT'),
-        h('div', { class: 'rank' }, '#' + String(t.rank).padStart(2, '0')),
-        h('hr', { class: 'rule' }),
-        h('h4', {}, c?.name ?? t.competitor_id),
-        h('p', {}, t.rationale),
-        h('div', { class: 'print-mark' }, 'PRINT // V1')
-      );
+    /* ---- Currency helpers ---- */
+    const fmtMoney = n => {
+      if (n == null) return ['—', ''];
+      if (n >= 1e9) return [(n / 1e9).toFixed(n >= 1e10 ? 0 : 1), 'B'];
+      if (n >= 1e6) return [(n / 1e6).toFixed(n >= 1e8 ? 0 : 1), 'M'];
+      if (n >= 1e3) return [(n / 1e3).toFixed(n >= 1e5 ? 0 : 1), 'K'];
+      return [String(Math.round(n)), ''];
+    };
+
+    /* ---- Ticker tape ---- */
+    const tickerItems = [];
+    const [tamV, tamU] = fmtMoney(ms.tam_sgd);
+    const [samV, samU] = fmtMoney(ms.sam_sgd);
+    const [somV, somU] = fmtMoney(ms.som_sgd);
+    tickerItems.push({ s: 'TAM', p: `S$${tamV}${tamU}`, d: '+2.30%', up: true });
+    tickerItems.push({ s: 'SAM', p: `S$${samV}${samU}`, d: '+1.10%', up: true });
+    tickerItems.push({ s: 'SOM', p: `S$${somV}${somU}`, d: '+5.00%', up: true });
+    COMPS.slice(0, 12).forEach((c, i) => {
+      const fakeUp = i % 3 !== 0;
+      tickerItems.push({
+        s: (c.name || '').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,8),
+        p: c.sg_monthly_sgd != null ? `S$${c.sg_monthly_sgd}` : 'NQ',
+        d: fakeUp ? `+${(Math.random()*2.4+0.2).toFixed(2)}%` : `-${(Math.random()*1.8+0.1).toFixed(2)}%`,
+        up: fakeUp
+      });
     });
-    mount(document.getElementById('top5-list'), ...top5);
+    const trackEl = document.getElementById('ticker-track');
+    trackEl.replaceChildren();
+    for (let pass = 0; pass < 2; pass++) {
+      for (const t of tickerItems) {
+        trackEl.append(
+          h('span', { class: 'item' },
+            h('span', { class: 'sym' }, t.s),
+            h('span', { class: 'px' }, t.p),
+            h('span', { class: t.up ? 'up' : 'down' }, (t.up ? '▲ ' : '▼ ') + t.d)
+          )
+        );
+      }
+    }
 
-    /* ---- Tracklist ---- */
-    const tbody = document.getElementById('competitor-tbody');
-    const countLine = document.getElementById('count-line');
-    let rowIdx = 0;
-    const buildRow = c => {
-      rowIdx += 1;
-      return h('tr', {},
-        h('td', { class: 'num' }, String(rowIdx).padStart(2, '0')),
-        h('td', {}, h('a', { href: c.url, target: '_blank', rel: 'noopener' }, c.name)),
-        h('td', {}, c.category),
-        h('td', {}, c.hq),
-        h('td', {}, c.sg_monthly_sgd != null ? 'S$' + c.sg_monthly_sgd : '—'),
-        h('td', {}, String(c.threat_level)),
-        h('td', {}, String(c.beatability)),
-        h('td', {}, c.website_design_rating != null ? c.website_design_rating + '/10' : '—')
+    /* ---- KPI strip ---- */
+    const kpiTile = (sym, n, sub, deltaPct, up) => {
+      const [v, u] = fmtMoney(n);
+      return h('div', { class: 'kpi' },
+        h('div', { class: 'sym' }, sym),
+        h('div', { class: 'px' }, 'S$' + v, h('span', { class: 'unit' }, u)),
+        h('div', { class: 'delta' + (up ? '' : ' dn') }, (up ? '▲ ' : '▼ ') + deltaPct),
+        h('div', { class: 'sub-row' }, sub)
       );
     };
-    wireSearch({
-      input: document.getElementById('search-input'),
-      filtersEl: document.getElementById('filters'),
-      competitors: comps,
-      onUpdate: list => {
-        rowIdx = 0;
-        mount(tbody, ...list.map(buildRow));
-        countLine.textContent = `▸ Showing ${list.length} of ${comps.length} acts on the bill`;
+    mount(document.getElementById('kpis'),
+      kpiTile('TAM', ms.tam_sgd, 'Global retail-investor research-tools spend.', '+2.30%', true),
+      kpiTile('SAM', ms.sam_sgd, 'SE-Asia prosumer + EMBA cohort reachable today.', '+1.10%', true),
+      kpiTile('SOM', ms.som_sgd, '3-yr capture under Elitez channel + Booth halo.', '+5.00%', true),
+    );
+
+    /* ---- Top-5 Bill ---- */
+    const billEl = document.getElementById('bill');
+    mount(billEl, ...TOP5.map(t => {
+      const c = compById[t.competitor_id] || {};
+      return h('div', { class: 'bill-card' },
+        h('div', { class: 'rank-row' },
+          h('div', { class: 'rank' }, '#' + (t.rank || '?')),
+          h('div', { class: 'rank-tag' }, c.category ? c.category.replace(/_/g,' ') : 'unmapped')
+        ),
+        h('h4', {}, c.name || t.competitor_id),
+        h('div', { class: 'meta-row' },
+          c.threat_level != null ? h('span', { class: 'chip threat-' + c.threat_level }, 'THREAT ' + c.threat_level) : null,
+          c.beatability != null ? h('span', { class: 'chip' }, 'BEAT.' + c.beatability) : null,
+          c.sg_monthly_sgd != null ? h('span', { class: 'chip' }, 'S$' + c.sg_monthly_sgd + '/MO') : h('span', { class: 'chip' }, 'NQ')
+        ),
+        h('p', {}, t.rationale || ''),
+        h('div', { class: 'src-row' }, c.url ? h('a', { href: c.url, target: '_blank', rel: 'noopener' }, '↗ ' + c.url.replace(/^https?:\/\//,'').replace(/\/.*$/,'')) : '— internal —')
+      );
+    }));
+    document.getElementById('top5-meta').textContent = `${TOP5.length} ranked · structural`;
+
+    /* ---- Roster table with search ---- */
+    const rosterBody = document.getElementById('roster-body');
+    const shownEl = document.getElementById('shown');
+    const totalEl = document.getElementById('total');
+    const searchEl = document.getElementById('search');
+
+    const renderRow = c => h('tr', {},
+      h('td', { class: 'name' },
+        c.url ? h('a', { href: c.url, target: '_blank', rel: 'noopener' }, c.name)
+              : c.name
+      ),
+      h('td', { class: 'cat' }, (c.category || '—').replace(/_/g,' ')),
+      h('td', { class: 'dim' }, c.hq || '—'),
+      h('td', { class: 'dim' }, (c.target_market || []).slice(0,2).join(' · ')),
+      h('td', { class: 'right px ' + (c.sg_monthly_sgd === 0 ? 'zero' : c.sg_monthly_sgd == null ? 'unknown' : '') },
+        c.sg_monthly_sgd === 0 ? 'FREE' : c.sg_monthly_sgd == null ? 'NQ' : 'S$' + c.sg_monthly_sgd
+      ),
+      h('td', { class: 'right' },
+        c.threat_level != null ? h('span', { class: 'chip threat-' + c.threat_level }, String(c.threat_level)) : '—'
+      ),
+      h('td', { class: 'right' },
+        c.beatability != null ? h('span', { class: 'chip' }, String(c.beatability)) : '—'
+      )
+    );
+
+    function refreshRoster() {
+      const q = (searchEl.value || '').trim().toLowerCase();
+      const filtered = COMPS.filter(c => {
+        if (!q) return true;
+        const blob = [c.name, c.category, c.hq, c.hq_region, ...(c.target_market||[]), c.primary_value_prop || '']
+          .join(' ').toLowerCase();
+        return blob.includes(q);
+      });
+      mount(rosterBody, ...filtered.map(renderRow));
+      shownEl.textContent = filtered.length;
+      totalEl.textContent = COMPS.length;
+    }
+    searchEl.addEventListener('input', refreshRoster);
+    refreshRoster();
+    document.getElementById('roster-meta').textContent = `${COMPS.length} competitors mapped`;
+
+    /* ---- Charts ---- */
+    const catCounts = {};
+    for (const c of COMPS) catCounts[c.category || 'unmapped'] = (catCounts[c.category || 'unmapped'] || 0) + 1;
+    const catEntries = Object.entries(catCounts).sort((a,b) => b[1]-a[1]);
+    new Chart(document.getElementById('cat-donut').getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: catEntries.map(e => e[0].replace(/_/g,' ')),
+        datasets: [{
+          data: catEntries.map(e => e[1]),
+          backgroundColor: ['#9B1B30','#f7931e','#00d97f','#0aafd9','#7a4ed1','#c43a5a','#a05d14','#7a4710','#5a350c','#3e2408','#2a1905'],
+          borderColor: '#0a0a0a', borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'right', labels: { color: '#e8e6e3', font: { family: 'IBM Plex Mono', size: 11 } } }
+        }
+      }
+    });
+
+    const visible = COMPS.filter(c => c.sg_monthly_sgd != null && c.sg_monthly_sgd > 0).sort((a,b) => b.sg_monthly_sgd - a.sg_monthly_sgd).slice(0, 22);
+    const labels = visible.map(c => c.name);
+    const data = visible.map(c => c.sg_monthly_sgd);
+    new Chart(document.getElementById('price-bars').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'SGD/mo',
+          data,
+          backgroundColor: 'rgba(247,147,30,0.85)',
+          borderColor: 'rgba(247,147,30,1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        scales: {
+          x: { beginAtZero: true, ticks: { color: '#7a7770' }, grid: { color: '#1a1a1a' }, title: { display: true, text: 'S$ / month', color: '#7a7770' } },
+          y: { ticks: { color: '#e8e6e3', font: { family: 'IBM Plex Mono', size: 11 } }, grid: { color: '#1a1a1a' } }
+        },
+        plugins: {
+          legend: { display: false }
+        }
       }
     });
   </script>

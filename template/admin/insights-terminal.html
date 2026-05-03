@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/pit-floor.css">
   <script src="../assets/vendor/chart.umd.js"></script>
   <style>
     /* ===========================================================
@@ -562,10 +563,21 @@
 <body>
 
   <div class="status-bar">
-    <span><span class="pip">▮</span> MARKET TRACKER // INSIGHTS // 2026-05-02 // <span class="live">SESSION ACTIVE</span> <span class="cursor"></span></span>
+    <span><span class="pip">▮</span> MARKET TRACKER // INSIGHTS // 2026-05-03 // <span class="live">SESSION ACTIVE</span> <span class="cursor"></span></span>
     <span>SRC: market-intelligence.json · pricing-strategy.json</span>
     <span style="margin-left:auto;">PIT FLOOR · vol.01</span>
   </div>
+
+  <nav class="pit-nav">
+    <a href="index.html">Overview</a>
+    <a href="insights-terminal.html" class="active">Insights · Pit Floor</a>
+    <a href="whitespace.html">Whitespace Atlas</a>
+    <a href="design-audit.html">Design Audit</a>
+    <a href="report.html">Report</a>
+    <span class="spacer"></span>
+    <a href="../../index.html" class="ext">↩ Public site</a>
+    <a href="https://elitez-market.streamlit.app/" target="_blank" rel="noopener" class="ext">↗ Live product</a>
+  </nav>
 
   <div class="ticker">
     <div class="ticker-track" id="ticker-track">loading…</div>
@@ -674,7 +686,7 @@
 
     <footer class="pit-footer">
       <span>MARKET TRACKER · ELITEZ GROUP · PIT FLOOR INSTRUMENT</span>
-      <span><a href="insights.html">↩ canonical</a> · <a href="insights-zine.html">zine</a> · <a href="insights-hosai.html">hosai</a></span>
+      <span><a href="index.html">↩ overview</a> · <a href="whitespace.html">whitespace atlas</a> · <a href="report.html">report</a></span>
     </footer>
   </div>
 
