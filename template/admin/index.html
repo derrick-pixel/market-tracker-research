@@ -57,6 +57,21 @@
     .roster .px.zero { color: var(--dim); }
     .roster .px.unknown { color: var(--dim); }
     .roster .cat { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan); }
+  
+    /* ─── Last-edited stamp · injected ─── */
+    .last-edited-strip {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      padding: 5px 14px; text-align: right;
+      font-family: ui-monospace, "Share Tech Mono", monospace;
+      font-size: 0.72rem; letter-spacing: 0.05em;
+      color: rgba(140,140,140,0.85);
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .last-edited-strip strong { color: rgba(220,220,220,0.85); font-weight: 500; }
+    #last-edited { color: #d06010; font-weight: 600; }
+    #last-edited.fresh { color: #0a8a4a; }
+    #last-edited.stale { color: #c82040; }
   </style>
 </head>
 <body>
@@ -339,5 +354,31 @@
       }
     });
   </script>
+
+<div class="last-edited-strip" role="status" aria-live="polite">
+  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-05-03T22:45:44+08:00">checking…</span>
+</div>
+
+<script>
+(function () {
+  const el = document.getElementById('last-edited');
+  if (!el) return;
+  const iso = el.dataset.edited;
+  if (!iso) { el.textContent = '—'; return; }
+  const d = new Date(iso);
+  const fmt = d.toLocaleDateString('en-SG', { year: 'numeric', month: 'short', day: 'numeric' });
+  const ago = Math.floor((Date.now() - d.getTime()) / 86400000);
+  let suffix;
+  if (ago === 0) suffix = 'today';
+  else if (ago === 1) suffix = 'yesterday';
+  else if (ago < 14) suffix = ago + ' days ago';
+  else if (ago < 60) suffix = Math.floor(ago/7) + ' weeks ago';
+  else suffix = Math.floor(ago/30) + ' months ago';
+  el.textContent = fmt + ' · ' + suffix;
+  if (ago <= 7) el.classList.add('fresh');
+  else if (ago > 14) el.classList.add('stale');
+})();
+</script>
+
 </body>
 </html>
