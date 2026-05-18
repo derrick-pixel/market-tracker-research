@@ -1,0 +1,2 @@
+# Supabase anon key in admin auth gate — public by design, RLS-protected
+template/admin/assets/js/auth-gate.js:jwt:31
