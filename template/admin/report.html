@@ -230,8 +230,8 @@
   </div>
 
   <script type="module">
-    import { loadAppData } from '../assets/js/app.js';
-    import { h, mount } from '../assets/js/dom.js';
+    import { loadAppData } from '../assets/kit/js/app.js';
+    import { h, mount } from '../assets/kit/js/dom.js';
 
     const { competitors, market, pricing, whitespace } = await loadAppData();
     const ms = market.market_size || {};
@@ -341,6 +341,6 @@
 </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-  <script src="assets/js/auth-gate.js"></script>
+  <script src="../assets/kit/js/auth-gate.js"></script>
 </body>
 </html>

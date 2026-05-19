@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/pit-floor.css">
-  <script src="../assets/vendor/chart.umd.js"></script>
+  <script src="../assets/kit/vendor/chart.umd.js"></script>
   <style>
     /* ---- Search bar ---- */
     .search-row { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; align-items: stretch; }
@@ -178,8 +178,8 @@
   </div>
 
   <script type="module">
-    import { loadAppData } from '../assets/js/app.js';
-    import { h, mount } from '../assets/js/dom.js';
+    import { loadAppData } from '../assets/kit/js/app.js';
+    import { h, mount } from '../assets/kit/js/dom.js';
 
     const { competitors, market } = await loadAppData();
     const ms = market.market_size || {};
@@ -381,6 +381,6 @@
 </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-  <script src="assets/js/auth-gate.js"></script>
+  <script src="../assets/kit/js/auth-gate.js"></script>
 </body>
 </html>

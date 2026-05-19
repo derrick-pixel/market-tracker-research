@@ -1,0 +1,3 @@
+[submodule "template/assets/kit"]
+	path = template/assets/kit
+	url = https://github.com/derrick-pixel/elitez-intel-kit.git
