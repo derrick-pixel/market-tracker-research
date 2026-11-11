@@ -27,6 +27,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/pit-floor.css">
+  <link rel="stylesheet" href="../assets/css/intel-updates.css?v=20261111">
+  <link rel="stylesheet" href="../assets/css/intel-updates-pit.css?v=20261111">
+  <script src="../assets/js/intel-updates.js?v=20261111" data-intel-data="../data/" data-intel-files="competitors,market-intelligence,pricing-strategy,whitespace-framework"></script>
+  <script src="../assets/js/intel-rows.js?v=20261111"></script>
   <script src="../assets/kit/vendor/chart.umd.js"></script>
   <style>
     /* ===========================================================
@@ -631,6 +635,8 @@
       </div>
     </section>
 
+    <div data-intel-panel></div>
+
     <!-- KPI strip -->
     <div class="kpis" id="kpis"></div>
 
@@ -670,6 +676,17 @@
         <span class="meta" id="pol-count"></span>
       </div>
       <div class="policy-rows" id="policies"></div>
+    </section>
+
+    <!-- Intel refresh: new signals, reference points, grants, competitor price watch -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ NEW :: SIGNALS, GRANTS AND PRICE WATCH</span>
+        <span class="meta" id="newsig-meta"></span>
+      </div>
+      <div class="section-body">
+        <div class="impl-grid" id="newsig"></div>
+      </div>
     </section>
 
     <!-- Country readiness futures grid -->
@@ -882,7 +899,7 @@
     const policies = market.policies || [];
     mount(document.getElementById('policies'), ...policies.map(p => {
       const sent = p.sentiment || 'neutral';
-      return h('div', { class: 'policy-row' },
+      return intelTag(h('div', { class: 'policy-row' },
         h('div', { class: `dir ${sent}` }, sentDir(sent)),
         h('div', { class: 'title' },
           p.title || '',
@@ -899,9 +916,28 @@
           ) : null
         ),
         h('div', { class: `ticker-tag ${sent}` }, sent.toUpperCase())
-      );
+      ), p);
     }));
     document.getElementById('pol-count').textContent = `${policies.length} polic${policies.length === 1 ? 'y' : 'ies'}`;
+
+    /* ---- Intel refresh cards (cultural signals, reference points, grants, competitor price watch) ---- */
+    const isStamped = r => !!(r && (r.added || (r.updates && r.updates.length) || r.retired_on));
+    const newCards = [];
+    const sigCard = (rec, title, body, extra, cls) => intelTag(h('div', { class: 'impl' + (cls ? ' ' + cls : '') },
+      h('h4', {}, '▸ ' + title),
+      body ? h('p', {}, body) : null,
+      extra ? h('p', {}, extra) : null
+    ), rec);
+    (market.cultural_signals || []).filter(isStamped).forEach(s =>
+      newCards.push(sigCard(s, s.title || s.observation, s.observation, s.implication_for_us ? 'IMPL. ' + s.implication_for_us : null)));
+    (market.market_size?.reference_points || []).filter(isStamped).forEach(s =>
+      newCards.push(sigCard(s, s.title, (s.figure ? s.figure + '. ' : '') + (s.note || ''), null)));
+    (pricing.grants || []).filter(isStamped).forEach(g =>
+      newCards.push(sigCard(g, g.name, (g.coverage_pct != null ? 'Up to ' + g.coverage_pct + '%' : '') + (g.cap_sgd != null ? ' · cap ' + curSym + g.cap_sgd.toLocaleString() : '') + '. ' + (g.eligibility || ''), null)));
+    (pricing.competitor_price_watch || []).filter(isStamped).forEach(w =>
+      newCards.push(sigCard(w, w.title, w.body, w.implication_for_us ? 'IMPL. ' + w.implication_for_us : null)));
+    mount(document.getElementById('newsig'), ...newCards);
+    document.getElementById('newsig-meta').textContent = `${newCards.length} item${newCards.length === 1 ? '' : 's'}`;
 
     /* ---- Country futures grid ---- */
     const futuresEl = document.getElementById('futures');
@@ -914,12 +950,12 @@
         h('th', {}, 'TECH'),
         h('th', {}, 'PRICE.TOL')
       )),
-      h('tbody', {}, ...rows.map(r => h('tr', {},
+      h('tbody', {}, ...rows.flatMap(r => intelRows(h('tr', {},
         h('td', { class: 'country' }, r.country),
         h('td', { class: `cell ${cellClass(r.regulatory)}` }, r.regulatory),
         h('td', { class: `cell ${cellClass(r.tech_maturity)}` }, r.tech_maturity),
         h('td', { class: `cell ${cellClass(r.price_tolerance)}` }, r.price_tolerance)
-      )))
+      ), r, r.country + ' - ' + (r.recent_signals || []).join(' '), 4)))
     );
 
     /* ---- Personas as instrument cards ---- */
@@ -929,7 +965,7 @@
       const nbaSummary = (typeof p.nba === 'string' ? p.nba : (p.nba?.summary || '—'));
       const nbaMo = p.nba?.monthly_sgd_equivalent;
       const conf = p.nba?.confidence;
-      return h('div', { class: 'persona-card' },
+      return intelTag(h('div', { class: 'persona-card' },
         h('div', { class: 'persona-head' },
           h('span', { class: 'tag' }, '[PERSONA]'),
           h('span', { class: 'name' }, (p.name || '').toUpperCase()),
@@ -970,7 +1006,7 @@
             )
           )
         )
-      );
+      ), p);
     };
     mount(document.getElementById('personas'), ...personas.map(personaCard));
     document.getElementById('per-count').textContent = `${personas.length} icp${personas.length === 1 ? '' : 's'}`;
@@ -991,13 +1027,13 @@
     const obBody = h('tbody', {});
     tiers.forEach(t => {
       const sz = (t.what_in?.length || 0);
-      obBody.append(h('tr', {},
+      obBody.append(...intelRows(h('tr', {},
         h('td', { class: 'tier-name' }, (t.name || '').toUpperCase()),
         h('td', { class: 'size' }, String(sz)),
         h('td', { class: 'px'   }, curSym + (t.price_sgd ?? 0)),
         h('td', { class: 'eff'  }, curSym + (t.effective_price_after_psg ?? 0)),
         h('td', { class: 'persona' }, t.target_persona || '—')
-      ));
+      ), t, t.name || 'tier', 5));
     });
     obTable.append(obBody);
     tiersWrap.append(obTable);
@@ -1079,7 +1115,7 @@
   </script>
 
 <div class="last-edited-strip" role="status" aria-live="polite">
-  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-05-03T22:45:44+08:00">checking…</span>
+  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-11-11T12:00:00+08:00">checking…</span>
 </div>
 
 <script>

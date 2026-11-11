@@ -1,0 +1,118 @@
+/* intel-updates.css  -  styles for assets/js/intel-updates.js (version 20261111)
+ * Generic: copy UNCHANGED into any competitor-intel-template repo.
+ * LIGHT THEME ONLY by design: self-contained light chips/panel, color-scheme: light,
+ * no prefers-color-scheme, no auto dark switch. Override the --iu-* variables on :root to re-tint.
+ */
+:root {
+  --iu-ink: #1c2530;
+  --iu-muted: #4b5866;
+  --iu-bg: #ffffff;
+  --iu-bg-soft: #f4f6f8;
+  --iu-line: #d3dae2;
+  --iu-link: #0b5cab;
+  --iu-new-bg: #e3f4e8;  --iu-new-ink: #0b5d2a;  --iu-new-line: #93cfa6;
+  --iu-upd-bg: #fff3d1;  --iu-upd-ink: #7a4b00;  --iu-upd-line: #eec770;
+  --iu-ret-bg: #eceff1;  --iu-ret-ink: #3d4f5a;  --iu-ret-line: #aebcc4;
+  --iu-chg-bg: #fff0a8;
+}
+
+/* ---------- badges ---------- */
+.iu-badge {
+  display: inline-block; font: 700 11px/1 'Share Tech Mono', ui-monospace, Menlo, monospace;
+  letter-spacing: .06em; padding: 5px 8px; border-radius: 999px; border: 1px solid; white-space: nowrap;
+  color-scheme: light;
+}
+.iu-badge--new { background: var(--iu-new-bg); color: var(--iu-new-ink); border-color: var(--iu-new-line); }
+.iu-badge--updated { background: var(--iu-upd-bg); color: var(--iu-upd-ink); border-color: var(--iu-upd-line); }
+.iu-badge--retired { background: var(--iu-ret-bg); color: var(--iu-ret-ink); border-color: var(--iu-ret-line); }
+
+/* ---------- tagged records ---------- */
+.iu-tagged { scroll-margin-top: 96px; }
+.iu-tagged[data-intel-added] { box-shadow: inset 4px 0 0 #2e9e5b; }
+.iu-tagged[data-intel-updated]:not([data-intel-added]) { box-shadow: inset 4px 0 0 #e0a21a; }
+.iu-tagged[data-intel-retired] { box-shadow: inset 4px 0 0 #8a9aa5; }
+.iu-tagged:target, .iu-tagged.iu-flash { outline: 2px solid #2e9e5b; outline-offset: 2px; }
+.iu-strip {
+  display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; width: 100%;
+  grid-column: 1 / -1; flex: 0 0 100%; order: -1;
+}
+.iu-retired > *:not(.iu-strip):not(.iu-extra) { text-decoration: line-through; opacity: .62; }
+.iu-extra { grid-column: 1 / -1; flex: 0 0 100%; width: 100%; order: 99; margin-top: 10px; }
+
+/* ---------- detail blocks (light card, readable on any page background) ---------- */
+.iu-detail, .iu-items-wrap {
+  background: var(--iu-bg); color: var(--iu-ink); border: 1px solid var(--iu-line); border-radius: 8px;
+  padding: 8px 12px; font-size: 13px; line-height: 1.55; color-scheme: light; text-decoration: none;
+}
+.iu-detail > summary, .iu-items-wrap > summary {
+  cursor: pointer; font-weight: 600; color: var(--iu-ink); list-style-position: inside;
+}
+.iu-detail a, .iu-panel a { color: var(--iu-link); text-decoration: underline; }
+.iu-changes { margin-top: 8px; display: grid; gap: 10px; }
+.iu-change { border-top: 1px dashed var(--iu-line); padding-top: 8px; }
+.iu-change:first-child { border-top: 0; padding-top: 0; }
+.iu-change-head { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.iu-field { font: 700 12px 'Share Tech Mono', ui-monospace, monospace; color: var(--iu-upd-ink); background: var(--iu-upd-bg); padding: 2px 6px; border-radius: 4px; }
+.iu-when { color: var(--iu-muted); font-size: 12px; }
+.iu-note { color: var(--iu-muted); margin: 4px 0; }
+.iu-wasnow { display: grid; gap: 4px; }
+.iu-was, .iu-now { display: grid; grid-template-columns: 38px 1fr; gap: 8px; align-items: start; padding: 4px 6px; border-radius: 6px; }
+.iu-was { background: var(--iu-bg-soft); }
+.iu-was .iu-val { text-decoration: line-through; text-decoration-color: #8a9aa5; color: var(--iu-muted); }
+.iu-now { background: var(--iu-new-bg); }
+.iu-lbl { font: 700 11px 'Share Tech Mono', ui-monospace, monospace; text-transform: uppercase; color: var(--iu-muted); padding-top: 2px; }
+.iu-val { overflow-wrap: anywhere; }
+.iu-chg { background: var(--iu-chg-bg); border-radius: 3px; padding: 0 2px; text-decoration: none; }
+.iu-li { margin: 2px 0; }
+.iu-meta { margin-top: 8px; color: var(--iu-muted); font-size: 12.5px; }
+.iu-reason { margin-top: 4px; color: var(--iu-ret-ink); }
+.iu-srcs { margin: 6px 0 0; padding-left: 18px; }
+.iu-srcs li { margin: 2px 0; }
+
+/* ---------- What's new panel ---------- */
+.iu-panel {
+  background: var(--iu-bg); color: var(--iu-ink); border: 1px solid var(--iu-line); border-top: 4px solid #2e9e5b;
+  border-radius: 12px; padding: 18px 20px; margin: 18px 0 26px; color-scheme: light;
+  font: 400 14px/1.55 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+.iu-panel-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; margin-bottom: 10px; }
+.iu-title { margin: 0; font: 800 1.5rem/1.1 'Barlow Condensed', system-ui, sans-serif; letter-spacing: .01em; color: var(--iu-ink); text-transform: none; }
+.iu-counts { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.iu-count { font: 700 12px 'Share Tech Mono', ui-monospace, monospace; padding: 4px 9px; border-radius: 999px; border: 1px solid; }
+.iu-count--new { background: var(--iu-new-bg); color: var(--iu-new-ink); border-color: var(--iu-new-line); }
+.iu-count--updated { background: var(--iu-upd-bg); color: var(--iu-upd-ink); border-color: var(--iu-upd-line); }
+.iu-count--retired { background: var(--iu-ret-bg); color: var(--iu-ret-ink); border-color: var(--iu-ret-line); }
+.iu-toggle {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; margin: 4px 0 12px;
+  border: 1px solid var(--iu-line); border-radius: 8px; background: var(--iu-bg-soft); font-weight: 600; min-height: 40px;
+}
+.iu-toggle input { width: 18px; height: 18px; accent-color: #2e9e5b; }
+.iu-log { border-top: 1px solid var(--iu-line); padding-top: 12px; margin-top: 12px; }
+.iu-log-head { margin: 0 0 4px; font: 800 1.05rem 'Barlow Condensed', system-ui, sans-serif; color: var(--iu-ink); text-transform: none; letter-spacing: .01em; }
+.iu-window { margin-left: 10px; font: 400 12px 'Share Tech Mono', ui-monospace, monospace; color: var(--iu-muted); }
+.iu-log-counts { font: 700 12px 'Share Tech Mono', ui-monospace, monospace; color: var(--iu-muted); margin-bottom: 6px; }
+.iu-summaries { margin: 0 0 10px; padding-left: 18px; color: var(--iu-ink); }
+.iu-summaries li { margin: 4px 0; }
+.iu-pc { color: var(--iu-muted); font-size: 12.5px; }
+.iu-items { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.iu-item { border: 1px solid var(--iu-line); border-radius: 8px; padding: 8px 10px; background: #fff; }
+.iu-item-head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+.iu-badges { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.iu-item-title { font-weight: 700; flex: 1 1 260px; }
+.iu-item--retired .iu-item-title { text-decoration: line-through; color: var(--iu-muted); }
+.iu-where { font: 400 11.5px 'Share Tech Mono', ui-monospace, monospace; color: var(--iu-muted); }
+.iu-jump { display: inline-block; margin: 6px 0 2px; font-size: 13px; }
+.iu-jump[hidden] { display: none; }
+.iu-item .iu-detail { margin-top: 6px; border-style: dashed; }
+.iu-empty { color: var(--iu-muted); }
+
+/* ---------- "Show only changes" filter ---------- */
+body.iu-only-changes .iu-dim { display: none !important; }
+body.iu-only-changes .iu-section-hidden { display: none !important; }
+
+@media (max-width: 720px) {
+  .iu-panel { padding: 14px; }
+  .iu-was, .iu-now { grid-template-columns: 1fr; gap: 2px; }
+  .iu-toggle { width: 100%; box-sizing: border-box; }
+}
+@media print { .iu-toggle { display: none; } }

@@ -27,6 +27,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/pit-floor.css">
+  <link rel="stylesheet" href="../assets/css/intel-updates.css?v=20261111">
+  <link rel="stylesheet" href="../assets/css/intel-updates-pit.css?v=20261111">
+  <script src="../assets/js/intel-updates.js?v=20261111" data-intel-data="../data/" data-intel-files="competitors,market-intelligence,pricing-strategy,whitespace-framework"></script>
+  <script src="../assets/js/intel-rows.js?v=20261111"></script>
   <script src="../assets/kit/vendor/chart.umd.js"></script>
   <style>
     /* ---- Search bar ---- */
@@ -113,6 +117,8 @@
       </div>
     </section>
 
+    <div data-intel-panel></div>
+
     <!-- KPI strip -->
     <div class="kpis" id="kpis"></div>
 
@@ -124,6 +130,18 @@
       </div>
       <div class="section-body">
         <div class="bill-grid" id="bill"></div>
+      </div>
+    </section>
+
+    <!-- New entrants (Nov 2026 refresh) -->
+    <section class="section" id="newent-section">
+      <div class="section-head">
+        <span class="title">▼ NEW :: NEW ENTRANTS TO WATCH</span>
+        <span class="meta" id="newent-meta"></span>
+      </div>
+      <div class="section-body">
+        <p class="intel-note">Not scored: threat, beatability and share are analyst judgements and are not assigned without a fuller review.</p>
+        <div class="bill-grid" id="newent"></div>
       </div>
     </section>
 
@@ -264,13 +282,31 @@
     }));
     document.getElementById('top5-meta').textContent = `${TOP5.length} ranked · structural`;
 
+    /* ---- New entrants (Nov 2026 refresh) ---- */
+    const ENTRANTS = competitors.new_entrants || [];
+    mount(document.getElementById('newent'), ...ENTRANTS.map(e => intelTag(h('div', { class: 'bill-card' },
+      h('div', { class: 'rank-row' },
+        h('div', { class: 'rank-tag' }, (e.category || 'new entrant').replace(/_/g, ' '))
+      ),
+      h('h4', {}, e.name),
+      h('div', { class: 'meta-row' },
+        e.hq ? h('span', { class: 'chip' }, e.hq) : null,
+        e.pricing_range_published ? h('span', { class: 'chip' }, e.pricing_range_published) : null
+      ),
+      h('p', {}, e.primary_value_prop || ''),
+      h('p', {}, h('b', {}, 'Why it matters: '), e.why_it_matters || ''),
+      h('div', { class: 'src-row' }, e.url ? h('a', { href: e.url, target: '_blank', rel: 'noopener' }, '↗ ' + e.url.replace(/^https?:\/\//, '').replace(/\/.*$/, '')) : '—')
+    ), e)));
+    document.getElementById('newent-meta').textContent = `${ENTRANTS.length} new entrant${ENTRANTS.length === 1 ? '' : 's'}`;
+
     /* ---- Roster table with search ---- */
     const rosterBody = document.getElementById('roster-body');
     const shownEl = document.getElementById('shown');
     const totalEl = document.getElementById('total');
     const searchEl = document.getElementById('search');
 
-    const renderRow = c => h('tr', {},
+    const changedFields = c => [...new Set((c.updates || []).map(u => u.field))].join(', ');
+    const renderRow = c => intelRows(h('tr', {},
       h('td', { class: 'name' },
         c.url ? h('a', { href: c.url, target: '_blank', rel: 'noopener' }, c.name)
               : c.name
@@ -287,7 +323,7 @@
       h('td', { class: 'right' },
         c.beatability != null ? h('span', { class: 'chip' }, String(c.beatability)) : '—'
       )
-    );
+    ), c, c.name + ' - changed: ' + changedFields(c), 7);
 
     function refreshRoster() {
       const q = (searchEl.value || '').trim().toLowerCase();
@@ -297,7 +333,7 @@
           .join(' ').toLowerCase();
         return blob.includes(q);
       });
-      mount(rosterBody, ...filtered.map(renderRow));
+      mount(rosterBody, ...filtered.flatMap(renderRow));
       shownEl.textContent = filtered.length;
       totalEl.textContent = COMPS.length;
     }
@@ -356,7 +392,7 @@
   </script>
 
 <div class="last-edited-strip" role="status" aria-live="polite">
-  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-05-03T22:45:44+08:00">checking…</span>
+  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-11-11T12:00:00+08:00">checking…</span>
 </div>
 
 <script>

@@ -11,7 +11,18 @@
       "font_body": "IBM Plex Mono, ui-monospace, monospace"
     },
     "research_date": "2026-05-02",
-    "sample_data": false
+    "sample_data": false,
+    "last_refreshed": "2026-11-11",
+    "refresh_log": [
+      {
+        "date": "2026-11-11",
+        "window": "2026-05-02->2026-11-11",
+        "added": 7,
+        "updated": 0,
+        "retired": 1,
+        "summary": "Retired the PSG grant record (EDG, MRA and PSG ceased 29 Sep 2026) and added the EDGE Grant with a flagged source conflict on support levels. Added six competitor price-watch records (Yahoo, Stock Rover, Koyfin, TradingView SG, Seeking Alpha, and an open item on the unverifiable Simply Wall St anchor); no recommended tier prices were changed. SkillsFuture Credit could not be re-verified (page returned only a title)."
+      }
+    ]
   },
   "personas": [
     {
@@ -347,7 +358,21 @@
       "coverage_pct": 50,
       "cap_sgd": 30000,
       "eligibility": "SG-registered SME (under 200 staff or under S$100M turnover); pre-approved IMDA solution. Market Tracker not currently PSG-listed but the SaaS-side admin tooling could be listed in Year-2 for the Team tier.",
-      "applies_to_tiers": []
+      "applies_to_tiers": [],
+      "retired_on": "2026-11-11",
+      "retired_reason": "Enterprise Singapore states that EDG, MRA and PSG ceased on 29 September 2026; business grant applications now go through the EDGE Grant (from 30 September 2026). Existing PSG submissions and projects continue to be processed. The record is kept for history.",
+      "sources": [
+        {
+          "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+          "title": "Enterprise Singapore - EDGE Grant",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://enterprisesg.gov.sg/budget-2026",
+          "title": "Enterprise Singapore - Budget 2026 support for enterprises",
+          "accessed": "2026-11-11"
+        }
+      ]
     },
     {
       "name": "SkillsFuture Credit (Singapore)",
@@ -355,6 +380,141 @@
       "cap_sgd": 4000,
       "eligibility": "SG citizen / PR; reimbursable on accredited financial-literacy / valuation training. Pathway: bundle Pro tier with a SkillsFuture-accredited 'Booth methodology' workshop.",
       "applies_to_tiers": ["Pro (consumer)"]
+    },
+    {
+      "name": "EDGE Grant (Enterprise Singapore) - replaces EDG, MRA and PSG",
+      "coverage_pct": 70,
+      "cap_sgd": 100000,
+      "eligibility": "Open to Singapore businesses including non-SMEs (Budget 2026 page). Support is \"up to\" 70% for SMEs and up to 50% for non-SMEs and differs by activity; the S$100,000 annual cap is shared across all activities and refreshes each 1 April. Whether Market Tracker or its Team tier qualifies was not assessed.",
+      "applies_to_tiers": [],
+      "added": "2026-11-11",
+      "event_date": "2026-09-30",
+      "sources": [
+        {
+          "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+          "title": "Enterprise Singapore - EDGE Grant",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://enterprisesg.gov.sg/budget-2026",
+          "title": "Enterprise Singapore - Budget 2026 support for enterprises",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://marketingagency.sg/edge-grant-singapore/",
+          "title": "marketingagency.sg (27 Oct 2026): EDGE Grant Singapore guide",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium",
+      "verification_note": "Source conflict: the official EDGE page says up to 70% (SMEs) / 50% (non-SMEs); marketingagency.sg (27 Oct 2026) says most activities are up to 50% / 30% with 70% / 50% only for internationalisation and sustainability, and a S$30,000 sub-cap for single-function digital solutions. coverage_pct shows the official headline maximum; check the activity page before relying on it. The old PSG 50% / S$30,000 terms and the 2H-2026 launch expectation in littlebigreddot.com (22 Apr 2026) are superseded."
+    }
+  ],
+  "competitor_price_watch": [
+    {
+      "title": "Yahoo Finance: Gold tier now bundles AlphaSpace and the Yahoo Scout AI assistant at USD 39.99/mo",
+      "body": "Yahoo launched AlphaSpace on 19 May 2026, a customisable investing workspace with the Yahoo Scout AI assistant, bundled in the Gold plan at USD 39.99/mo on an annual plan (Bronze and Silver tiers also exist; their prices were not stated). The recorded Plus USD 24.95 / Premium USD 35 ladder appears superseded.",
+      "implication_for_us": "Analyst reading: the free-default competitor now sells an AI-assisted workspace at roughly the S$39 expected price point of the EMBA persona; the \"free fallback\" ceiling on the prosumer tier is firmer. No tier price changed.",
+      "added": "2026-11-11",
+      "event_date": "2026-05-19",
+      "sources": [
+        {
+          "url": "https://unified.www.yahooinc.com/press/introducing-alphaspace-by-yahoo-finance-a-professional-grade-investment-platform-built-for-everyday-investors",
+          "title": "Introducing AlphaSpace by Yahoo Finance (Yahoo press release)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "title": "Stock Rover: plan ladder now Premium USD 34 / Premium Plus USD 70 / Ultimate USD 99 / Ultimate Pro USD 199 per month",
+      "body": "Stock Rover's own plan page (last modified 19 May 2026) lists Premium USD 34/mo (348/yr), Premium Plus USD 70/mo (588/yr), Ultimate USD 99/mo (948/yr) and Ultimate Pro USD 199/mo (1,788/yr), with a Black Friday discount on annual plans; V12 (29 May 2026) introduced the Ultimate tiers. The recorded USD 7.99 / 17.99 / 27.99 ladder is well below the current page.",
+      "implication_for_us": "Analyst reading: the closest value-investor screener sits well above the S$39 / S$79 Market Tracker bands, so the price-comparison argument against it is stronger than recorded.",
+      "added": "2026-11-11",
+      "event_date": "2026-05-19",
+      "sources": [
+        {
+          "url": "https://www.stockrover.com/?p=2318",
+          "title": "Stock Rover Premium Membership Plans (page last modified 2026-05-19)",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://ww1.stockrover.com/news-release/announcing-stock-rover-v12/",
+          "title": "Announcing Stock Rover V12",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "title": "Koyfin: top retail tier renamed Premium; Advisor Core USD 209 and Advisor Pro USD 299 added; USD 39 / 79 unchanged",
+      "body": "Koyfin's pricing page (fetched 2026-11-11) shows Plus USD 39/mo and Premium USD 79/mo (previously Pro), plus new advisor tiers Advisor Core USD 209/mo and Advisor Pro USD 299/mo. Retail prices match the record, so the persona tooling-stack figure that uses Koyfin Plus is not contradicted.",
+      "implication_for_us": "No pricing change needed; Koyfin is moving toward the advisor segment.",
+      "added": "2026-11-11",
+      "event_date": "2026-11-11",
+      "sources": [
+        {
+          "url": "https://www.koyfin.com/pricing/",
+          "title": "Koyfin Pricing (accessed 2026-11-11)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "title": "TradingView Singapore page: S$16.65 / S$32.49 / S$64.99 per month on annual billing, plus a new Ultimate tier at S$259.99",
+      "body": "TradingView's pricing page, served in S$ when fetched, shows annual-billing prices of Essential S$16.65/mo, Plus S$32.49/mo and Premium S$64.99/mo and a fifth tier, Ultimate, at S$259.99/mo. Monthly-billing prices were not readable, so the recorded sg_monthly_sgd was left unchanged.",
+      "implication_for_us": "Analyst reading: direct SG-dollar comparators for the prosumer and EMBA bands (S$29 and S$39 Market Tracker tiers).",
+      "added": "2026-11-11",
+      "event_date": "2026-11-11",
+      "sources": [
+        {
+          "url": "https://www.tradingview.com/pricing/",
+          "title": "TradingView pricing page (accessed 2026-11-11)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "title": "Seeking Alpha: third-party reviews now quote Premium USD 299/yr and PRO USD 2,400/yr",
+      "body": "Two affiliate reviews (26 Oct 2026 and 23 Sep 2026) agree on Premium USD 299/yr and PRO USD 2,400/yr; Seeking Alpha's own subscriptions page lists plan names but no prices when fetched. The recorded USD 19.99 / 29.99 per month are far below the PRO figure.",
+      "implication_for_us": "Analyst reading: the narrative-research competitor in the prosumer stack may be priced higher than assumed; treat as medium confidence until confirmed on the vendor page.",
+      "added": "2026-11-11",
+      "event_date": "2026-10-26",
+      "sources": [
+        {
+          "url": "https://financer.com/invest/seeking-alpha-premium-review/",
+          "title": "Seeking Alpha Premium Review: Is It Worth $299/Year? (dated 2026-10-26)",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.thestockdork.com/seeking-alpha-review/",
+          "title": "Seeking Alpha Review 2026 (dated 2026-09-23)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "title": "Open item: the Simply Wall St S$22/mo price anchor could not be re-verified",
+      "body": "The persona price anchor (Simply Wall St Premium S$22/mo) could not be confirmed: the official plans page (fetched 2026-11-11) shows tiers Free / Premium / Unlimited with no prices, and a third-party review lists Premium USD 10.95/mo and Unlimited USD 21.50/mo (unclear whether discounted). No anchor value was changed.",
+      "implication_for_us": "Re-check the vendor price in a logged-in or localised session before any pricing decision that relies on this anchor.",
+      "added": "2026-11-11",
+      "event_date": "2026-11-11",
+      "sources": [
+        {
+          "url": "https://simplywall.st/portal/plans",
+          "title": "Simply Wall St plans (accessed 2026-11-11)",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.wallstreetsurvivor.com/simplywallst-review/",
+          "title": "SimplyWall.St Review 2026 (Last Updated July 17, 2026)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "low"
     }
   ]
 }

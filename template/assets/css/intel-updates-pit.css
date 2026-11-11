@@ -1,0 +1,8 @@
+/* intel-updates-pit.css (20261111) - layout glue for the pit-floor pages. Layout only: no colour scheme, no dark/auto switching. */
+[data-intel-panel] { margin: 16px 0 18px; }
+.iu-extra-row td { padding: 2px 10px 12px !important; border-top: 0 !important; }
+.iu-rowbox { display: block; }
+.iu-rowbox .iu-rowlabel { font-size: 12px; margin: 4px 0 2px; }
+.policy-row .iu-extra { padding-top: 4px; }
+body.iu-only-changes tbody tr:not(:has(.iu-tagged)) { display: none; }
+.intel-note { font-size: 12px; margin: 0 0 10px; opacity: .8; }

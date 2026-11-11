@@ -11,7 +11,18 @@
       "font_body": "IBM Plex Mono, ui-monospace, monospace"
     },
     "research_date": "2026-05-02",
-    "sample_data": false
+    "sample_data": false,
+    "last_refreshed": "2026-11-11",
+    "refresh_log": [
+      {
+        "date": "2026-11-11",
+        "window": "2026-05-02->2026-11-11",
+        "added": 9,
+        "updated": 4,
+        "retired": 0,
+        "summary": "Added four policy records (MAS AI risk-management guidelines Oct 2026, PDPC generative-AI guidelines Jul 2026, IMDA chatbot information cards, EU Digital Omnibus on AI), three cultural signals (Finimize AI-use survey, SGX FY2026 retail participation, Futu/Tiger SG growth), country signals for Singapore, Malaysia and Thailand, and two reference points. TAM / SAM / SOM and country scores are unchanged; no new authoritative retail-segment size was found."
+      }
+    ]
   },
   "market_size": {
     "tam_sgd": 18000000000,
@@ -150,6 +161,39 @@
       { "title": "Tiger Brokers SG", "url": "https://www.tigerbrokers.com.sg/" },
       { "title": "Aswath Damodaran — Valuation Spreadsheets (academic-free baseline)", "url": "https://pages.stern.nyu.edu/~adamodar/" },
       { "title": "Chicago Booth EMBA Curriculum (CF / FS / OM / CS modules)", "url": "https://www.chicagobooth.edu/programs/executive-mba" }
+    ],
+    "reference_points": [
+      {
+        "title": "Mordor Intelligence: financial analytics market sized at USD 13.87B in 2026 (reference only)",
+        "figure": "USD 13.87B (2026) -> USD 23.42B (2031), CAGR 11.05%",
+        "note": "Overall financial-analytics market, a different basis from the retail-segment figure (USD 7.8B, 2025) used in the TAM derivation. TAM / SAM / SOM left unchanged; this is a new data point only.",
+        "added": "2026-11-11",
+        "event_date": "2026-07-24",
+        "sources": [
+          {
+            "url": "https://www.mordorintelligence.com/industry-reports/financial-analytics-market",
+            "title": "Mordor Intelligence - Financial Analytics Market (page last updated 24 Jul 2026)",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "confidence": "medium",
+        "verification_note": "Page states \"last updated July 24, 2026\"; the report body is paywalled so the segment split was not checked."
+      },
+      {
+        "title": "MAS Monetary Policy Statement 14 Oct 2026: S$NEER policy band unchanged (FX context for SGD conversion)",
+        "figure": "Slope, width and centre of the S$NEER band unchanged",
+        "note": "MAS publishes no USD/SGD level; the TAM FX assumption (USD/SGD 1.34, mid-2025) was not re-derived and is left as is. Undated third-party pages quote USD/SGD 1.2760-1.2840 and 1.28-1.29, which are not used.",
+        "added": "2026-11-11",
+        "event_date": "2026-10-14",
+        "sources": [
+          {
+            "url": "https://www.mas.gov.sg/news/monetary-policy-statements/2026/mas-monetary-policy-statement-14oct26",
+            "title": "MAS Monetary Policy Statement, 14 October 2026",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "confidence": "high"
+      }
     ]
   },
   "policies": [
@@ -200,12 +244,112 @@
     },
     {
       "title": "AI risk-management policies (NIST AI RMF / SG Model AI)",
-      "body": "Voluntary frameworks pushing AI-product builders to disclose model + data lineage, hallucination guards, and human-in-the-loop. Becomes a buyer expectation (especially CFOs and EMBA programmes) before becoming a hard regulation.",
+      "body": "Voluntary frameworks pushing AI-product builders to disclose model + data lineage, hallucination guards, and human-in-the-loop. Becomes a buyer expectation (especially CFOs and EMBA programmes) before becoming a hard regulation. Update 2026-11-11: MAS published supervisory Guidelines on AI Risk Management for financial institutions on 7 Oct 2026 (effective 7 Oct 2027) - see the separate record on them.",
       "sentiment": "support",
       "effective_date": "2023-01-26",
       "url": "https://www.nist.gov/itl/ai-risk-management-framework",
       "data_as_of": "2026-05-02",
-      "implication_for_us": "Publish a 'Methodology + AI guardrails' page: model used (Claude Sonnet), retrieval scope (yfinance financial statements), narrative prompt template, and failure-mode disclosures. This is also strong differentiation vs Simply Wall St's opaque scoring."
+      "implication_for_us": "Publish a 'Methodology + AI guardrails' page: model used (Claude Sonnet), retrieval scope (yfinance financial statements), narrative prompt template, and failure-mode disclosures. This is also strong differentiation vs Simply Wall St's opaque scoring.",
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "body",
+          "was": "Voluntary frameworks pushing AI-product builders to disclose model + data lineage, hallucination guards, and human-in-the-loop. Becomes a buyer expectation (especially CFOs and EMBA programmes) before becoming a hard regulation.",
+          "now": "Voluntary frameworks pushing AI-product builders to disclose model + data lineage, hallucination guards, and human-in-the-loop. Becomes a buyer expectation (especially CFOs and EMBA programmes) before becoming a hard regulation. Update 2026-11-11: MAS published supervisory Guidelines on AI Risk Management for financial institutions on 7 Oct 2026 (effective 7 Oct 2027) - see the separate record on them.",
+          "source": "https://www.mas.gov.sg/regulation/guidelines/guidelines-on-artificial-intelligence-risk-management-for-financial-institutions",
+          "note": "Appended a pointer only; the original sentence is unchanged. Source: MAS - Guidelines on Artificial Intelligence Risk Management for Financial Institutions (published 7 Oct 2026). Event date 2026-10-07. Confidence: high."
+        }
+      ]
+    },
+    {
+      "title": "MAS Guidelines on AI Risk Management for Financial Institutions (Singapore, Oct 2026)",
+      "body": "MAS published the guidelines on 7 Oct 2026. They cover all AI (including generative AI and AI agents) at all financial institutions, including financial advisers and capital-markets entities, and are principles-based and scaled to each firm. They take effect on 7 Oct 2027: governance, use-case identification, inventory and risk-materiality assessment (sections 3-4) can be met from 7 Oct 2027, and life-cycle controls, capabilities and infrastructure (sections 5-6) by 7 Oct 2028. Institutions remain accountable for third-party AI (contract visibility into AI updates, testing in their own context, option to limit or replace a provider). MAS plans to consult the industry in 2027 on further guidance for agentic AI.",
+      "sentiment": "neutral",
+      "effective_date": "2027-10-07",
+      "url": "https://www.mas.gov.sg/regulation/guidelines/guidelines-on-artificial-intelligence-risk-management-for-financial-institutions",
+      "data_as_of": "2026-11-11",
+      "implication_for_us": "Analyst reading (not legal advice): Market Tracker is not itself a financial institution, but advisers and institutions that use or recommend it will be accountable for third-party AI and are likely to ask for model lineage, testing evidence and change notices. This supports publishing the Methodology + AI guardrails page.",
+      "added": "2026-11-11",
+      "event_date": "2026-10-07",
+      "sources": [
+        {
+          "url": "https://www.mas.gov.sg/regulation/guidelines/guidelines-on-artificial-intelligence-risk-management-for-financial-institutions",
+          "title": "MAS - Guidelines on Artificial Intelligence Risk Management for Financial Institutions (published 7 Oct 2026)",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.allenandgledhill.com/sg/publication/articles/34686/mas-publishes-ai-risk-management-guidelines-setting-out-supervisory-expectations-on-responsible-ai-adoption",
+          "title": "Allen & Gledhill (21 Oct 2026): MAS publishes AI risk management guidelines setting out supervisory expectations on responsible AI adoption",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high",
+      "verification_note": "Effective date and phase dates: the MAS page states only \"take effect on 7 October 2027\"; the 2027/2028 phase dates come from the Allen & Gledhill summary."
+    },
+    {
+      "title": "PDPC Advisory Guidelines on Use of Personal Data in Generative AI (Singapore, final Jul 2026)",
+      "body": "The PDPC issued the final guidelines on 20 Jul 2026 after consultation (2 Jun to 1 Jul 2026). Organisations that use personal data to train generative AI models must notify individuals explicitly (AI-specific notifications) when no consent exception applies; broad privacy notices no longer suffice for this purpose. Organisations that deploy third-party generative AI systems bear primary responsibility for their PDPA obligations, are encouraged to document safeguards, and should review them regularly, especially for agentic AI systems. The PDPC does not prescribe a method (in-app notice or a dedicated page are acceptable).",
+      "sentiment": "neutral",
+      "effective_date": "2026-07-20",
+      "url": "https://www.allenandgledhill.com/sg/publication/articles/33390/pdpc-issues-advisory-guidelines-on-use-of-personal-data-in-generative-ai",
+      "data_as_of": "2026-11-11",
+      "implication_for_us": "Analyst reading (not legal advice): the logged-in tier already needs a privacy notice and deletion flow (existing PDPA record); if user data were ever used to tune a model an AI-specific notification would be needed, and using a third-party model (Claude) leaves the PDPA responsibility with us as deployer.",
+      "added": "2026-11-11",
+      "event_date": "2026-07-20",
+      "sources": [
+        {
+          "url": "https://www.techgoondu.com/2026/07/22/singapore-sets-ai-specific-privacy-guidelines-but-avoids-prescribed-rules/",
+          "title": "Techgoondu (22 Jul 2026): Singapore sets AI-specific privacy guidelines but avoids prescribed rules",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.allenandgledhill.com/sg/publication/articles/33390/pdpc-issues-advisory-guidelines-on-use-of-personal-data-in-generative-ai",
+          "title": "Allen & Gledhill (25 Aug 2026): PDPC issues Advisory Guidelines on Use of Personal Data in Generative AI",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high",
+      "verification_note": "Issue date 20 Jul 2026 is consistent across both fetched sources; the 12-month and consultation dates come from Allen & Gledhill."
+    },
+    {
+      "title": "IMDA voluntary chatbot information cards (Singapore, Jul 2026)",
+      "body": "Alongside the PDPC guidelines, IMDA released voluntary guidelines urging public-facing chatbot providers to publish plain-language \"chatbot information cards\". Google, Meta, DBS, OCBC, Singapore Airlines and Synapxe have committed to roll them out within 12 months.",
+      "sentiment": "support",
+      "effective_date": "2026-07-20",
+      "url": "https://www.techgoondu.com/2026/07/22/singapore-sets-ai-specific-privacy-guidelines-but-avoids-prescribed-rules/",
+      "data_as_of": "2026-11-11",
+      "implication_for_us": "Analyst reading: a published information card for the AI narrative (model, data scope, limits) would match the direction of travel and the existing guardrails-page recommendation.",
+      "added": "2026-11-11",
+      "event_date": "2026-07-20",
+      "sources": [
+        {
+          "url": "https://www.techgoondu.com/2026/07/22/singapore-sets-ai-specific-privacy-guidelines-but-avoids-prescribed-rules/",
+          "title": "Techgoondu (22 Jul 2026): Singapore sets AI-specific privacy guidelines but avoids prescribed rules",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium",
+      "verification_note": "Single secondary source (Techgoondu); the IMDA document itself was not fetched."
+    },
+    {
+      "title": "EU Digital Omnibus on AI: high-risk AI Act obligations delayed (provisional deal May 2026)",
+      "body": "The EU Council and Parliament reached a provisional agreement on 7 May 2026; Parliament voted to adopt it on 16 Jun 2026 and formal Council approval and Official Journal publication were still pending at the time of the source. High-risk obligations for stand-alone Annex III systems move to 2 Dec 2027 and for systems embedded in regulated products to 2 Aug 2028; the transparency/watermarking obligation is delayed to 2 Dec 2026 for systems already on the market.",
+      "sentiment": "neutral",
+      "effective_date": "2027-12-02",
+      "url": "https://datamatters.sidley.com/2026/06/22/eu-lawmakers-reach-provisional-agreement-to-delay-key-eu-ai-act-obligations/",
+      "data_as_of": "2026-11-11",
+      "implication_for_us": "Analyst reading, no legal assessment made: consistent with the existing EU record, a Year-2 watch item to revisit if EU users exceed 5% of the base.",
+      "added": "2026-11-11",
+      "event_date": "2026-06-22",
+      "sources": [
+        {
+          "url": "https://datamatters.sidley.com/2026/06/22/eu-lawmakers-reach-provisional-agreement-to-delay-key-eu-ai-act-obligations/",
+          "title": "Sidley Data Matters (22 Jun 2026): EU lawmakers reach provisional agreement to delay key EU AI Act obligations",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium",
+      "verification_note": "Adoption status was still pending in the fetched article (22 Jun 2026); other law-firm pages (scl.org) returned 403 and were not read. Final adoption not re-checked."
     }
   ],
   "cultural_signals": [
@@ -233,14 +377,106 @@
       "observation": "CFOs at SG mid-market firms treat 'I read research on this stock' as a non-billable personal interest, not a benefits line",
       "evidence": "Elitez client base CFO interviews (Q1 2026); SG Society of Trust & Estate Practitioners 2025 panels; SHRI member sentiment polls",
       "implication_for_us": "Gates the 'CFO cross-sell tier' assumption. CFO buys for self at S$300-500/yr personal; doesn't claim through firm. Pricing must hold below the personal-expense threshold (~S$50/mo) or pivot to a firm-side use-case (board pack one-pagers, M&A target snapshots)."
+    },
+    {
+      "title": "AI-assisted research is routine for retail investors (Finimize Q3 2026)",
+      "observation": "AI-assisted research is now routine among retail investors: 40.9% of surveyed global retail investors use AI for research at least weekly, and daily AI use in Asia is 27.6% against 15.9% globally.",
+      "evidence": "Finimize Modern Investor Pulse 2026 Q3 (released 7 Jul 2026; n=2,808 global retail investors). Vendor-run survey; Singapore is not broken out.",
+      "implication_for_us": "Analyst reading: AI narration alone is no longer a differentiator for prosumers; grounding in a cited framework and auditable inputs has to be the pitch.",
+      "added": "2026-11-11",
+      "event_date": "2026-07-07",
+      "sources": [
+        {
+          "url": "https://finimize.com/business/press/modern-investor-pulse-2026-q3-40-per-cent-of-retail-investors-use-ai-for-research-weekly",
+          "title": "Finimize (7 Jul 2026): Modern Investor Pulse 2026 Q3 - 40% of retail investors use AI for research weekly",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "title": "Singapore retail participation at a 12-year high (SGX FY2026)",
+      "observation": "Singapore retail participation hit a 12-year high in FY2026: retail securities daily average value rose 52% year on year, and retail investors were net buyers for five consecutive months through June, with cumulative FY2026 net inflows of S$2.4 billion.",
+      "evidence": "SGX Group FY2026 results release as reproduced by Mondo Visione, 13 Jul 2026.",
+      "implication_for_us": "Analyst reading: a larger, more active retail base supports the graduation-play thesis, with more people outgrowing broker-app summaries.",
+      "added": "2026-11-11",
+      "event_date": "2026-07-13",
+      "sources": [
+        {
+          "url": "https://mondovisione.com/news/sgx-groups-strong-volume-growth-in-june-caps-stellar-fy2026-performance-2026713/",
+          "title": "Mondo Visione (13 Jul 2026): SGX Group's strong volume growth in June caps stellar FY2026 performance",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "title": "Singapore is a growth market for Futu (moomoo) and Tiger Brokers",
+      "observation": "Singapore is a growth driver for both retail broker platforms: Futu (moomoo) reports funded accounts of 3,842,667 (+33.6% YoY) with Singapore among the key contributors to new accounts and a broadened local fund shelf, and Tiger Brokers reports 32,600 new funded clients mostly from Singapore and Hong Kong plus fractional trading for Singapore stocks and REITs.",
+      "evidence": "Futu Q2 2026 results (20 Aug 2026) and UP Fintech Q2 2026 results (26 Aug 2026); company-reported, group-level figures.",
+      "implication_for_us": "Analyst reading: broker-app AI research will keep improving and bundling for free, which caps the price of any standalone research tier (see the competitor refresh).",
+      "added": "2026-11-11",
+      "event_date": "2026-08-26",
+      "sources": [
+        {
+          "url": "https://finviz.com/news/383934/futu-announces-second-quarter-2026-unaudited-financial-results",
+          "title": "Futu Announces Second Quarter 2026 Unaudited Financial Results (20 Aug 2026)",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.itiger.com/news/1175297671",
+          "title": "UP Fintech Holding Limited Reports Unaudited Second Quarter 2026 Financial Results (26 Aug 2026)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high"
     }
   ],
   "adoption_patterns": {
     "country_readiness": [
-      { "country": "Singapore",   "regulatory": 5, "tech_maturity": 5, "price_tolerance": 4 },
-      { "country": "Malaysia",    "regulatory": 3, "tech_maturity": 4, "price_tolerance": 3 },
+      { "country": "Singapore",   "regulatory": 5, "tech_maturity": 5, "price_tolerance": 4,
+        "title": "Singapore: country readiness - recent signals",
+        "recent_signals": ["SGX retail daily average value +52% YoY in FY2026 (12-year high); retail net buyers five straight months to June, S$2.4B FY2026 net inflows (2026-07-13)."],
+        "updates": [
+          {
+            "date": "2026-11-11",
+            "field": "recent_signals",
+            "was": [],
+            "now": ["SGX retail daily average value +52% YoY in FY2026 (12-year high); retail net buyers five straight months to June, S$2.4B FY2026 net inflows (2026-07-13)."],
+            "source": "https://mondovisione.com/news/sgx-groups-strong-volume-growth-in-june-caps-stellar-fy2026-performance-2026713/",
+            "note": "Scores (regulatory / tech_maturity / price_tolerance) deliberately not changed. Source: Mondo Visione (13 Jul 2026): SGX Group's strong volume growth in June caps stellar FY2026 performance. Event date 2026-07-13. Confidence: high."
+          }
+        ]
+      },
+      { "country": "Malaysia",    "regulatory": 3, "tech_maturity": 4, "price_tolerance": 3,
+        "title": "Malaysia: country readiness - recent signals",
+        "recent_signals": ["Malaysia led Futu's new funded-account additions for the third consecutive quarter in Q2 2026 (2026-08-20)."],
+        "updates": [
+          {
+            "date": "2026-11-11",
+            "field": "recent_signals",
+            "was": [],
+            "now": ["Malaysia led Futu's new funded-account additions for the third consecutive quarter in Q2 2026 (2026-08-20)."],
+            "source": "https://finviz.com/news/383934/futu-announces-second-quarter-2026-unaudited-financial-results",
+            "note": "Scores (regulatory / tech_maturity / price_tolerance) deliberately not changed. Source: Futu Announces Second Quarter 2026 Unaudited Financial Results (20 Aug 2026). Event date 2026-08-20. Confidence: high."
+          }
+        ]
+      },
       { "country": "Vietnam",     "regulatory": 3, "tech_maturity": 3, "price_tolerance": 2 },
-      { "country": "Thailand",    "regulatory": 3, "tech_maturity": 4, "price_tolerance": 3 },
+      { "country": "Thailand",    "regulatory": 3, "tech_maturity": 4, "price_tolerance": 3,
+        "title": "Thailand: country readiness - recent signals",
+        "recent_signals": ["Futu obtained a Type A licence from the Thailand SEC in July 2026 and plans to launch moomoo Thailand (2026-08-20 release)."],
+        "updates": [
+          {
+            "date": "2026-11-11",
+            "field": "recent_signals",
+            "was": [],
+            "now": ["Futu obtained a Type A licence from the Thailand SEC in July 2026 and plans to launch moomoo Thailand (2026-08-20 release)."],
+            "source": "https://finviz.com/news/383934/futu-announces-second-quarter-2026-unaudited-financial-results",
+            "note": "Scores (regulatory / tech_maturity / price_tolerance) deliberately not changed. Source: Futu Announces Second Quarter 2026 Unaudited Financial Results (20 Aug 2026). Event date 2026-07. Confidence: high."
+          }
+        ]
+      },
       { "country": "Indonesia",   "regulatory": 2, "tech_maturity": 4, "price_tolerance": 2 },
       { "country": "Philippines", "regulatory": 3, "tech_maturity": 3, "price_tolerance": 2 },
       { "country": "Hong Kong",   "regulatory": 5, "tech_maturity": 5, "price_tolerance": 4 },

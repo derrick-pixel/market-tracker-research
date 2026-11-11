@@ -27,6 +27,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/pit-floor.css">
+  <link rel="stylesheet" href="../assets/css/intel-updates.css?v=20261111">
+  <link rel="stylesheet" href="../assets/css/intel-updates-pit.css?v=20261111">
+  <script src="../assets/js/intel-updates.js?v=20261111" data-intel-data="../data/" data-intel-files="competitors,market-intelligence,pricing-strategy,whitespace-framework"></script>
+  <script src="../assets/js/intel-rows.js?v=20261111"></script>
   <script src="../assets/kit/vendor/chart.umd.js"></script>
   <style>
     .heat-table { width: 100%; border-collapse: collapse; font-size: 12px; }
@@ -128,6 +132,8 @@
       </div>
     </section>
 
+    <div data-intel-panel></div>
+
     <!-- Strategy canvas radar -->
     <section class="section">
       <div class="section-head">
@@ -157,6 +163,18 @@
           <span><span class="sw cell-cold"></span>COLD (us &lt; best - 1)</span>
         </div>
         <div style="margin-top:14px; display:grid; grid-template-columns: 1fr; gap: 6px;" id="cell-drilldown"></div>
+      </div>
+    </section>
+
+    <!-- Whitespace watch (Nov 2026 refresh) -->
+    <section class="section">
+      <div class="section-head">
+        <span class="title">▼ WATCH :: WHITESPACE THAT HAS NARROWED SINCE MAY</span>
+        <span class="meta" id="watch-meta"></span>
+      </div>
+      <div class="section-body">
+        <p class="intel-note">Analyst readings from cited launches. Scores, heatmap cells and attack plans above were not edited.</p>
+        <div class="attack-grid" id="watch"></div>
       </div>
     </section>
 
@@ -317,6 +335,21 @@
       }
     }
 
+    /* ---- Whitespace watch ---- */
+    const WATCH = whitespace.whitespace_watch || [];
+    const segNm = id => (hm.segments || []).find(s => s.id === id)?.name || id;
+    mount(document.getElementById('watch'), ...WATCH.map(w => intelTag(h('div', { class: 'attack-card' },
+      h('div', { class: 'rank' }, '↻'),
+      h('div', { class: 'body' },
+        h('h4', {}, w.title || ''),
+        h('div', { class: 'meta' }, (w.segment_ids || []).map(segNm).join(' · ') + (w.dimension_keys?.length ? ' · dimension: ' + w.dimension_keys.join(', ') : '')),
+        h('p', {}, h('strong', {}, '▸ What changed'), w.what_changed || ''),
+        h('p', {}, h('strong', {}, '▸ Assessment'), w.assessment || '')
+      ),
+      h('div', { class: 'gtm' }, h('span', { class: 'lab' }, 'Scores changed'), w.scores_changed ? 'yes' : 'no')
+    ), w)));
+    document.getElementById('watch-meta').textContent = `${WATCH.length} watch item${WATCH.length === 1 ? '' : 's'}`;
+
     /* ---- Attack plans ---- */
     const segById = Object.fromEntries(segs.map(s => [s.id, s]));
     const fmtMoney = n => {
@@ -327,7 +360,7 @@
       return 'S$' + Math.round(n).toLocaleString();
     };
     const atkEl = document.getElementById('attacks');
-    mount(atkEl, ...attacks.map(a => h('div', { class: 'attack-card' },
+    mount(atkEl, ...attacks.map(a => intelTag(h('div', { class: 'attack-card' },
       h('div', { class: 'rank' }, '#' + (a.rank || '?')),
       h('div', { class: 'body' },
         h('h4', {}, a.niche_name || ''),
@@ -345,12 +378,12 @@
           h('span', { class: 'lab' }, 'Content'), a.gtm?.content || '—'
         )
       )
-    )));
+    ), a)));
     document.getElementById('atk-meta').textContent = `${attacks.length} ranked attack plans`;
   </script>
 
 <div class="last-edited-strip" role="status" aria-live="polite">
-  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-05-03T22:45:44+08:00">checking…</span>
+  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-11-11T12:00:00+08:00">checking…</span>
 </div>
 
 <script>

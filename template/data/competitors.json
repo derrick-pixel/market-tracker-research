@@ -11,7 +11,18 @@
       "font_body": "IBM Plex Mono, ui-monospace, monospace"
     },
     "research_date": "2026-05-02",
-    "sample_data": false
+    "sample_data": false,
+    "last_refreshed": "2026-11-11",
+    "refresh_log": [
+      {
+        "date": "2026-11-11",
+        "window": "2026-05-02->2026-11-11",
+        "added": 7,
+        "updated": 25,
+        "retired": 0,
+        "summary": "Competitor refresh for the window: 3 official-page price/plan changes (Stock Rover, Koyfin, Yahoo Finance) plus TradingView SG, Seeking Alpha, Wisesheets and ChatGPT updates, the AlphaSense USD 7.5B raise, and dated events on 24 incumbents (Yahoo AlphaSpace, Bloomberg ASKB, FactSet, S&P ChatIQ, Moomoo, Tiger, OCBC and others); 7 new entrants are listed separately and left unscored. No citable change found for Finbox, AInvest, SGX StockFacts, Trefis or DIY Excel; low-confidence third-party prices are flagged UNVERIFIED and did not overwrite recorded prices."
+      }
+    ]
   },
   "top_five": [
     {
@@ -63,7 +74,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.2,
       "website_design_notes": "Clean retail UX, soft pastel charts, hand-holding tooltips; mobile-first.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-07-17 · UNVERIFIED price report: a third-party review (wallstreetsurvivor.com, updated 17 Jul 2026) lists Premium USD 10.95/mo and Unlimited USD 21.50/mo (unclear whether discounted); the official plans page (fetched 2026-11-11) shows tiers Free / Premium / Unlimited (no \"Lite\") but no prices, so the recorded USD 10/20/30 ladder and the S$22 anchor could not be re-verified. (confidence: low)", "LOW CONFIDENCE · 2026-11 · Plans page (accessed 2026-11-11) lists 'Charlie' AI investing agent (works in background reviewing holdings, alerts user) with 'Limited' access on Free, Premium and Unlimited, plus AI Transaction Import on all plans. Launch date not published on the page. (confidence: low)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-07-17 · UNVERIFIED price report: a third-party review (wallstreetsurvivor.com, updated 17 Jul 2026) lists Premium USD 10.95/mo and Unlimited USD 21.50/mo (unclear whether discounted); the official plans page (fetched 2026-11-11) shows tiers Free / Premium / Unlimited (no \"Lite\") but no prices, so the recorded USD 10/20/30 ladder and the S$22 anchor could not be re-verified. (confidence: low)"],
+          "source": "https://www.wallstreetsurvivor.com/simplywallst-review/",
+          "note": "Source: SimplyWall.St Review 2026 (Last Updated July 17, 2026). Tier names confirmed on https://simplywall.st/portal/plans (fetched 2026-11-11); prices only from a third-party affiliate review. Event date 2026-07-17. Confidence: low."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-07-17 · UNVERIFIED price report: a third-party review (wallstreetsurvivor.com, updated 17 Jul 2026) lists Premium USD 10.95/mo and Unlimited USD 21.50/mo (unclear whether discounted); the official plans page (fetched 2026-11-11) shows tiers Free / Premium / Unlimited (no \"Lite\") but no prices, so the recorded USD 10/20/30 ladder and the S$22 anchor could not be re-verified. (confidence: low)"],
+          "now": ["2026-07-17 · UNVERIFIED price report: a third-party review (wallstreetsurvivor.com, updated 17 Jul 2026) lists Premium USD 10.95/mo and Unlimited USD 21.50/mo (unclear whether discounted); the official plans page (fetched 2026-11-11) shows tiers Free / Premium / Unlimited (no \"Lite\") but no prices, so the recorded USD 10/20/30 ladder and the S$22 anchor could not be re-verified. (confidence: low)", "LOW CONFIDENCE · 2026-11 · Plans page (accessed 2026-11-11) lists 'Charlie' AI investing agent (works in background reviewing holdings, alerts user) with 'Limited' access on Free, Premium and Unlimited, plus AI Transaction Import on all plans. Launch date not published on the page. (confidence: low)"],
+          "source": "https://simplywall.st/portal/plans",
+          "note": "Source: Simply Wall St plans. Feature is verified live as of 2026-11-11 but its launch date could not be verified; event_date is the observation month, not the launch. Event date 2026-11. Confidence: low."
+        }
+      ]
     },
     {
       "id": "koyfin",
@@ -75,7 +105,7 @@
       "target_market": ["Pro-sumer retail", "Boutique buy-side", "Equity research analyst", "RIA"],
       "countries_covered": ["Global", "US", "EU", "APAC"],
       "sg_monthly_sgd": 67,
-      "pricing_range_published": "Free (limited) -> USD 39 (Plus) -> USD 79 (Pro) /mo",
+      "pricing_range_published": "Free $0 -> Plus $39 -> Premium $79 /mo (top retail tier now named 'Premium', not 'Pro'); new advisor tiers Advisor Core $209/mo and Advisor Pro $299/mo; annual plans save up to 30%. Page shows '$' with no currency code.",
       "pricing_flag": "published",
       "primary_value_prop": "Bloomberg-style charts and cross-asset analytics at retail price — the pro-grade dashboard that buy-side juniors switch to when they leave their seat.",
       "features": ["Cross-asset charting", "200+ ratio templates", "Earnings calendar", "Macro dashboards", "Estimates", "Watchlists with alerts"],
@@ -87,7 +117,34 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.5,
       "website_design_notes": "Dark dashboard chrome, dense data, Bloomberg-derivative; desktop-first.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-07-28 · Koyfin launched Daily Sync for Client Portfolios (auto-imports new accounts, refreshes holdings/balances daily; 8 custodian/PMS integrations at launch) - advisor-focused, not retail. (confidence: high)", "2026-10-26 · Koyfin added an Attribution feature to Advisor Pro (~2026-10-26) and set a 50%-off-first-year Advisor Pro deal for firms under $100M AUM (2026-11-08); list prices unchanged. (confidence: medium)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "pricing_range_published",
+          "was": "Free (limited) -> USD 39 (Plus) -> USD 79 (Pro) /mo",
+          "now": "Free $0 -> Plus $39 -> Premium $79 /mo (top retail tier now named 'Premium', not 'Pro'); new advisor tiers Advisor Core $209/mo and Advisor Pro $299/mo; annual plans save up to 30%. Page shows '$' with no currency code.",
+          "source": "https://www.koyfin.com/pricing/",
+          "note": "Source: Koyfin Pricing (accessed 2026-11-11). Retail prices unchanged at $39/$79; delta is tier rename plus new Advisor Core/Pro tiers. Pricing page shows no in-product AI features. Event date 2026-11-11. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-07-28 · Koyfin launched Daily Sync for Client Portfolios (auto-imports new accounts, refreshes holdings/balances daily; 8 custodian/PMS integrations at launch) - advisor-focused, not retail. (confidence: high)"],
+          "source": "https://itdigest.com/fintech/koyfin-launches-daily-sync-to-automatically-update-client-portfolios/",
+          "note": "Source: Koyfin Launches Daily Sync to Automatically Update Client Portfolios. Press release (Business Wire 2026-07-28) relayed by ITDigest 2026-07-29; signals Koyfin moving toward the RIA/advisor segment. Event date 2026-07-28. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-07-28 · Koyfin launched Daily Sync for Client Portfolios (auto-imports new accounts, refreshes holdings/balances daily; 8 custodian/PMS integrations at launch) - advisor-focused, not retail. (confidence: high)"],
+          "now": ["2026-07-28 · Koyfin launched Daily Sync for Client Portfolios (auto-imports new accounts, refreshes holdings/balances daily; 8 custodian/PMS integrations at launch) - advisor-focused, not retail. (confidence: high)", "2026-10-26 · Koyfin added an Attribution feature to Advisor Pro (~2026-10-26) and set a 50%-off-first-year Advisor Pro deal for firms under $100M AUM (2026-11-08); list prices unchanged. (confidence: medium)"],
+          "source": "https://pricingsaas.com/companies/koyfin/diffs/2026W44",
+          "note": "Source: PricingSaaS - Koyfin pricing diffs 2026W44. From a pricing-change tracker, not a Koyfin announcement. Event date 2026-10-26. Confidence: medium."
+        }
+      ]
     },
     {
       "id": "stock_rover",
@@ -99,7 +156,7 @@
       "target_market": ["DIY value investor", "Long-term retail holder", "RIA"],
       "countries_covered": ["US", "Canada"],
       "sg_monthly_sgd": 38,
-      "pricing_range_published": "Free -> USD 7.99 (Essentials) -> USD 17.99 (Premium) -> USD 27.99 (Premium Plus) /mo",
+      "pricing_range_published": "Premium USD 34/mo or 348/yr; Premium Plus USD 70/mo or 588/yr; Ultimate USD 99/mo or 948/yr; Ultimate Pro USD 199/mo or 1,788/yr (2-yr: 576 / 1,008 / 1,656 / 3,096). No 'Essentials' tier listed. Annual-equivalent ~USD 29 / 49 / 79 / 149 per month. Page shows 30% Black Friday promo on annual/2-yr plans.",
       "pricing_flag": "published",
       "primary_value_prop": "Heavy-duty US-equity screener + ratio engine, built for the buy-and-hold value investor who reads 10-Ks.",
       "features": ["650+ screener metrics", "Custom ratios", "Portfolio analytics", "Correlation matrix", "Detailed financials", "Dividend tracking"],
@@ -111,7 +168,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.4,
       "website_design_notes": "Functional, dense, Web 2.0 era; not modern but trusted.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-05-29 · Stock Rover V12 released: new Dashboard, 100+ new metrics, ~80 new screeners, percentile screening, chart drawing tools, integrated options chain, and a new Ultimate / Ultimate Pro plan tier (20 yrs fundamentals, analyst-ratings overlays). No AI features mentioned. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "pricing_range_published",
+          "was": "Free -> USD 7.99 (Essentials) -> USD 17.99 (Premium) -> USD 27.99 (Premium Plus) /mo",
+          "now": "Premium USD 34/mo or 348/yr; Premium Plus USD 70/mo or 588/yr; Ultimate USD 99/mo or 948/yr; Ultimate Pro USD 199/mo or 1,788/yr (2-yr: 576 / 1,008 / 1,656 / 3,096). No 'Essentials' tier listed. Annual-equivalent ~USD 29 / 49 / 79 / 149 per month. Page shows 30% Black Friday promo on annual/2-yr plans.",
+          "source": "https://www.stockrover.com/?p=2318",
+          "note": "Source: Stock Rover Premium Membership Plans (page last modified 2026-05-19; accessed 2026-11-11). Stock Rover's own plan page; prices are far above the record, so the record was either stale or the plans were restructured. Free tier still offered. Event date 2026-05-19. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-05-29 · Stock Rover V12 released: new Dashboard, 100+ new metrics, ~80 new screeners, percentile screening, chart drawing tools, integrated options chain, and a new Ultimate / Ultimate Pro plan tier (20 yrs fundamentals, analyst-ratings overlays). No AI features mentioned. (confidence: high)"],
+          "source": "https://ww1.stockrover.com/news-release/announcing-stock-rover-v12/",
+          "note": "Source: Announcing Stock Rover V12. Follow-on posts: fund reports/dividends (2026-07-09), Portfolio Performance Report (2026-08-05), new dashboard (2026-08-26) per the product-features blog index. Event date 2026-05-29. Confidence: high."
+        }
+      ]
     },
     {
       "id": "damodaran_xls",
@@ -135,7 +211,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 1.5,
       "website_design_notes": "Mid-1990s html — hyperlinked .xls files on a course page. Brutally functional.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-07-01 · Country risk premium / ERP data refreshed 2026-04-01 and 2026-07-01 (latest); implied ERP updated monthly (4.41% as of 2026-11-01, 5.29% T-bond rate); next full data update scheduled January 2027. Homepage lists a uValue app on the Apple App Store and a monthly ERP spreadsheet (ERPNov26.xlsx); no AI tools mentioned. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-07-01 · Country risk premium / ERP data refreshed 2026-04-01 and 2026-07-01 (latest); implied ERP updated monthly (4.41% as of 2026-11-01, 5.29% T-bond rate); next full data update scheduled January 2027. Homepage lists a uValue app on the Apple App Store and a monthly ERP spreadsheet (ERPNov26.xlsx); no AI tools mentioned. (confidence: high)"],
+          "source": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/home.htm",
+          "note": "Source: Damodaran Online home page (accessed 2026-11-11). Latest full annual data update on the page is 2026-01-09 (pre-window). Homepage itself states no license, so the record's 'CC-BY' could not be re-verified. Event date 2026-07-01. Confidence: high."
+        }
+      ]
     },
     {
       "id": "yahoo_finance",
@@ -147,7 +234,7 @@
       "target_market": ["Retail investor", "Casual market follower", "News-driven trader"],
       "countries_covered": ["Global"],
       "sg_monthly_sgd": 0,
-      "pricing_range_published": "Free -> USD 24.95 (Plus) -> USD 35 (Premium) /mo",
+      "pricing_range_published": "Free -> Bronze / Silver / Gold tiers; Gold USD 39.99/mo (annual plan) now includes AlphaSpace and the Yahoo Scout AI assistant (previously recorded: Free -> USD 24.95 Plus -> USD 35 Premium; Bronze/Silver prices and SG availability not stated)",
       "pricing_flag": "published",
       "primary_value_prop": "The default. Free, fast, ubiquitous quotes + news + headline financials. The reflexive open-tab.",
       "features": ["Real-time quotes", "Financial statements", "News aggregation", "Portfolio tracking", "Earnings calendar", "Premium research add-on"],
@@ -159,7 +246,42 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.2,
       "website_design_notes": "Cluttered, banner-ad density, wide but shallow; classic portal layout.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-05-19 · Launch of AlphaSpace by Yahoo Finance: customizable professional-grade investing workspace with built-in Yahoo Scout AI assistant (summaries, workflow building, comparative charts), bundled in Gold. (confidence: high)", "2026-06-01 · Yahoo Finance launched a free AI news and analysis hub with partners Axios, Fortune, TechCrunch and Fast Company; release cites 100M+ monthly investor visitors. (confidence: high)", "2026-07-22 · Yahoo Finance added real-time options data (powered by Unusual Whales: chains, volatility heatmap, flow screener, alerts) to AlphaSpace as a premium feature, integrated with Yahoo Scout. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "pricing_range_published",
+          "was": "Free -> USD 24.95 (Plus) -> USD 35 (Premium) /mo",
+          "now": "Free -> Bronze / Silver / Gold tiers; Gold USD 39.99/mo (annual plan) now includes AlphaSpace and the Yahoo Scout AI assistant (previously recorded: Free -> USD 24.95 Plus -> USD 35 Premium; Bronze/Silver prices and SG availability not stated)",
+          "source": "https://unified.www.yahooinc.com/press/introducing-alphaspace-by-yahoo-finance-a-professional-grade-investment-platform-built-for-everyday-investors",
+          "note": "Source: Introducing AlphaSpace by Yahoo Finance. Official Yahoo press release; the 'Plus/Premium' tier names in the record appear superseded by Bronze/Silver/Gold. Regional (SG) availability not stated. Event date 2026-05-19. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-05-19 · Launch of AlphaSpace by Yahoo Finance: customizable professional-grade investing workspace with built-in Yahoo Scout AI assistant (summaries, workflow building, comparative charts), bundled in Gold. (confidence: high)"],
+          "source": "https://unified.www.yahooinc.com/press/introducing-alphaspace-by-yahoo-finance-a-professional-grade-investment-platform-built-for-everyday-investors",
+          "note": "Source: Introducing AlphaSpace by Yahoo Finance. Directly targets the prosumer + AI-narrated-analytics space; invalidates the record's 'shallow analytics' / 'weak premium upsell' weaknesses to some degree. Event date 2026-05-19. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-05-19 · Launch of AlphaSpace by Yahoo Finance: customizable professional-grade investing workspace with built-in Yahoo Scout AI assistant (summaries, workflow building, comparative charts), bundled in Gold. (confidence: high)"],
+          "now": ["2026-05-19 · Launch of AlphaSpace by Yahoo Finance: customizable professional-grade investing workspace with built-in Yahoo Scout AI assistant (summaries, workflow building, comparative charts), bundled in Gold. (confidence: high)", "2026-06-01 · Yahoo Finance launched a free AI news and analysis hub with partners Axios, Fortune, TechCrunch and Fast Company; release cites 100M+ monthly investor visitors. (confidence: high)"],
+          "source": "https://unified.www.yahooinc.com/press/yahoo-finance-launches-dedicated-hub-for-ai-news-and-analysis",
+          "note": "Source: Yahoo Finance launches dedicated hub for AI news and analysis. Content/news play, not an analytics feature. Event date 2026-06-01. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-05-19 · Launch of AlphaSpace by Yahoo Finance: customizable professional-grade investing workspace with built-in Yahoo Scout AI assistant (summaries, workflow building, comparative charts), bundled in Gold. (confidence: high)", "2026-06-01 · Yahoo Finance launched a free AI news and analysis hub with partners Axios, Fortune, TechCrunch and Fast Company; release cites 100M+ monthly investor visitors. (confidence: high)"],
+          "now": ["2026-05-19 · Launch of AlphaSpace by Yahoo Finance: customizable professional-grade investing workspace with built-in Yahoo Scout AI assistant (summaries, workflow building, comparative charts), bundled in Gold. (confidence: high)", "2026-06-01 · Yahoo Finance launched a free AI news and analysis hub with partners Axios, Fortune, TechCrunch and Fast Company; release cites 100M+ monthly investor visitors. (confidence: high)", "2026-07-22 · Yahoo Finance added real-time options data (powered by Unusual Whales: chains, volatility heatmap, flow screener, alerts) to AlphaSpace as a premium feature, integrated with Yahoo Scout. (confidence: high)"],
+          "source": "https://www.yahooinc.com/press/yahoo-finance-brings-real-time-options-data-to-alphaspace-investment-platform",
+          "note": "Source: Yahoo Finance brings real-time options data to AlphaSpace. Official press release; tier/price for the add-on not stated. Event date 2026-07-22. Confidence: high."
+        }
+      ]
     },
     {
       "id": "seeking_alpha",
@@ -171,7 +293,7 @@
       "target_market": ["Self-directed investor", "Income/dividend investor", "Idea-source seeker"],
       "countries_covered": ["Global", "US-equity-led"],
       "sg_monthly_sgd": 32,
-      "pricing_range_published": "Basic free -> USD 19.99 (Premium) -> USD 29.99 (Pro) /mo (annual)",
+      "pricing_range_published": "Basic free -> Premium USD 299/yr -> PRO USD 2,400/yr; Alpha Picks USD 499/yr (per two third-party reviews dated 2026-09-23 and 2026-10-26; Seeking Alpha's own subscriptions page shows no prices)",
       "pricing_flag": "published",
       "primary_value_prop": "Crowd-sourced equity research with quant ratings + author commentary; the buy-side-style briefing for retail.",
       "features": ["Author articles", "Quant ratings (factor + dividend safety)", "Stock screener", "Earnings transcripts", "Idea filters", "Wisesheets-style data"],
@@ -183,7 +305,17 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.6,
       "website_design_notes": "Editorial-feed layout, ad-supported; clear premium upsell flow.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "pricing_range_published",
+          "was": "Basic free -> USD 19.99 (Premium) -> USD 29.99 (Pro) /mo (annual)",
+          "now": "Basic free -> Premium USD 299/yr -> PRO USD 2,400/yr; Alpha Picks USD 499/yr (per two third-party reviews dated 2026-09-23 and 2026-10-26; Seeking Alpha's own subscriptions page shows no prices)",
+          "source": "https://financer.com/invest/seeking-alpha-premium-review/",
+          "note": "Source: Seeking Alpha Premium Review: Is It Worth $299/Year? (dated 2026-10-26). Two independent affiliate reviews (financer.com 2026-10-26; thestockdork.com 2026-09-23) agree on 299 / 2,400; Seeking Alpha's own page prices not visible to fetch. PRO at 2,400/yr is ~USD 200/mo, far above the record's 29.99/mo. Event date 2026-10-26. Confidence: medium."
+        }
+      ]
     },
     {
       "id": "tikr",
@@ -207,7 +339,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.0,
       "website_design_notes": "Modern dark-mode terminal, dense ratios, clean tables.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-11-01 · UNVERIFIED price report: Stock Rover's competitor-comparison page (prices \"last verified 2026-11-01\") lists TIKR Plus USD 24.95, Pro USD 54.95, Ultimate USD 119.95 per month; tikr.com/pricing returned HTTP 429 so the vendor page could not be read. (confidence: low)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-11-01 · UNVERIFIED price report: Stock Rover's competitor-comparison page (prices \"last verified 2026-11-01\") lists TIKR Plus USD 24.95, Pro USD 54.95, Ultimate USD 119.95 per month; tikr.com/pricing returned HTTP 429 so the vendor page could not be read. (confidence: low)"],
+          "source": "https://www.stockrover.com/?p=46606",
+          "note": "Source: Stock Rover vs TIKR (2026), prices last verified 2026-11-01. Source is a direct competitor's comparison page; entry price USD 24.95/mo is corroborated by an undated third-party page (findmymoat.com). Recorded ladder was Free / USD 14.95 / USD 39.95. Event date 2026-11-01. Confidence: low."
+        }
+      ]
     },
     {
       "id": "gurufocus",
@@ -231,7 +374,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 2.8,
       "website_design_notes": "Information-dense, dated, value-investor-style aesthetic.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-11-01 · UNVERIFIED price report: Stock Rover's competitor-comparison page (prices \"last verified 2026-11-01\") lists GuruFocus Premium USD 499/yr, Plus USD 1,348/yr, Pro USD 2,398/yr; gurufocus.com/pricing returned HTTP 403 so the vendor page could not be read. (confidence: low)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-11-01 · UNVERIFIED price report: Stock Rover's competitor-comparison page (prices \"last verified 2026-11-01\") lists GuruFocus Premium USD 499/yr, Plus USD 1,348/yr, Pro USD 2,398/yr; gurufocus.com/pricing returned HTTP 403 so the vendor page could not be read. (confidence: low)"],
+          "source": "https://www.stockrover.com/?p=46608",
+          "note": "Source: Stock Rover vs GuruFocus (2026), prices last verified 2026-11-01. Source is a direct competitor's comparison page. Recorded ladder was USD 449 (Standard) / USD 949 (Premium) per year. Event date 2026-11-01. Confidence: low."
+        }
+      ]
     },
     {
       "id": "finbox",
@@ -279,7 +433,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.5,
       "website_design_notes": "Editorial+research hybrid, trustworthy, conservative palette.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-10-07 · Morningstar rolled out Morningstar Direct AI (agentic platform with three agents) to users worldwide and made its research available inside Claude, Microsoft Copilot and ChatGPT. Institutional/licensed-user focus, not the consumer Investor subscription. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-10-07 · Morningstar rolled out Morningstar Direct AI (agentic platform with three agents) to users worldwide and made its research available inside Claude, Microsoft Copilot and ChatGPT. Institutional/licensed-user focus, not the consumer Investor subscription. (confidence: high)"],
+          "source": "https://www.investmentnews.com/fintech/morningstar-rolls-out-agentic-ai-platform-built-on-its-research/268519",
+          "note": "Source: Morningstar rolls out agentic AI platform built on its research. Consumer pricing unchanged: Morningstar Investor USD 34.95/mo or USD 249/yr (first-year promo USD 199), confirmed 2026-09-14 by wallstreetsurvivor.com/morningstar-subscription-cost/ (third-party). Event date 2026-10-07. Confidence: high."
+        }
+      ]
     },
     {
       "id": "tradingview",
@@ -291,7 +456,7 @@
       "target_market": ["Active trader", "Technical analyst", "Crypto trader", "Day trader"],
       "countries_covered": ["Global"],
       "sg_monthly_sgd": 28,
-      "pricing_range_published": "Free -> USD 14.95 (Essential) -> USD 29.95 (Plus) -> USD 59.95 (Premium) /mo",
+      "pricing_range_published": "Free -> USD 14.95 (Essential) -> USD 29.95 (Plus) -> USD 59.95 (Premium) /mo | Nov 2026 SG page (annual billing, S$): Essential S$16.65/mo, Plus S$32.49/mo, Premium S$64.99/mo, plus a new fifth tier Ultimate S$259.99/mo (monthly-billing prices not readable; sg_monthly_sgd left unchanged)",
       "pricing_flag": "published",
       "primary_value_prop": "Best charting + social trading on the web. The technical-analysis terminal for the modern trader.",
       "features": ["100+ charting tools", "Pine Script", "Public ideas feed", "Heatmaps", "Strategy backtester", "Social features"],
@@ -303,7 +468,34 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.6,
       "website_design_notes": "Beautiful, modern, immersive; charts-first.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-09-16 · TradingView launched an official MCP Server in public beta that connects Claude, ChatGPT and other MCP clients to TradingView accounts (quotes/history, Screener, fundamentals, news, filings, calendars, watchlists and alerts); requires Essential plan or higher, market data delayed, daily request caps possible. (confidence: high)", "LOW CONFIDENCE · 2026-10-03 · Q3 2026 roundup reports AI Copilot now built into the Supercharts side panel (paid plan required, sold as separate add-on), AI Screener with natural-language screening in beta on all paid plans, Options Volume Profile, 24h US stock session, and from 2026-11-01 commercial invite-only script sales must move to the Marketplace. (confidence: low)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "pricing_range_published",
+          "was": "Free -> USD 14.95 (Essential) -> USD 29.95 (Plus) -> USD 59.95 (Premium) /mo",
+          "now": "Free -> USD 14.95 (Essential) -> USD 29.95 (Plus) -> USD 59.95 (Premium) /mo | Nov 2026 SG page (annual billing, S$): Essential S$16.65/mo, Plus S$32.49/mo, Premium S$64.99/mo, plus a new fifth tier Ultimate S$259.99/mo (monthly-billing prices not readable; sg_monthly_sgd left unchanged)",
+          "source": "https://www.tradingview.com/pricing/",
+          "note": "Source: TradingView pricing page (accessed 2026-11-11). Record lists only 3 paid tiers in USD; page now shows a 5th tier (Ultimate) and SGD localised annual-billed prices, so sg_monthly_sgd (28) should be re-checked against S$16.65-32.49 (annual) rather than assumed. The recorded USD ladder is kept and the SG page appended, because the monthly-billing prices could not be read. Event date 2026-11-11. Confidence: medium."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-09-16 · TradingView launched an official MCP Server in public beta that connects Claude, ChatGPT and other MCP clients to TradingView accounts (quotes/history, Screener, fundamentals, news, filings, calendars, watchlists and alerts); requires Essential plan or higher, market data delayed, daily request caps possible. (confidence: high)"],
+          "source": "https://fxnewsgroup.com/forex-news/platforms/tradingview-introduces-tradingview-mcp-server/",
+          "note": "Source: TradingView introduces TradingView MCP Server. Also confirmed on TradingView's own docs page https://www.tradingview.com/mcp/docs ('TradingView MCP Server Beta', included in Essential and above, undated); directly relevant to AI-narrated analytics positioning. Event date 2026-09-16. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-09-16 · TradingView launched an official MCP Server in public beta that connects Claude, ChatGPT and other MCP clients to TradingView accounts (quotes/history, Screener, fundamentals, news, filings, calendars, watchlists and alerts); requires Essential plan or higher, market data delayed, daily request caps possible. (confidence: high)"],
+          "now": ["2026-09-16 · TradingView launched an official MCP Server in public beta that connects Claude, ChatGPT and other MCP clients to TradingView accounts (quotes/history, Screener, fundamentals, news, filings, calendars, watchlists and alerts); requires Essential plan or higher, market data delayed, daily request caps possible. (confidence: high)", "LOW CONFIDENCE · 2026-10-03 · Q3 2026 roundup reports AI Copilot now built into the Supercharts side panel (paid plan required, sold as separate add-on), AI Screener with natural-language screening in beta on all paid plans, Options Volume Profile, 24h US stock session, and from 2026-11-01 commercial invite-only script sales must move to the Marketplace. (confidence: low)"],
+          "source": "https://chartwisehub.com/tradingview-q3-2026-updates/",
+          "note": "Source: TradingView New Features 2026: 10 Q3 Updates That Actually Matter. Third-party blog (last updated 2026-10-03), not TradingView primary; most AI feature dates are undated so treat as directional; weakness 'Fundamentals are an afterthought' still mostly stands but AI screening/copilot is new. Event date 2026-10-03. Confidence: low."
+        }
+      ]
     },
     {
       "id": "finviz",
@@ -327,7 +519,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.0,
       "website_design_notes": "Brutalist, dense, fast — looks like 2008 but reliable.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-10-23 · Finviz split its screener into separate Stock Screener and ETF Screener (ETF holdings / tracked-index filters, 'Held By' filter, heatmap and bubble views). (confidence: high)", "2026-11-04 · Finviz launched its first native mobile app (iOS App Store and Google Play): free to download, screener, rebuilt touch heat maps, market overview, watchlists synced with finviz.com, alerts; Elite members can sign in to use benefits. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-10-23 · Finviz split its screener into separate Stock Screener and ETF Screener (ETF holdings / tracked-index filters, 'Held By' filter, heatmap and bubble views). (confidence: high)"],
+          "source": "https://finviz.com/blog/stock-screener-and-etf-screener-now-separate-tools-and-more-powerful",
+          "note": "Source: Stock Screener and ETF Screener: Now Separate Tools and More Powerful. Product feature delta; Finviz blog index (https://elite.finviz.com/blog, fetched 2026-11-11) also lists 2026-10-20 'embed Finviz Maps on your website', 2026-10-07 'Finviz API: higher limits', 2026-09-28 'Instant Earnings Reports', 2026-09-24 'Find Similar Charts', 2026-09-18 'futures, forex, crypto asset classes' (titles only, bodies not opened). Event date 2026-10-23. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-10-23 · Finviz split its screener into separate Stock Screener and ETF Screener (ETF holdings / tracked-index filters, 'Held By' filter, heatmap and bubble views). (confidence: high)"],
+          "now": ["2026-10-23 · Finviz split its screener into separate Stock Screener and ETF Screener (ETF holdings / tracked-index filters, 'Held By' filter, heatmap and bubble views). (confidence: high)", "2026-11-04 · Finviz launched its first native mobile app (iOS App Store and Google Play): free to download, screener, rebuilt touch heat maps, market overview, watchlists synced with finviz.com, alerts; Elite members can sign in to use benefits. (confidence: high)"],
+          "source": "https://finviz.com/blog/the-wait-is-over-finviz-is-now-on-your-phone",
+          "note": "Source: The Wait Is Over, Finviz Is Now on Your Phone. Record has no mobile app listed; this narrows Finviz's 'web 2.0 UI' weakness on mobile. Event date 2026-11-04. Confidence: high."
+        }
+      ]
     },
     {
       "id": "tipranks",
@@ -351,7 +562,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.9,
       "website_design_notes": "Modern retail SaaS, gamified, freemium-focused.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-07-09 · TipRanks launched the Defiance KSM TipRanks Analyst ETF (NYSE: RANK), its first ETF built on a proprietary TipRanks index (TipRanks US Momentum Analysts Index: 50 stocks from the top-500 US companies by analyst support then momentum; quarterly rebalance; issuer Defiance, index sponsor KSM, administered by VettaFi). (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-07-09 · TipRanks launched the Defiance KSM TipRanks Analyst ETF (NYSE: RANK), its first ETF built on a proprietary TipRanks index (TipRanks US Momentum Analysts Index: 50 stocks from the top-500 US companies by analyst support then momentum; quarterly rebalance; issuer Defiance, index sponsor KSM, administered by VettaFi). (confidence: high)"],
+          "source": "https://www.webdisclosure.com/press-release/tipranks-expands-its-mission-to-democratize-institutional-investing-with-launch-of-first-etf-powered-by-its-proprietary-data-gTJTsNnG4OG",
+          "note": "Source: TipRanks Expands Its Mission to Democratize Institutional Investing with Launch of First ETF Powered by Its Proprietary Data. Shows TipRanks moving into index/product revenue beyond subscriptions; pricing page returned HTTP 403 so record pricing (USD 30.99/69.99) could not be re-verified. Event date 2026-07-09. Confidence: high."
+        }
+      ]
     },
     {
       "id": "alphasense",
@@ -367,7 +589,7 @@
       "pricing_flag": "hidden_estimated",
       "primary_value_prop": "AI-powered search + summarisation across 10-Ks, transcripts, expert calls, broker research. The institutional alpha-discovery tool.",
       "features": ["Generative search", "Transcript intelligence", "Expert-call library", "Smart Summaries", "Broker research aggregation"],
-      "strengths": ["USD 1B+ valuation, deep moat", "Generative AI native", "Institutional buyer trust", "Tegus acquisition"],
+      "strengths": ["USD 7.5B valuation after a USD 350M round (Jun 2026; ARR above USD 600M), deep moat", "Generative AI native", "Institutional buyer trust", "Tegus acquisition"],
       "weaknesses": ["Inaccessible to retail", "Search-not-frameworks", "No DCF/valuation lens", "Enterprise sales cycle"],
       "threat_level": 2,
       "beatability": 4,
@@ -375,7 +597,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.4,
       "website_design_notes": "Polished enterprise-AI marketing site; product is gated.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-06-03 · AlphaSense introduced SuperAnalyst, an always-on AI agent that executes financial and strategic workflows; Accenture becomes AlphaSense's first strategic channel partner (announced same day as the funding round). (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "strengths",
+          "was": ["USD 1B+ valuation, deep moat", "Generative AI native", "Institutional buyer trust", "Tegus acquisition"],
+          "now": ["USD 7.5B valuation after a USD 350M round (Jun 2026; ARR above USD 600M), deep moat", "Generative AI native", "Institutional buyer trust", "Tegus acquisition"],
+          "source": "https://www.alpha-sense.com/press/alphasense-raises-350m-at-7-5b-valuation-and-surpasses-600m-in-annual-recurring-revenue/",
+          "note": "Source: AlphaSense Raises $350M at $7.5B Valuation, and Surpasses $600M in Annual Recurring Revenue. Company press release; record's 'USD 1B+ valuation' is materially stale. Detail: USD 7.5B valuation after a USD 350M round (nearly double the prior USD 4B); ARR above USD 600M in Q1 2026; 7,000+ enterprise customers; round led by Vitruvian Partners, Accenture Ventures and J.P. Morgan Asset Management; new investors D. E. Shaw Ventures, Pinegrove; existing CapitalG, Goldman Sachs Alternatives, Viking Global. Event date 2026-06-03. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-06-03 · AlphaSense introduced SuperAnalyst, an always-on AI agent that executes financial and strategic workflows; Accenture becomes AlphaSense's first strategic channel partner (announced same day as the funding round). (confidence: high)"],
+          "source": "https://www.alpha-sense.com/press/alphasense-raises-350m-at-7-5b-valuation-and-surpasses-600m-in-annual-recurring-revenue/",
+          "note": "Source: AlphaSense Raises $350M at $7.5B Valuation, and Surpasses $600M in Annual Recurring Revenue. Separate product-launch page (alpha-sense.com/press/alphasense-introduces-superanalyst...) surfaced in search but was not opened; SuperAnalyst availability (early access vs GA) not confirmed from a fetched page. Event date 2026-06-03. Confidence: high."
+        }
+      ]
     },
     {
       "id": "perplexity_finance",
@@ -399,7 +640,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.3,
       "website_design_notes": "Minimal AI-search aesthetic; chat-first.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-05-06 · Perplexity launched 'Computer for Professional Finance' (built on MetaEra): 35 finance workflows for analysts plus licensed data from Morningstar, PitchBook, Daloopa and Carbon Arc. (confidence: medium)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-05-06 · Perplexity launched 'Computer for Professional Finance' (built on MetaEra): 35 finance workflows for analysts plus licensed data from Morningstar, PitchBook, Daloopa and Carbon Arc. (confidence: medium)"],
+          "source": "https://www.kucoin.com/news/flash/perplexity-launches-professional-finance-version-for-financial-analysts",
+          "note": "Source: Perplexity Launches Professional Finance Version for Financial Analysts. Secondary crypto-news source, no official Perplexity page fetched; moves Perplexity upmarket toward institutional users; pricing tier for it not stated on the page. Event date 2026-05-06. Confidence: medium."
+        }
+      ]
     },
     {
       "id": "moomoo",
@@ -423,7 +675,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.1,
       "website_design_notes": "Modern retail-trading UX, dark mode default, dense.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-07-22 · At MooFest 2026 (Marina Bay Sands) Moomoo SG unveiled upgraded Moomoo AI: AI Expert Mode (analyst-style reports, pre-fills orders), Moomoo Skills (lets Claude and other external AI tools connect to market data/trading) and Smart Money (disclosed holdings/insider trades). Event drew 18,000+ sign-ups; Moomoo cites No.1 investing app in Singapore with 2M+ users, private wealth AUM +158% YoY, 40+ external asset managers, Malaysia 2M downloads, Thailand securities licence secured. (confidence: high)", "2026-08-20 · Futu Q2 2026: funded accounts 3,842,667 (+33.6% YoY), registered users 31.3M, client assets HK$1.40T (+43.6%); Singapore named among key contributors to new funded accounts and Singapore fund shelf expanded; processing costs +69.6% on AI cloud fees. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-07-22 · At MooFest 2026 (Marina Bay Sands) Moomoo SG unveiled upgraded Moomoo AI: AI Expert Mode (analyst-style reports, pre-fills orders), Moomoo Skills (lets Claude and other external AI tools connect to market data/trading) and Smart Money (disclosed holdings/insider trades). Event drew 18,000+ sign-ups; Moomoo cites No.1 investing app in Singapore with 2M+ users, private wealth AUM +158% YoY, 40+ external asset managers, Malaysia 2M downloads, Thailand securities licence secured. (confidence: high)"],
+          "source": "https://www.moomoo.com/community/feed/moofest-2026-draws-record-18-000-investors-captivating-singapore-s-116963811262469",
+          "note": "Source: MooFest 2026 Draws Record 18,000 Investors, Captivating Singapore's Investing Community. Company-published figures; AI feature names corroborated by sponsored Beansprout piece https://growbeansprout.com/moomoo-ai-moofest2026 (2026-08-12), which does not state whether the AI features are free. Event date 2026-07-22. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-07-22 · At MooFest 2026 (Marina Bay Sands) Moomoo SG unveiled upgraded Moomoo AI: AI Expert Mode (analyst-style reports, pre-fills orders), Moomoo Skills (lets Claude and other external AI tools connect to market data/trading) and Smart Money (disclosed holdings/insider trades). Event drew 18,000+ sign-ups; Moomoo cites No.1 investing app in Singapore with 2M+ users, private wealth AUM +158% YoY, 40+ external asset managers, Malaysia 2M downloads, Thailand securities licence secured. (confidence: high)"],
+          "now": ["2026-07-22 · At MooFest 2026 (Marina Bay Sands) Moomoo SG unveiled upgraded Moomoo AI: AI Expert Mode (analyst-style reports, pre-fills orders), Moomoo Skills (lets Claude and other external AI tools connect to market data/trading) and Smart Money (disclosed holdings/insider trades). Event drew 18,000+ sign-ups; Moomoo cites No.1 investing app in Singapore with 2M+ users, private wealth AUM +158% YoY, 40+ external asset managers, Malaysia 2M downloads, Thailand securities licence secured. (confidence: high)", "2026-08-20 · Futu Q2 2026: funded accounts 3,842,667 (+33.6% YoY), registered users 31.3M, client assets HK$1.40T (+43.6%); Singapore named among key contributors to new funded accounts and Singapore fund shelf expanded; processing costs +69.6% on AI cloud fees. (confidence: high)"],
+          "source": "https://finviz.com/news/383934/futu-announces-second-quarter-2026-unaudited-financial-results",
+          "note": "Source: Futu Announces Second Quarter 2026 Unaudited Financial Results. Group-level, not Singapore-only; record has no user count field but market_share_estimate_pct (12) could be revisited. Event date 2026-08-20. Confidence: high."
+        }
+      ]
     },
     {
       "id": "tiger_brokers",
@@ -447,7 +718,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.8,
       "website_design_notes": "Modern broker UX, mobile-first, content-feed integrated.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-06-10 · TradingFront (Tiger's adviser/EAM platform, Singapore) launched three AI features: Smart Fund Selection, Portfolio Backtesting and Smart Account Agentic AI Diagnosis. (confidence: high)", "2026-08-26 · UP Fintech (Tiger Brokers) Q2 2026: record total revenue USD 182.3M (+31.4% YoY), client assets USD 60.7B, funded accounts 1,315,400, 32,600 new funded clients mostly from Singapore and Hong Kong; launched fractional-share trading for Singapore stocks/REITs and an annual tax-reference-document tool under HK/SG/NZ licences. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-06-10 · TradingFront (Tiger's adviser/EAM platform, Singapore) launched three AI features: Smart Fund Selection, Portfolio Backtesting and Smart Account Agentic AI Diagnosis. (confidence: high)"],
+          "source": "https://www.itiger.com/sg/about/news/862",
+          "note": "Source: TradingFront Accelerates Agentic AI Innovations. B2B adviser tooling, not retail research, but shows Tiger's AI push in Singapore. Event date 2026-06-10. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-06-10 · TradingFront (Tiger's adviser/EAM platform, Singapore) launched three AI features: Smart Fund Selection, Portfolio Backtesting and Smart Account Agentic AI Diagnosis. (confidence: high)"],
+          "now": ["2026-06-10 · TradingFront (Tiger's adviser/EAM platform, Singapore) launched three AI features: Smart Fund Selection, Portfolio Backtesting and Smart Account Agentic AI Diagnosis. (confidence: high)", "2026-08-26 · UP Fintech (Tiger Brokers) Q2 2026: record total revenue USD 182.3M (+31.4% YoY), client assets USD 60.7B, funded accounts 1,315,400, 32,600 new funded clients mostly from Singapore and Hong Kong; launched fractional-share trading for Singapore stocks/REITs and an annual tax-reference-document tool under HK/SG/NZ licences. (confidence: high)"],
+          "source": "https://www.itiger.com/news/1175297671",
+          "note": "Source: UP Fintech Holding Limited Reports Unaudited Second Quarter 2026 Financial Results. Official company release; Pulse2 (https://pulse2.com/up-fintech-singapore-trading-volume-jumps-92-as-global-client-assets-reach-60-7-billion/, 2026-08-28) headlines Singapore trading volume +92% YoY. Event date 2026-08-26. Confidence: high."
+        }
+      ]
     },
     {
       "id": "wisesheets",
@@ -459,7 +749,7 @@
       "target_market": ["DIY value investor", "Spreadsheet modeler"],
       "countries_covered": ["Global"],
       "sg_monthly_sgd": 14,
-      "pricing_range_published": "USD 9.99 (Lite) -> USD 14.99 (Pro) -> USD 24.99 (Premium) /mo",
+      "pricing_range_published": "Pro USD 60/yr -> Elite USD 120/yr -> Enterprise USD 900/yr (annual billing; payment page lists Pro at USD 60/yr, Elite/Enterprise prices from the NCFA report of the 2026-03-10 announcement)",
       "pricing_flag": "published",
       "primary_value_prop": "Pull live financials into Excel / Google Sheets with one formula. The cheap modeler's data feed.",
       "features": ["WISE() formula", "10+ years financials", "Stock screener", "Custom dashboards", "Automated valuation"],
@@ -471,7 +761,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.7,
       "website_design_notes": "Indie-hacker SaaS marketing, friendly tone, screenshot-driven.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["LOW CONFIDENCE · 2026-11-11 · Homepage now advertises a ChatGPT/Claude Wisesheets connector (AI Connectors), a Stock API with free tier, and 'Select Product / Contact Sales' multi-product structure. (confidence: low)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "pricing_range_published",
+          "was": "USD 9.99 (Lite) -> USD 14.99 (Pro) -> USD 24.99 (Premium) /mo",
+          "now": "Pro USD 60/yr -> Elite USD 120/yr -> Enterprise USD 900/yr (annual billing; payment page lists Pro at USD 60/yr, Elite/Enterprise prices from the NCFA report of the 2026-03-10 announcement)",
+          "source": "https://wisesheets.io/payment",
+          "note": "Source: Wisesheets payment page (accessed 2026-11-11). Tier names (Pro/Elite/Enterprise) and annual billing replace the record's Lite/Pro/Premium monthly pricing; announcement date is pre-window but the current page still shows the new structure; /pricing returned 404. Corroborating source: https://ncfacanada.org/wisesheets-brings-market-data-to-spreadsheets/ (NCFA, 2026-03-11). Event date 2026-03-10. Confidence: medium."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["LOW CONFIDENCE · 2026-11-11 · Homepage now advertises a ChatGPT/Claude Wisesheets connector (AI Connectors), a Stock API with free tier, and 'Select Product / Contact Sales' multi-product structure. (confidence: low)"],
+          "source": "https://wisesheets.io/",
+          "note": "Source: Wisesheets homepage (accessed 2026-11-11). Page is undated, so launch date unknown; 'accessed' date used as event_date. Event date 2026-11-11. Confidence: low."
+        }
+      ]
     },
     {
       "id": "bloomberg_terminal",
@@ -495,7 +804,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.0,
       "website_design_notes": "Marketing site is corporate; product UI is the iconic black/orange terminal.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-08-19 · Bloomberg extended ASKB to mobile (iOS/Android Bloomberg Professional app) with cross-device sessions and scheduled Morning Reports. (confidence: high)", "2026-10-15 · Bloomberg announced ASKB (conversational agentic AI on the Terminal) is generally available: users can ask over their own Instant Bloomberg chats (3 months), Worksheets/watchlists and uploaded files via Bloomberg Drive; answers cite source and passage. Beta began 2026-02-23/24. (confidence: medium)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-08-19 · Bloomberg extended ASKB to mobile (iOS/Android Bloomberg Professional app) with cross-device sessions and scheduled Morning Reports. (confidence: high)"],
+          "source": "https://fintech.global/2026/08/19/bloomberg-extends-askb-ai-assistant-to-mobile-devices/",
+          "note": "Source: Bloomberg extends ASKB AI assistant to mobile devices. Fetched article dated 2026-08-19; ASKB launch itself (2026-02-23, marketsmedia.com) is pre-window. Event date 2026-08-19. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-08-19 · Bloomberg extended ASKB to mobile (iOS/Android Bloomberg Professional app) with cross-device sessions and scheduled Morning Reports. (confidence: high)"],
+          "now": ["2026-08-19 · Bloomberg extended ASKB to mobile (iOS/Android Bloomberg Professional app) with cross-device sessions and scheduled Morning Reports. (confidence: high)", "2026-10-15 · Bloomberg announced ASKB (conversational agentic AI on the Terminal) is generally available: users can ask over their own Instant Bloomberg chats (3 months), Worksheets/watchlists and uploaded files via Bloomberg Drive; answers cite source and passage. Beta began 2026-02-23/24. (confidence: medium)"],
+          "source": "https://unite.ai/bloombergs-askb-conversational-ai-reaches-general-availability",
+          "note": "Source: Bloomberg's ASKB Conversational AI Reaches General Availability. Secondary coverage of Bloomberg release (aiweekly.co also says 375,000-seat Terminal base); weakens record's 'slow product iteration' weakness. Event date 2026-10-15. Confidence: medium."
+        }
+      ]
     },
     {
       "id": "factset",
@@ -519,7 +847,42 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.5,
       "website_design_notes": "Corporate enterprise SaaS marketing site; product is enterprise chrome.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-06-30 · FactSet announced a strategic partnership with Google Cloud: Gemini models in FactSet Workstation, FactSet MCP/agent-sharing inside Gemini Enterprise, joint agents for portfolio ops/deal advisory/corporate finance, and Google Cloud added as a cloud provider. (confidence: high)", "2026-08-25 · FactSet's AI-ready MCP integration went live natively in Gemini Enterprise for Financial Services (portfolio analytics, data feeds, fixed income/derivatives, scenario analysis). (confidence: high)", "2026-09-22 · FactSet agreed to acquire BCC Group International GmbH (Frankfurt-based real-time market data distribution/entitlement platform 'ONE Platform'); price undisclosed, no material financial impact expected. (confidence: high)", "2026-09-30 · FactSet FY2026 Q4 (call 2026-09-30): Q4 revenue USD 634.7M, FY2026 revenue USD 2.476B (+6.7%), organic ASV USD 2.568B (+7%), record USD 86M quarterly ASV add, 650+ clients on MCP data, headcount fell YoY with further cuts in September; FY2027 revenue guide USD 2.6-2.625B. (confidence: medium)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-06-30 · FactSet announced a strategic partnership with Google Cloud: Gemini models in FactSet Workstation, FactSet MCP/agent-sharing inside Gemini Enterprise, joint agents for portfolio ops/deal advisory/corporate finance, and Google Cloud added as a cloud provider. (confidence: high)"],
+          "source": "https://www.googlecloudpresscorner.com/2026-06-30-FactSet-Announces-Strategic-Partnership-with-Google-Cloud-to-Bring-Advanced-AI-to-Financial-Intelligence",
+          "note": "Source: FactSet Announces Strategic Partnership with Google Cloud to Bring Advanced AI to Financial Intelligence. Press release hosted on Google Cloud press corner. Event date 2026-06-30. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-06-30 · FactSet announced a strategic partnership with Google Cloud: Gemini models in FactSet Workstation, FactSet MCP/agent-sharing inside Gemini Enterprise, joint agents for portfolio ops/deal advisory/corporate finance, and Google Cloud added as a cloud provider. (confidence: high)"],
+          "now": ["2026-06-30 · FactSet announced a strategic partnership with Google Cloud: Gemini models in FactSet Workstation, FactSet MCP/agent-sharing inside Gemini Enterprise, joint agents for portfolio ops/deal advisory/corporate finance, and Google Cloud added as a cloud provider. (confidence: high)", "2026-08-25 · FactSet's AI-ready MCP integration went live natively in Gemini Enterprise for Financial Services (portfolio analytics, data feeds, fixed income/derivatives, scenario analysis). (confidence: high)"],
+          "source": "https://www.googlecloudpresscorner.com/2026-08-25-FactSets-AI-Ready-MCP-Integration-Now-Live-in-Gemini-Enterprise-for-Financial-Services",
+          "note": "Source: FactSet's AI-Ready MCP Integration Now Live in Gemini Enterprise for Financial Services. Pairs with FY2026 Q4 call: 650+ clients on MCP contracts/trials (see next item). Event date 2026-08-25. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-06-30 · FactSet announced a strategic partnership with Google Cloud: Gemini models in FactSet Workstation, FactSet MCP/agent-sharing inside Gemini Enterprise, joint agents for portfolio ops/deal advisory/corporate finance, and Google Cloud added as a cloud provider. (confidence: high)", "2026-08-25 · FactSet's AI-ready MCP integration went live natively in Gemini Enterprise for Financial Services (portfolio analytics, data feeds, fixed income/derivatives, scenario analysis). (confidence: high)"],
+          "now": ["2026-06-30 · FactSet announced a strategic partnership with Google Cloud: Gemini models in FactSet Workstation, FactSet MCP/agent-sharing inside Gemini Enterprise, joint agents for portfolio ops/deal advisory/corporate finance, and Google Cloud added as a cloud provider. (confidence: high)", "2026-08-25 · FactSet's AI-ready MCP integration went live natively in Gemini Enterprise for Financial Services (portfolio analytics, data feeds, fixed income/derivatives, scenario analysis). (confidence: high)", "2026-09-22 · FactSet agreed to acquire BCC Group International GmbH (Frankfurt-based real-time market data distribution/entitlement platform 'ONE Platform'); price undisclosed, no material financial impact expected. (confidence: high)"],
+          "source": "https://pulse2.com/factset-acquires-bcc-group/",
+          "note": "Source: FactSet Acquires BCC Group To Expand Real-Time Market Data Solution Suite. Also confirmed via https://finviz.com/news/394194/factset-marks-a-new-era-in-enterprise-real-time-market-data-as-it-acquires-bcc-group-international (2026-09-22) and the Q4 call. Event date 2026-09-22. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-06-30 · FactSet announced a strategic partnership with Google Cloud: Gemini models in FactSet Workstation, FactSet MCP/agent-sharing inside Gemini Enterprise, joint agents for portfolio ops/deal advisory/corporate finance, and Google Cloud added as a cloud provider. (confidence: high)", "2026-08-25 · FactSet's AI-ready MCP integration went live natively in Gemini Enterprise for Financial Services (portfolio analytics, data feeds, fixed income/derivatives, scenario analysis). (confidence: high)", "2026-09-22 · FactSet agreed to acquire BCC Group International GmbH (Frankfurt-based real-time market data distribution/entitlement platform 'ONE Platform'); price undisclosed, no material financial impact expected. (confidence: high)"],
+          "now": ["2026-06-30 · FactSet announced a strategic partnership with Google Cloud: Gemini models in FactSet Workstation, FactSet MCP/agent-sharing inside Gemini Enterprise, joint agents for portfolio ops/deal advisory/corporate finance, and Google Cloud added as a cloud provider. (confidence: high)", "2026-08-25 · FactSet's AI-ready MCP integration went live natively in Gemini Enterprise for Financial Services (portfolio analytics, data feeds, fixed income/derivatives, scenario analysis). (confidence: high)", "2026-09-22 · FactSet agreed to acquire BCC Group International GmbH (Frankfurt-based real-time market data distribution/entitlement platform 'ONE Platform'); price undisclosed, no material financial impact expected. (confidence: high)", "2026-09-30 · FactSet FY2026 Q4 (call 2026-09-30): Q4 revenue USD 634.7M, FY2026 revenue USD 2.476B (+6.7%), organic ASV USD 2.568B (+7%), record USD 86M quarterly ASV add, 650+ clients on MCP data, headcount fell YoY with further cuts in September; FY2027 revenue guide USD 2.6-2.625B. (confidence: medium)"],
+          "source": "https://www.webull.com/news/15672802116584448",
+          "note": "Source: FactSet (FDS) Q4 FY2026 Earnings Call Transcript. Motley Fool transcript relayed via Webull; the transcript does not mention Google Cloud. Record 'Heavy install' / pricing (USD 12-20k/seat) not re-verified. Event date 2026-09-30. Confidence: medium."
+        }
+      ]
     },
     {
       "id": "ainvest",
@@ -567,7 +930,34 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.7,
       "website_design_notes": "Sharp brand, editorial layout, premium aesthetic.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-08 · Public Holdings listed as an Anthropic-verified Claude connector (view portfolio, market data, preflight trades; 35 tools; equities, options, bonds, crypto; read-only MCP endpoint). (confidence: medium)", "2026-08-17 · Public opened an AI agent marketplace where users browse, deploy, customize and share automated trading agents (stocks, ETFs, options, crypto, bonds, cash); no waitlist; agents require user approval and can be paused. AI Agents had begun select-member rollout 2026-03-31 (pre-window). (confidence: high)", "2026-08-28 · Mirae Asset Securities halted talks to acquire Public Holdings (Public.com) after the sides could not agree on terms; Mirae still plans U.S. retail brokerage expansion; Public cited as New York fintech with 3M+ members. (confidence: medium)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-08 · Public Holdings listed as an Anthropic-verified Claude connector (view portfolio, market data, preflight trades; 35 tools; equities, options, bonds, crypto; read-only MCP endpoint). (confidence: medium)"],
+          "source": "https://claude.com/marketplace/connectors/public-holdings",
+          "note": "Source: Public Holdings - Claude connector marketplace. Page says 'added in August 2026' with no day; shows prosumers can use Claude on top of Public data, weakening the in-broker-context limit. Event date 2026-08. Confidence: medium."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-08 · Public Holdings listed as an Anthropic-verified Claude connector (view portfolio, market data, preflight trades; 35 tools; equities, options, bonds, crypto; read-only MCP endpoint). (confidence: medium)"],
+          "now": ["2026-08 · Public Holdings listed as an Anthropic-verified Claude connector (view portfolio, market data, preflight trades; 35 tools; equities, options, bonds, crypto; read-only MCP endpoint). (confidence: medium)", "2026-08-17 · Public opened an AI agent marketplace where users browse, deploy, customize and share automated trading agents (stocks, ETFs, options, crypto, bonds, cash); no waitlist; agents require user approval and can be paused. AI Agents had begun select-member rollout 2026-03-31 (pre-window). (confidence: high)"],
+          "source": "https://cryptobriefing.com/public-ai-agents-marketplace-portfolios/",
+          "note": "Source: Public launches first marketplace of AI agents for portfolios. Moves Public from 'ask Alpha' assistant to agentic brokerage; record's 'Generative-only' weakness is outdated; no pricing stated; US brokerage only. Event date 2026-08-17. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-08 · Public Holdings listed as an Anthropic-verified Claude connector (view portfolio, market data, preflight trades; 35 tools; equities, options, bonds, crypto; read-only MCP endpoint). (confidence: medium)", "2026-08-17 · Public opened an AI agent marketplace where users browse, deploy, customize and share automated trading agents (stocks, ETFs, options, crypto, bonds, cash); no waitlist; agents require user approval and can be paused. AI Agents had begun select-member rollout 2026-03-31 (pre-window). (confidence: high)"],
+          "now": ["2026-08 · Public Holdings listed as an Anthropic-verified Claude connector (view portfolio, market data, preflight trades; 35 tools; equities, options, bonds, crypto; read-only MCP endpoint). (confidence: medium)", "2026-08-17 · Public opened an AI agent marketplace where users browse, deploy, customize and share automated trading agents (stocks, ETFs, options, crypto, bonds, cash); no waitlist; agents require user approval and can be paused. AI Agents had begun select-member rollout 2026-03-31 (pre-window). (confidence: high)", "2026-08-28 · Mirae Asset Securities halted talks to acquire Public Holdings (Public.com) after the sides could not agree on terms; Mirae still plans U.S. retail brokerage expansion; Public cited as New York fintech with 3M+ members. (confidence: medium)"],
+          "source": "https://en.fnnews.com/news/202608281712269971",
+          "note": "Source: Financial News (fnnews) 28 Aug 2026 - Mirae Asset halts Public.com acquisition talks. A formal discontinuation disclosure dated 2026-09-17/18 is reported by secondary aggregators (stockanalysis.com, stockhub.kr) but only the 08-28 fnnews article was read directly; Public remains independent. Event date 2026-08-28. Confidence: medium."
+        }
+      ]
     },
     {
       "id": "diy_excel",
@@ -639,7 +1029,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 2.6,
       "website_design_notes": "Bank-research portal; PDFs and tables.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-07-01 · OCBC launched OCBC WoW, an AI 'avatar banking' app with two avatars (Wendy, Wayne) trained on OCBC's proprietary research team data that answer personalised portfolio questions; beta for 50 users, then wealth clients, eventually retail; English only at launch. OCBC to invest over S$1bn/year on AI for 3 years. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-07-01 · OCBC launched OCBC WoW, an AI 'avatar banking' app with two avatars (Wendy, Wayne) trained on OCBC's proprietary research team data that answer personalised portfolio questions; beta for 50 users, then wealth clients, eventually retail; English only at launch. OCBC to invest over S$1bn/year on AI for 3 years. (confidence: high)"],
+          "source": "https://fortune.com/2026/07/01/ocbc-avatar-banking-ai-wendy-wayne-ceo-tan-teck-long/",
+          "note": "Source: OCBC avatar banking AI (Fortune, 1 Jul 2026). Sell-side research is being turned into interactive AI delivery, eroding the record's 'PDF-only, not interactive' weakness for OCBC, though access is initially private-bank only. Event date 2026-07-01. Confidence: high."
+        }
+      ]
     },
     {
       "id": "openai_chatgpt_finance",
@@ -651,7 +1052,7 @@
       "target_market": ["Retail investor", "Student", "Generalist user"],
       "countries_covered": ["Global"],
       "sg_monthly_sgd": 27,
-      "pricing_range_published": "Free -> USD 20 (Plus) -> USD 200 (Pro) /mo",
+      "pricing_range_published": "Free -> USD 20 (Plus) -> USD 200 (Pro) /mo | Apr 2026: a new USD 100 Pro tier was added (Engadget, 2026-04-10); trackers disagree on whether the USD 200 tier remains; chatgpt.com/pricing showed no prices",
       "pricing_flag": "published",
       "primary_value_prop": "General-purpose AI chat that can analyse any stock if you paste the data. The ubiquitous DIY analyst.",
       "features": ["Conversational analysis", "Code interpreter", "Web browsing", "Custom GPTs", "Plugins"],
@@ -663,7 +1064,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.5,
       "website_design_notes": "Minimal chat UI; clean modern AI aesthetic.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-09-10 · OpenAI launched ChatGPT for Financial Services (GPT-6 Astra plus built-in data from LSEG, PitchBook, Daloopa, Crunchbase, Quartr; connectors for FactSet, S&P Global, Preqin, Datasite); design partners Morgan Stanley and Evercore; initial focus investment banking and equity research. (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "pricing_range_published",
+          "was": "Free -> USD 20 (Plus) -> USD 200 (Pro) /mo",
+          "now": "Free -> USD 20 (Plus) -> USD 200 (Pro) /mo | Apr 2026: a new USD 100 Pro tier was added (Engadget, 2026-04-10); trackers disagree on whether the USD 200 tier remains; chatgpt.com/pricing showed no prices",
+          "source": "https://engadget.com/ai/openai-has-a-new-100-chatgpt-pro-plan-to-better-match-up-with-claude-062705626.html",
+          "note": "Source: OpenAI has a new $100 ChatGPT Pro plan (Engadget). PRE-WINDOW change (record already stale on 2026-05-02); trackers conflict on whether the USD 200 tier still exists (pricingsaas.com 2026D263 page shows Go 8/Plus 20/Pro 100 captured 2026-11-10; costbench shows tier restructures Jun/Jul 2026), and no Singapore SGD price was officially verified. Pre-window change (the record was already stale on 2026-05-02). Event date 2026-04-10. Confidence: medium."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-09-10 · OpenAI launched ChatGPT for Financial Services (GPT-6 Astra plus built-in data from LSEG, PitchBook, Daloopa, Crunchbase, Quartr; connectors for FactSet, S&P Global, Preqin, Datasite); design partners Morgan Stanley and Evercore; initial focus investment banking and equity research. (confidence: high)"],
+          "source": "https://www.thestandard.com.hk/innovation/article/342493/OpenAI-launches-ChatGPT-for-financial-services-industry",
+          "note": "Source: OpenAI launches ChatGPT for financial services industry (The Standard HK). Enterprise/institutional only with no published price or regional availability; weakens the record's 'No live equity data' weakness at the pro end but not for retail Plus users. Event date 2026-09-10. Confidence: high."
+        }
+      ]
     },
     {
       "id": "investing_com",
@@ -687,7 +1107,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.0,
       "website_design_notes": "Cluttered portal layout, heavy ads, mobile-tolerant.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-08-01 · UNVERIFIED price report: a third-party affiliate page (matchmybroker.com, updated 1 Aug 2026) lists InvestingPro Pro USD 17.95/mo and Pro+ USD 44.95/mo against the recorded USD 12; investing.com's own page showed only a promo landing page with no plan prices; WarrenAI (180,000+ stocks/ETFs) is advertised there. (confidence: low)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-08-01 · UNVERIFIED price report: a third-party affiliate page (matchmybroker.com, updated 1 Aug 2026) lists InvestingPro Pro USD 17.95/mo and Pro+ USD 44.95/mo against the recorded USD 12; investing.com's own page showed only a promo landing page with no plan prices; WarrenAI (180,000+ stocks/ETFs) is advertised there. (confidence: low)"],
+          "source": "https://www.matchmybroker.com/articles/investingpro-pricing",
+          "note": "Source: InvestingPro pricing (MatchMyBroker, updated 1 Aug 2026). No SGD price found. Event date 2026-08-01. Confidence: low."
+        }
+      ]
     },
     {
       "id": "trefis",
@@ -735,7 +1166,26 @@
       "research_date": "2026-05-02",
       "website_design_rating": 3.4,
       "website_design_notes": "S&P enterprise marketing site; product is enterprise chrome.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2026-07-23 · S&P Global Market Intelligence partnered with (and took a minority investment in) Farsight to add an AI capability for client-ready pitch decks, CIMs and valuation materials as an add-on to Capital IQ Pro, delivered later in 2026; announcement notes new Kensho Data & Platforms group that includes Capital IQ Pro. (confidence: high)", "2026-10-06 · S&P Global expanded Capital IQ Pro with ChatIQ (conversational AI over company, market, credit, economic data, filings, news), ChatIQ Spreadsheets (AI Excel modeling assistant using refreshable CIQ formulas), ChatIQ Presentations (in Labs) and AI Portfolio Insights (beta). (confidence: high)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2026-07-23 · S&P Global Market Intelligence partnered with (and took a minority investment in) Farsight to add an AI capability for client-ready pitch decks, CIMs and valuation materials as an add-on to Capital IQ Pro, delivered later in 2026; announcement notes new Kensho Data & Platforms group that includes Capital IQ Pro. (confidence: high)"],
+          "source": "https://press.spglobal.com/2026-07-23-S-P-Global-Market-Intelligence-Partners-with-Farsight-to-Launch-AI-powered-Financial-Workflow-Capability-for-Capital-IQ-Pro",
+          "note": "Source: S&P Global Market Intelligence Partners with Farsight to Launch AI-powered Financial Workflow Capability for Capital IQ Pro. Corporate reorganisation (Kensho Data & Platforms) plus minority investment; add-on pricing not disclosed. Event date 2026-07-23. Confidence: high."
+        },
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": ["2026-07-23 · S&P Global Market Intelligence partnered with (and took a minority investment in) Farsight to add an AI capability for client-ready pitch decks, CIMs and valuation materials as an add-on to Capital IQ Pro, delivered later in 2026; announcement notes new Kensho Data & Platforms group that includes Capital IQ Pro. (confidence: high)"],
+          "now": ["2026-07-23 · S&P Global Market Intelligence partnered with (and took a minority investment in) Farsight to add an AI capability for client-ready pitch decks, CIMs and valuation materials as an add-on to Capital IQ Pro, delivered later in 2026; announcement notes new Kensho Data & Platforms group that includes Capital IQ Pro. (confidence: high)", "2026-10-06 · S&P Global expanded Capital IQ Pro with ChatIQ (conversational AI over company, market, credit, economic data, filings, news), ChatIQ Spreadsheets (AI Excel modeling assistant using refreshable CIQ formulas), ChatIQ Presentations (in Labs) and AI Portfolio Insights (beta). (confidence: high)"],
+          "source": "https://press.spglobal.com/2026-10-06-ChatIQ-Leads-S-P-Globals-Latest-Capital-IQ-Pro-Update-with-Expanded-AI-Powered-Research-Capabilities",
+          "note": "Source: ChatIQ Leads S&P Global's Latest Capital IQ Pro Update with Expanded AI-Powered Research Capabilities. Institutional AI narration/Excel modeling still inaccessible to retail; no pricing stated, so the USD 13k/seat estimate is unchanged. Event date 2026-10-06. Confidence: high."
+        }
+      ]
     },
     {
       "id": "atom_finance",
@@ -759,7 +1209,18 @@
       "research_date": "2026-05-02",
       "website_design_rating": 4.4,
       "website_design_notes": "Modern editorial-meets-terminal aesthetic; appealing to younger pro-sumer.",
-      "website_screenshot_path": "assets/screenshots/placeholder.png"
+      "website_screenshot_path": "assets/screenshots/placeholder.png",
+      "recent_events": ["2024-05-15 · RECORD FLAG (pre-window correction): the record says \"Public-acquired\", but two fetched articles report Atom Finance was acquired by Toggle AI (announced 15 May 2024) and neither mentions Public.com; the current status of the atom.finance consumer app could not be confirmed. (confidence: medium)"],
+      "updates": [
+        {
+          "date": "2026-11-11",
+          "field": "recent_events",
+          "was": [],
+          "now": ["2024-05-15 · RECORD FLAG (pre-window correction): the record says \"Public-acquired\", but two fetched articles report Atom Finance was acquired by Toggle AI (announced 15 May 2024) and neither mentions Public.com; the current status of the atom.finance consumer app could not be confirmed. (confidence: medium)"],
+          "source": "https://globalfintechseries.com/finance/toggle-ai-acquires-atom-finance/",
+          "note": "Source: Toggle AI Acquires Atom Finance (Global FinTech Series). Second source read: itdigest.com. Record text left unchanged; flagged here rather than rewritten. Event date 2024-05-15. Confidence: medium."
+        }
+      ]
     },
     {
       "id": "elitez_pulse",
@@ -784,6 +1245,162 @@
       "website_design_rating": null,
       "website_design_notes": "n/a — internal channel partner",
       "website_screenshot_path": "assets/screenshots/placeholder.png"
+    }
+  ],
+  "new_entrants": [
+    {
+      "id": "longbridge_ai",
+      "name": "Longbridge AI",
+      "url": "https://longbridge.com",
+      "category": "ai_retail_broker",
+      "hq": "Singapore-built; Longbridge Group HQ not stated in source",
+      "pricing_range_published": "Not published in fetched sources (no price or free quota stated)",
+      "primary_value_prop": "AI investing agent that monitors market developments on a user's holdings, remembers portfolio and decisions, and drafts action plans, with Longbridge Skill linking 125+ functions to ChatGPT, Claude, Gemini and Cursor.",
+      "why_it_matters": "Direct SG launch of an AI-first retail investing platform aimed at the same SG prosumer; positions as 'institutional-style process' and open agent marketplace.",
+      "scoring": "not scored (threat_level / beatability / market_share are analyst judgements and are not assigned to new entrants without a fuller review)",
+      "added": "2026-11-11",
+      "event_date": "2026-07-16",
+      "sources": [
+        {
+          "url": "https://itbrief.com.au/story/longbridge-launches-ai-investing-platform-in-singapore",
+          "title": "Longbridge launches AI investing platform in Singapore (IT Brief)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high",
+      "verification_note": "Article dated 2026-07-16; Singapore availability reported as 2026-07-15 by search results; sponsored Beansprout review dated 2026-08-03 confirms features but also no price."
+    },
+    {
+      "id": "claude_for_financial_advisors",
+      "name": "Claude for Financial Advisors (Anthropic)",
+      "url": "https://www.anthropic.com",
+      "category": "ai_assistant_pro_plugin",
+      "hq": "San Francisco",
+      "pricing_range_published": "Not stated in fetched article; available via Anthropic's Enterprise tier",
+      "primary_value_prop": "Plugin of connectors and workflow skills (Schwab, BlackRock, Vanguard, Addepar, iCapital, Orion, Envestnet etc. plus FactSet, S&P Global, Morningstar) for pre-meeting prep, rebalance review, estate/tax review and compliance checks.",
+      "why_it_matters": "Not retail-facing but signals frontier LLM vendors moving into investment workflows; advisors may serve Market Tracker's EMBA/prosumer segment with Claude-built narratives; also May 2026 agents for financial professionals.",
+      "scoring": "not scored (threat_level / beatability / market_share are analyst judgements and are not assigned to new entrants without a fuller review)",
+      "added": "2026-11-11",
+      "event_date": "2026-09-16",
+      "sources": [
+        {
+          "url": "https://itbrief.com.au/story/anthropic-introduces-claude-for-financial-advisers",
+          "title": "Anthropic introduces Claude for Financial Advisers (IT Brief Australia)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high",
+      "verification_note": "Article dated 2026-09-16 (launch reported 2026-09-14/15 by other outlets not fetched); separate 2026-05-05 release of 10 finance agent templates reported by InvestmentNews."
+    },
+    {
+      "id": "google_finance",
+      "name": "Google Finance (AI portfolios, tasks, Android app)",
+      "url": "https://www.google.com/finance",
+      "category": "free_ai_default",
+      "hq": "Mountain View, USA",
+      "pricing_range_published": "No pricing for the platform; Deep Search free via Labs, higher usage limits for Google AI Pro/Ultra",
+      "primary_value_prop": "AI research with natural-language questions and sourced answers, live earnings tracking with AI summaries, advanced charts, and from 2026-06-25 investment portfolios (from screenshots/CSV/prompt), scheduled AI briefing tasks and a standalone Android app.",
+      "why_it_matters": "A free Google-grade AI finance default expanding to 100+ countries (including Indonesia, Japan; Singapore not named in fetched sources) erodes willingness to pay for generic AI stock narration.",
+      "scoring": "not scored (threat_level / beatability / market_share are analyst judgements and are not assigned to new entrants without a fuller review)",
+      "added": "2026-11-11",
+      "event_date": "2026-06-25",
+      "sources": [
+        {
+          "url": "https://ppc.land/google-finance-exits-beta-with-portfolios-ai-tasks-and-an-android-app/",
+          "title": "Google Finance exits beta with portfolios, AI tasks and an Android app (PPC Land)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium",
+      "verification_note": "Global/100-country rollout was 2026-04-08 (pre-window, ppc.land 2026-04-10); the in-window event is the portfolios/tasks/Android launch; Singapore availability not confirmed."
+    },
+    {
+      "id": "ocbc_wow",
+      "name": "OCBC WoW (AI avatar banking app)",
+      "url": "https://www.ocbc.com",
+      "category": "bank_ai_wealth",
+      "hq": "Singapore",
+      "pricing_range_published": "Not stated; beta for staff and Premier Private Client customers with at least S$1.5 million AUM",
+      "primary_value_prop": "AI avatars Wendy and Wayne trained on OCBC's research team data answer personalised portfolio questions by voice or text.",
+      "why_it_matters": "SG incumbent bank productising its sell-side research as conversational AI, expected to reach wealth then retail clients.",
+      "scoring": "not scored (threat_level / beatability / market_share are analyst judgements and are not assigned to new entrants without a fuller review)",
+      "added": "2026-11-11",
+      "event_date": "2026-07-01",
+      "sources": [
+        {
+          "url": "https://fortune.com/2026/07/01/ocbc-avatar-banking-ai-wendy-wayne-ceo-tan-teck-long/",
+          "title": "OCBC avatar banking AI (Fortune)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high",
+      "verification_note": "English-only at launch; Mandarin, Bahasa Indonesia and Bahasa Melayu planned; also covered by fintechnews.sg 2026-10-14."
+    },
+    {
+      "id": "interactive_brokers_claude_connector",
+      "name": "Interactive Brokers Claude connector",
+      "url": "https://www.interactivebrokers.com",
+      "category": "broker_ai_connector",
+      "hq": "Greenwich, Connecticut (USA)",
+      "pricing_range_published": "No extra cost stated",
+      "primary_value_prop": "Clients link existing IBKR accounts to Claude (via certified connector marketplace) to query positions, analyse exposures and generate trade instructions that require client approval; 170+ markets, equities/ETFs at launch.",
+      "why_it_matters": "IBKR is a common SG prosumer broker; bring-your-own-AI over broker data lets users build their own analyst workflow instead of buying a narrated-analytics product.",
+      "scoring": "not scored (threat_level / beatability / market_share are analyst judgements and are not assigned to new entrants without a fuller review)",
+      "added": "2026-11-11",
+      "event_date": "2026-06-01",
+      "sources": [
+        {
+          "url": "https://www.financemagnates.com/forex/brokers/interactive-brokers-opens-accounts-to-claude-letting-ai-draft-trades-for-client-sign-off/",
+          "title": "Interactive Brokers Opens Accounts to Claude (Finance Magnates)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high",
+      "verification_note": "Finance Magnates dated 2026-06-01; fintech.global article dated 2026-06-02; ChatGPT/Gemini/Grok connectors still in certification at that time."
+    },
+    {
+      "id": "robinhood",
+      "name": "Robinhood (Agentic Trading, Singapore licence)",
+      "url": "https://robinhood.com",
+      "category": "ai_retail_broker",
+      "hq": "Menlo Park, California (USA); Robinhood Singapore Pte. Ltd.",
+      "pricing_range_published": "Crypto agentic trading to roll out 'at no additional cost' (US); no consumer price for SG",
+      "primary_value_prop": "Agentic Trading for equities/options (US, June 2026) with Trading MCP connecting third-party AI agents to Robinhood data; Robinhood Singapore obtained a MAS Capital Markets Services licence ahead of brokerage launch; Cortex Digests has a Singapore methodology help page.",
+      "why_it_matters": "Signals a major US retail AI broker preparing to enter Singapore with Cortex AI digests already documented for the SG entity.",
+      "scoring": "not scored (threat_level / beatability / market_share are analyst judgements and are not assigned to new entrants without a fuller review)",
+      "added": "2026-11-11",
+      "event_date": "2026-07-01",
+      "sources": [
+        {
+          "url": "https://robinhood.com/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/",
+          "title": "Robinhood accelerates global expansion (Robinhood newsroom, 1 Jul 2026)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium",
+      "verification_note": "Newsroom post published 2026-07-01 and updated 2026-07-30; SG brokerage launch date not given and Cortex Digests SG help page is undated (not fetched)."
+    },
+    {
+      "id": "daloopa",
+      "name": "Daloopa (Series C, AI-agent financial data layer)",
+      "url": "https://daloopa.com",
+      "category": "financial_data_infrastructure",
+      "hq": "New York",
+      "pricing_range_published": "Not stated; B2B",
+      "primary_value_prop": "Structured, source-linked financial data for 5,500+ public companies feeding AI financial agents (connectors in ChatGPT, Claude, Perplexity, Rogo).",
+      "why_it_matters": "Shows capital flowing into the data layer that powers LLM equity research; a possible upstream data source for narrated analytics but not a retail rival.",
+      "scoring": "not scored (threat_level / beatability / market_share are analyst judgements and are not assigned to new entrants without a fuller review)",
+      "added": "2026-11-11",
+      "event_date": "2026-06-01",
+      "sources": [
+        {
+          "url": "https://builtin.com/articles/daloopa-raises-47m-series-c-20260601",
+          "title": "Data Infrastructure Provider Daloopa Raises $47M Series C (Built In)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high",
+      "verification_note": "USD 47M Series C led by Brighton Park Capital; announced 2026-05-28 per search results, article dated 2026-06-01; Rogo's USD 160M Series D (2026-04-29) is pre-window and excluded."
     }
   ]
 }

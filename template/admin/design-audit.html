@@ -27,6 +27,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/pit-floor.css">
+  <link rel="stylesheet" href="../assets/css/intel-updates.css?v=20261111">
+  <link rel="stylesheet" href="../assets/css/intel-updates-pit.css?v=20261111">
+  <script src="../assets/js/intel-updates.js?v=20261111" data-intel-data="../data/" data-intel-files="competitors,market-intelligence,pricing-strategy,whitespace-framework"></script>
+  <script src="../assets/js/intel-rows.js?v=20261111"></script>
   <script src="../assets/kit/vendor/chart.umd.js"></script>
   <style>
     .audit-table { width: 100%; border-collapse: collapse; font-size: 12px; }
@@ -131,6 +135,8 @@
       </div>
     </section>
 
+    <div data-intel-panel></div>
+
     <!-- The 5-D rubric explainer -->
     <section class="section">
       <div class="section-head">
@@ -226,7 +232,7 @@
         h('th', {}, 'NOTES'),
         h('th', { style: { textAlign: 'right' } }, 'THREAT')
       )),
-      h('tbody', {}, ...rated.map((c, i) => h('tr', {},
+      h('tbody', {}, ...rated.flatMap((c, i) => intelRows(h('tr', {},
         h('td', { class: 'num', style: { color: 'var(--maroon)', fontSize: '14px' } }, '#' + (i + 1)),
         h('td', { class: 'name' }, c.url ? h('a', { href: c.url, target: '_blank', rel: 'noopener' }, c.name) : c.name),
         h('td', { style: { color: 'var(--cyan)', fontSize: '10px', letterSpacing: '0.06em', textTransform: 'uppercase' } }, (c.category || '—').replace(/_/g,' ')),
@@ -236,7 +242,7 @@
         ),
         h('td', { style: { color: 'var(--ink)', fontSize: '12px' } }, c.website_design_notes || '—'),
         h('td', { class: 'num' }, c.threat_level != null ? h('span', { class: 'chip threat-' + c.threat_level }, String(c.threat_level)) : '—')
-      )))
+      ), c, c.name + ' - changed: ' + [...new Set((c.updates || []).map(u => u.field))].join(', '), 6)))
     );
 
     const unrated = COMPS.filter(c => c.website_design_rating == null);
@@ -274,7 +280,7 @@
   </script>
 
 <div class="last-edited-strip" role="status" aria-live="polite">
-  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-05-03T22:45:44+08:00">checking…</span>
+  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-11-11T12:00:00+08:00">checking…</span>
 </div>
 
 <script>

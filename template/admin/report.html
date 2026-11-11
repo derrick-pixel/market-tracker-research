@@ -27,6 +27,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/pit-floor.css">
+  <link rel="stylesheet" href="../assets/css/intel-updates.css?v=20261111">
+  <link rel="stylesheet" href="../assets/css/intel-updates-pit.css?v=20261111">
+  <script src="../assets/js/intel-updates.js?v=20261111" data-intel-data="../data/" data-intel-files="competitors,market-intelligence,pricing-strategy,whitespace-framework"></script>
+  <script src="../assets/js/intel-rows.js?v=20261111"></script>
   <style>
     .download-row {
       display: flex; gap: 10px; flex-wrap: wrap;
@@ -132,6 +136,8 @@
         An Elitez Group instrument
       </div>
     </section>
+
+    <div data-intel-panel></div>
 
     <div class="download-row">
       <span class="lbl">Export</span>
@@ -268,11 +274,11 @@
     const top5El = document.getElementById('top5-list');
     top5El.replaceChildren(...(competitors.top_five || []).map(t => {
       const c = compById[t.competitor_id] || {};
-      return h('li', { style: { marginBottom: '10px', lineHeight: '1.55' } },
+      return intelTag(h('li', { style: { marginBottom: '10px', lineHeight: '1.55' } },
         h('b', { style: { color: 'var(--amber)' } }, c.name || t.competitor_id),
         ' — ',
         t.rationale || ''
-      );
+      ), c);
     }));
 
     /* ---- Implications ---- */
@@ -288,22 +294,22 @@
     /* ---- Attack plans ---- */
     const atkEl = document.getElementById('atk-list');
     atkEl.replaceChildren(...(whitespace.attack_plans || []).map(a =>
-      h('li', { style: { marginBottom: '10px', lineHeight: '1.55' } },
+      intelTag(h('li', { style: { marginBottom: '10px', lineHeight: '1.55' } },
         h('b', { style: { color: 'var(--amber)' } }, a.niche_name || ''),
         ' — ',
         h('span', { style: { color: 'var(--green)' } }, fmtMoney(a.tam_estimate_sgd) + ' TAM. '),
         a.why_we_win || ''
-      )
+      ), a)
     ));
 
     /* ---- Tiers ---- */
     const tiersEl = document.getElementById('tiers');
     tiersEl.replaceChildren(...(pricing.recommended_tiers || []).map(t =>
-      h('div', { class: 'tier-line' },
+      intelTag(h('div', { class: 'tier-line' },
         h('div', { class: 'name' }, t.name),
         h('div', { class: 'px' + (t.price_sgd === 0 ? ' free' : '') }, t.price_sgd === 0 ? 'FREE' : 'S$' + t.price_sgd),
         h('div', { class: 'desc' }, t.target_persona + ' · ' + (t.psychological_anchor || ''))
-      )
+      ), t)
     ));
 
     /* ---- Methodology + sources ---- */
@@ -316,7 +322,7 @@
   </script>
 
 <div class="last-edited-strip" role="status" aria-live="polite">
-  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-05-03T22:45:44+08:00">checking…</span>
+  <strong>Page last edited:</strong> <span id="last-edited" data-edited="2026-11-11T12:00:00+08:00">checking…</span>
 </div>
 
 <script>

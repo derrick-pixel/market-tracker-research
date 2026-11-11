@@ -11,7 +11,18 @@
       "font_body": "IBM Plex Mono, ui-monospace, monospace"
     },
     "research_date": "2026-05-02",
-    "sample_data": false
+    "sample_data": false,
+    "last_refreshed": "2026-11-11",
+    "refresh_log": [
+      {
+        "date": "2026-11-11",
+        "window": "2026-05-02->2026-11-11",
+        "added": 4,
+        "updated": 0,
+        "retired": 0,
+        "summary": "Added four whitespace-watch records on where the whitespace has narrowed: Yahoo AlphaSpace, broker-app AI (Moomoo, Longbridge), bring-your-own-AI connectors (TradingView MCP, IBKR, Public) and institutional agents. Heatmap cells, scores and attack plans were not edited; no competitor was found adding an academic framework, so framework provenance is unaffected."
+      }
+    ]
   },
   "strategy_canvas": {
     "headline_thesis": "Market Tracker bridges three previously-unbridged things — branded academic methodology (Booth EMBA modules), AI-narrated rendering on live financials, and a SE-Asia distribution channel via Elitez Group — that no SG retail-research player owns end-to-end.",
@@ -404,6 +415,124 @@
         "pricing": "Free guest (rate-limited); Pro consumer SGD 29/mo",
         "content": "Methodology + AI-guardrails page; comparison vs ChatGPT-with-no-data; open prompt template + retrieval-scope disclosure"
       }
+    }
+  ],
+  "whitespace_watch": [
+    {
+      "id": "ww_yahoo_alphaspace",
+      "title": "AI-narrated analytics: Yahoo Finance AlphaSpace and Yahoo Scout ship an AI workspace (dimension: AI narrative grounding)",
+      "segment_ids": ["retail_prosumer", "elitez_channel"],
+      "dimension_keys": ["ai_narrative_grounding"],
+      "what_changed": "Yahoo Finance launched AlphaSpace with the Yahoo Scout AI assistant (summaries, workflow building, comparative charts) bundled in the USD 39.99/mo Gold plan on 19 May 2026, and added real-time options data integrated with Yahoo Scout on 22 Jul 2026.",
+      "assessment": "Analyst reading: weakens the \"Yahoo has no framework lens / default reflex is shallow\" gap; Yahoo's recorded ai_narrative_grounding score (2) may now be understated. Scores were not changed; the framework-provenance angle (no academic framework) is not affected.",
+      "scores_changed": false,
+      "added": "2026-11-11",
+      "event_date": "2026-05-19",
+      "sources": [
+        {
+          "url": "https://unified.www.yahooinc.com/press/introducing-alphaspace-by-yahoo-finance-a-professional-grade-investment-platform-built-for-everyday-investors",
+          "title": "Introducing AlphaSpace by Yahoo Finance",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.yahooinc.com/press/yahoo-finance-brings-real-time-options-data-to-alphaspace-investment-platform",
+          "title": "Yahoo Finance brings real-time options data to AlphaSpace",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "ww_broker_ai",
+      "title": "Broker-app AI is moving beyond \"shallow cards\": Moomoo AI Expert Mode and Longbridge AI agent (segment: SE-Asia prosumer)",
+      "segment_ids": ["retail_prosumer"],
+      "dimension_keys": ["narrative_quality", "speed_to_insight"],
+      "what_changed": "At MooFest (22 Jul 2026) Moomoo SG unveiled AI Expert Mode (analyst-style reports, pre-filled orders), Moomoo Skills (lets Claude and other AI tools connect to market data and trading) and Smart Money; Longbridge launched an AI investing agent in Singapore that monitors holdings and drafts action plans (reported 16 Jul 2026).",
+      "assessment": "Analyst reading: weakens attack plan 3 (\"moomoo / Tiger broker AI cards are too shallow for conviction-building\"); analyst-style reports are now a stated feature of the largest SG retail app. Whether they carry an academic framework is unverified (none stated).",
+      "scores_changed": false,
+      "added": "2026-11-11",
+      "event_date": "2026-07-22",
+      "sources": [
+        {
+          "url": "https://www.moomoo.com/community/feed/moofest-2026-draws-record-18-000-investors-captivating-singapore-s-116963811262469",
+          "title": "MooFest 2026 Draws Record 18,000 Investors, Captivating Singapore's Investing Community",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://itbrief.com.au/story/longbridge-launches-ai-investing-platform-in-singapore",
+          "title": "Longbridge launches AI investing platform in Singapore (IT Brief)",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "ww_byo_ai_connectors",
+      "title": "Bring-your-own-AI over licensed data: TradingView MCP, Interactive Brokers and Public connectors for Claude (segment: DIY ChatGPT user)",
+      "segment_ids": ["retail_prosumer"],
+      "dimension_keys": ["ai_narrative_grounding"],
+      "what_changed": "TradingView launched an official MCP server in public beta (16 Sep 2026) connecting Claude and ChatGPT to quotes, screener, fundamentals and filings on Essential plans and above; Interactive Brokers opened accounts to Claude through a certified connector (1 Jun 2026); Public became an Anthropic-verified Claude connector (Aug 2026).",
+      "assessment": "Analyst reading: weakens attack plan 5 (\"ChatGPT hallucinates equity data without source-grounding; no persistence\"): general assistants can now be grounded in vendor or broker data. The reusable, framework-templated PDF output remains unaddressed by these items.",
+      "scores_changed": false,
+      "added": "2026-11-11",
+      "event_date": "2026-09-16",
+      "sources": [
+        {
+          "url": "https://fxnewsgroup.com/forex-news/platforms/tradingview-introduces-tradingview-mcp-server/",
+          "title": "TradingView introduces TradingView MCP Server",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.financemagnates.com/forex/brokers/interactive-brokers-opens-accounts-to-claude-letting-ai-draft-trades-for-client-sign-off/",
+          "title": "Interactive Brokers Opens Accounts to Claude",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://claude.com/marketplace/connectors/public-holdings",
+          "title": "Public Holdings - Claude connector marketplace",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "ww_institutional_agents",
+      "title": "Institutional AI agents narrow the boutique-analyst memo gap: AlphaSense SuperAnalyst, S&P ChatIQ, FactSet MCP, Bloomberg ASKB, ChatGPT for Financial Services",
+      "segment_ids": ["boutique_analyst"],
+      "dimension_keys": ["narrative_quality", "speed_to_insight"],
+      "what_changed": "AlphaSense introduced the SuperAnalyst agent with a USD 350M raise at USD 7.5B (3 Jun 2026); FactSet's MCP integration went live in Gemini Enterprise (25 Aug 2026); OpenAI launched ChatGPT for Financial Services (10 Sep 2026, enterprise-only); S&P Capital IQ Pro added ChatIQ and ChatIQ Spreadsheets (6 Oct 2026); Bloomberg's ASKB reached general availability (reported 15 Oct 2026).",
+      "assessment": "Analyst reading: weakens attack plan 2 at the enterprise end (\"no tool turns 6 hrs of CF + FS + OM into a memo\"); the per-seat cost objection (Bloomberg, Capital IQ, AlphaSense) is not addressed by these launches and no new price was found.",
+      "scores_changed": false,
+      "added": "2026-11-11",
+      "event_date": "2026-10-06",
+      "sources": [
+        {
+          "url": "https://www.alpha-sense.com/press/alphasense-raises-350m-at-7-5b-valuation-and-surpasses-600m-in-annual-recurring-revenue/",
+          "title": "AlphaSense Raises $350M at $7.5B Valuation",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.googlecloudpresscorner.com/2026-08-25-FactSets-AI-Ready-MCP-Integration-Now-Live-in-Gemini-Enterprise-for-Financial-Services",
+          "title": "FactSet's AI-Ready MCP Integration Now Live in Gemini Enterprise",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://www.thestandard.com.hk/innovation/article/342493/OpenAI-launches-ChatGPT-for-financial-services-industry",
+          "title": "OpenAI launches ChatGPT for financial services industry",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://press.spglobal.com/2026-10-06-ChatIQ-Leads-S-P-Globals-Latest-Capital-IQ-Pro-Update-with-Expanded-AI-Powered-Research-Capabilities",
+          "title": "ChatIQ Leads S&P Global's Latest Capital IQ Pro Update",
+          "accessed": "2026-11-11"
+        },
+        {
+          "url": "https://unite.ai/bloombergs-askb-conversational-ai-reaches-general-availability",
+          "title": "Bloomberg's ASKB Conversational AI Reaches General Availability",
+          "accessed": "2026-11-11"
+        }
+      ],
+      "confidence": "medium"
     }
   ]
 }
